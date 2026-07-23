@@ -1,8 +1,6 @@
 using NaughtyAttributes;
 using System;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,20 +11,48 @@ public class TimerManager : MonoBehaviour
     public static event Action OnPauseTimer;
     public static event Action OnUpdateTimer;
 
-    public float TimeRemaining;
+    [SerializeField] private float timeRemaining;
+    public float TimeRemaining
+    {
+        get => timeRemaining;
+        set
+        {
+            if (timeRemaining != value)
+            {
+                if (value > MaxTime)
+                {
+                    float overtime = (value) - MaxTime;
+                    float overtimeDecimals = overtime - Mathf.Floor(overtime);
+                    timeRemaining = MaxTime + overtimeDecimals;
+                }
+                else
+                {
+                    timeRemaining = value;
+                }
+            }
+        }
+    }
     public float MaxTime;
     public bool TimerHasStarted;
     public bool TimerIsActive;
-    public float TimerSpeed;
+    public float TimerSpeed = 1;
+    public bool IndicatorIsActive;
 
     public TMP_Text TimerMinute;
     public TMP_Text TimerSecond;
     public Image TimerBar;
     public Image TimerBarBG;
+    public Image TimerBarIndicator;
+    public float IndicatorMaxDuration;
+    public float IndicatorCurrentDuration;
 
     [SerializeField] private Material textMaterial;
     [SerializeField] private Gradient barGradient;
     [SerializeField] private Gradient textGradient;
+    [SerializeField] private Gradient activeIndicatorGradient;
+
+    [SerializeField] private Gradient timeUpGradient;
+    [SerializeField] private Gradient timeDownGradient;
 
     private void Awake()
     {
@@ -40,8 +66,9 @@ public class TimerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!TimerIsActive) return;
+        if (IndicatorIsActive) UpdateTimerChangeUI();
         
+        if (!TimerIsActive) return;
         if (TimeRemaining > 0)
         {
             TimeRemaining -= Time.deltaTime * TimerSpeed;
@@ -74,10 +101,20 @@ public class TimerManager : MonoBehaviour
         UpdateTimerUI();
     }
 
+    [SerializeField] private int addedSeconds = 5;
+    [Button]
+    public void UpdateTimer()
+    {
+        UpdateTimer(addedSeconds);
+    }
     public void UpdateTimer(int seconds)
     {
         TimeRemaining += seconds;
-        // TODO: trigger UI popup based on sign of seconds variable;
+        IndicatorIsActive = true;
+
+        if (seconds >= 0) activeIndicatorGradient = timeUpGradient;        
+        else activeIndicatorGradient = timeDownGradient;
+        IndicatorCurrentDuration = IndicatorMaxDuration;
     }
     #endregion
 
@@ -97,6 +134,13 @@ public class TimerManager : MonoBehaviour
         TimerBar.fillAmount = Mathf.Clamp01(width);
         TimerBarBG.color = barGradient.Evaluate(time);
         textMaterial.SetColor("_UnderlayColor", textGradient.Evaluate(time));
+    }
+
+    public void UpdateTimerChangeUI()
+    {
+        IndicatorCurrentDuration -= Time.deltaTime;
+        TimerBarIndicator.color = activeIndicatorGradient.Evaluate(IndicatorCurrentDuration);
+        if (IndicatorCurrentDuration < 0) IndicatorIsActive = false;
     }
     #endregion
 }
