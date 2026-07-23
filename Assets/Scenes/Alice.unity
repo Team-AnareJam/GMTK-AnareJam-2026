@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 597875003}
   m_Layer: 3
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -487,6 +487,7 @@ MonoBehaviour:
     PlayerPosition: {x: 0, y: 0}
     MousePosInWorld: {x: 0, y: 0}
     player: {fileID: 0}
+  player: {fileID: 2137145490}
 --- !u!1 &1675332536
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +925,12 @@ MonoBehaviour:
   cam: {fileID: 2048221216}
   Deck: {fileID: 2137145488}
   hand: {fileID: 2137145489}
+  objectLayerMask:
+    serializedVersion: 2
+    m_Bits: 224
+  backgroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

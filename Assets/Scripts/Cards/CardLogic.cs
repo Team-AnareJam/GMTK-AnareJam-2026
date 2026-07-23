@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Cards
+public abstract class CardLogic : ScriptableObject
 {
-    public abstract class CardLogic : ScriptableObject
-    {
-        public static CardContext ctx;
-        public abstract void Visualize();
-        public abstract void Play();
-    }
+    public static CardContext ctx;
+    public abstract void Visualize();
+    public abstract void Play();
 }

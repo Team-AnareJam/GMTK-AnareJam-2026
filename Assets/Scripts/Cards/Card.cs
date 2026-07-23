@@ -1,11 +1,8 @@
 using System;
-using Cards;
-using Unity.Properties;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Card", menuName = "Game Data/Card")]
-[Serializable]
+[System.Serializable]
 public class Card : ScriptableObject
 {
     public string ID;
@@ -16,4 +13,20 @@ public class Card : ScriptableObject
     public Texture2D Background;
     public string Credits;
     public CardLogic Logic;
+
+    public Card()
+    {
+
+    }
+    public Card(Card reference)
+    {
+        ID = reference.ID;
+        Name = reference.Name;
+        Cost = reference.Cost;
+        Art = reference.Art;
+        Description = reference.Description;
+        Background = reference.Background;
+        Credits = reference.Credits;
+        Logic = reference.Logic;
+    }
 }

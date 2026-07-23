@@ -1,16 +1,20 @@
+using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDeck : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private List<Card> cards;
+
+    public List<Card> GetCopy()
     {
-        
+        return new List<Card>(cards);
     }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private string newCardID;
+    [Button]
+    public void AddCardByID()
     {
-        
+        //cards.Add()
     }
 }

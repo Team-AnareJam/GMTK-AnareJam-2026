@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerHand hand;
     [SerializeField] private LayerMask objectLayerMask;
     [SerializeField] private LayerMask backgroundLayerMask;
+    private RaycastHit[] bgCheck;
 
     private void OnEnable()
     {
@@ -32,7 +33,6 @@ public class PlayerManager : MonoBehaviour
             {
                 case nameof(InputManager.Actions.Player):
                     mousepos = InputManager.Actions.Player.MousePosition;
-                    InputManager.Actions.Player.Attack.performed += TestRay;
                     InputManager.Actions.Player.PreviewCard.performed += PreviewCard;
                     break;
             }
@@ -42,7 +42,6 @@ public class PlayerManager : MonoBehaviour
     void UnsubscribeAllListeners()
     {
         mousepos = null;
-        InputManager.Actions.Player.Attack.performed -= TestRay;
         InputManager.Actions.Player.PreviewCard.performed -= PreviewCard;
     }
     #endregion
@@ -50,15 +49,22 @@ public class PlayerManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-    }
-    void TestRay(InputAction.CallbackContext ctx)
-    {
-        var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
-        Debug.Log(Physics.Raycast(ray, 10000f));
+        bgCheck = new RaycastHit[1];
     }
 
-    private int hoverindex = -1;
-    private CardHolder hover;
+    private void Update()
+    {
+        var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
+        Physics.RaycastNonAlloc(ray, bgCheck, maxDistance: 100, backgroundLayerMask);
+        Debug.Log(bgCheck[0].collider.tag);
+        if (bgCheck[0].collider != null)
+        {
+            if (bgCheck[0].collider.CompareTag("Background"))
+            {
+                ContextManager.Instance.CardCtx.MousePosInWorld = bgCheck[0].point;
+            }
+        }
+    }
     void PreviewCard(InputAction.CallbackContext ctx)
     {
         var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
@@ -73,22 +79,9 @@ public class PlayerManager : MonoBehaviour
                     }
                     break;
                 case "Enemy":
+                    //set selected enemy in cardctx through contextmanager
                     break;
             }
         }
     }
-
-    private void Update()
-    {
-        var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
-        if (Physics.Raycast(ray, out var bgHit, maxDistance: 100, backgroundLayerMask))
-        {
-            if (bgHit.collider.CompareTag("Background"))
-            {
-                ContextManager.Instance.CardCtx.MousePosInWorld = bgHit.point;
-            }
-        }
-    }
-
-
 }
