@@ -28,14 +28,14 @@ public class PlayerHand : MonoBehaviour
 
         var go = Instantiate(CardPrefab, Transform);
         var card = go.GetComponent<CardHolder>();
-        card.Init(newcard);
+        card.Init(newcard, CardsInHand.Count+1);
         CardsInHand.Add(card);
         Reposition();
         return card;
     }
 
     public Card TestCard;
-    [Button]
+    [Button(enabledMode:EButtonEnableMode.Playmode)]
     public void AddCardTest()
     {
         AddCard(TestCard);
@@ -54,8 +54,8 @@ public class PlayerHand : MonoBehaviour
         
         for (var i = 0; i < CardsInHand.Count; i++)
         {
-            float pos = math.lerp(LeftSide, RightSide, (i + 1f) / CardsInHand.Count);
-            CardsInHand[i].MoveToPosition(pos);
+            float pos = math.lerp(LeftSide, RightSide, (i + 1f) / (CardsInHand.Count+1));
+            CardsInHand[i].MoveToPosition(pos, i);
         }
     }
 }

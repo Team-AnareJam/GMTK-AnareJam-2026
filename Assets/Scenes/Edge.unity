@@ -295,7 +295,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463738586}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   CardsInHand: []
-  HandSize: 6
+  HandSize: 100
   CardMoveTime: 1
   CardPrefab: {fileID: 9057030435038561765, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
   Transform: {fileID: 1463738587}
@@ -476,6 +476,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  Deck: {fileID: 0}
+  hand: {fileID: 0}
 --- !u!1 &1904687578
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,5 @@
+using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class CardHolder : MonoBehaviour
@@ -6,23 +8,53 @@ public class CardHolder : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float nextPos;
     [SerializeField] private float moveSpeed;
-    public void Init(Card card)
+    private float StandardZOffset;
+    public int Index;
+    private Vector3 scale;
+    
+    public void Init(Card card, int index)
     {
         Card = card;
-        transform.position = new Vector3(transform.position.x, 0, 1);
-        nextPos = transform.position.x;
+        scale = transform.localScale;
+        nextPos = transform.localPosition.x;
+        StandardZOffset = transform.localPosition.z;
+        Index = index;
+        transform.localPosition = new Vector3(3000, transform.localPosition.y, (int)transform.localPosition.z - Index);
     }
 
-    public void MoveToPosition(float pos)
+    public void MoveToPosition(float pos, int index)
     {
         nextPos = pos;
+        Index = index;
     }
 
     private void FixedUpdate()
     {
-        // if(-0.1f < nextPos - transform.position.x || nextPos - transform.position.x > 0.1f)
-        // {
-        //     rb.MovePosition(new Vector3((transform.position.x - nextPos) , 0, 1));
-        // }
+        Vector3 targetPos = new Vector3(nextPos, transform.localPosition.y, StandardZOffset - Index);
+        
+        transform.localPosition = Vector3.MoveTowards(
+            transform.localPosition, 
+            targetPos, 
+            moveSpeed * Time.deltaTime
+        );
+    }
+
+    private bool IsPreviewing;
+    public void ToggleHover()
+    {
+        if (!IsPreviewing)
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y,
+                StandardZOffset + 50);
+            transform.localScale *= 1.5f;
+            IsPreviewing = true;
+        }
+        else
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y,
+                StandardZOffset - Index);
+            transform.localScale = scale;
+            IsPreviewing = false;
+        }
     }
 }

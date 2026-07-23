@@ -6,6 +6,9 @@ public class PlayerManager : MonoBehaviour
     public Camera cam;
     public InputAction mousepos;
 
+    [SerializeField] private PlayerDeck Deck;
+    [SerializeField] private PlayerHand hand;
+
     private void OnEnable()
     {
         InputManager.OnActionMapChange += SetInputListeners;
@@ -27,6 +30,7 @@ public class PlayerManager : MonoBehaviour
                 case nameof(InputManager.Actions.Player):
                     mousepos = InputManager.Actions.Player.MousePosition;
                     InputManager.Actions.Player.Attack.performed += TestRay;
+                    InputManager.Actions.Player.PreviewCard.performed += PreviewCard;
                     break;
             }
         }
@@ -36,13 +40,13 @@ public class PlayerManager : MonoBehaviour
     {
         mousepos = null;
         InputManager.Actions.Player.Attack.performed -= TestRay;
+        InputManager.Actions.Player.PreviewCard.performed -= PreviewCard;
     }
     #endregion
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
     }
     void TestRay(InputAction.CallbackContext ctx)
     {
@@ -50,10 +54,38 @@ public class PlayerManager : MonoBehaviour
         Debug.Log(Physics.Raycast(ray, 10000f));
     }
 
-    // Update is called once per frame
-    void Update()
+    private int hoverindex = -1;
+    private CardHolder hover;
+    void PreviewCard(InputAction.CallbackContext ctx)
     {
+        var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
+        if (Physics.Raycast(ray, out var hit, maxDistance:1000))
+        {
+            if (hit.transform.TryGetComponent<CardHolder>( out var component))
+            {
+                if (component.Index != hoverindex)
+                {
+                    hover?.ToggleHover();
+                    hover = component;
+                    hover.ToggleHover();
+                }
+                else
+                {
+                    hover.ToggleHover();
+                }
+            }
+        }
     }
+
+    // Update is called once per frame
+    // void FixedUpdate()
+    // {
+    //     var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
+    //     if (Physics.Raycast(ray, 10000f))
+    //     {
+    //         
+    //     }
+    // }
 
     
 }
