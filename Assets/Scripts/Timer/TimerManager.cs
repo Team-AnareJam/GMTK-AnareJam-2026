@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour
 {
+    #region Variables
     public static TimerManager Instance;
-    public static event Action OnStartTimer;
-    public static event Action OnPauseTimer;
-    public static event Action OnUpdateTimer;
+    //public static event Action OnStartTimer;
+    //public static event Action OnPauseTimer;
+    //public static event Action OnUpdateTimer;
 
     [SerializeField] private float timeRemaining;
     public float TimeRemaining
@@ -53,7 +54,9 @@ public class TimerManager : MonoBehaviour
 
     [SerializeField] private Gradient timeUpGradient;
     [SerializeField] private Gradient timeDownGradient;
+    #endregion
 
+    #region Monobehaviour Functions
     private void Awake()
     {
         if (Instance == null)
@@ -61,6 +64,16 @@ public class TimerManager : MonoBehaviour
             Instance = this;
         }
         else Destroy(this);
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnStartGame += StartTimer;
+    }
+
+    private void OnDisable()
+    {
+
     }
 
     // Update is called once per frame
@@ -81,6 +94,7 @@ public class TimerManager : MonoBehaviour
             //TODO: IF NO CARDS ACTIVE (ANYMORE), INITIATE GAME END.
         }
     }
+    #endregion
 
     #region Internal Timer Management
     public void StartTimer()
