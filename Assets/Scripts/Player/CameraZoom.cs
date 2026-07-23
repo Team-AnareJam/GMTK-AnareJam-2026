@@ -49,7 +49,6 @@ public class CameraZoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(ZoomAction.ReadValue<Vector2>());
         if (cam != null) 
         {
             Vector2 scrollAmount = ZoomAction.ReadValue<Vector2>() * zoomSpeed * Time.deltaTime;
