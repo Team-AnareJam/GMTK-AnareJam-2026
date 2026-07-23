@@ -977,3 +977,4 @@ MonoBehaviour:
   Card: {fileID: 0}
   rb: {fileID: 7760642400434743091}
   nextPos: {x: 0, y: 0, z: 0}
+  moveSpeed: 5

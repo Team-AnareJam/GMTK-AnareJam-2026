@@ -12,7 +12,7 @@ public class PlayerHand : MonoBehaviour
     public float CardMoveTime;
     public GameObject CardPrefab;
 
-    private RectTransform Transform;
+    public RectTransform Transform;
     private float Width => Transform.rect.width;
     private float Height => Transform.rect.height;
     private Vector2 Center => Transform.rect.center;
@@ -26,7 +26,7 @@ public class PlayerHand : MonoBehaviour
             return null;
         }
 
-        var go = Instantiate(CardPrefab);
+        var go = Instantiate(CardPrefab, Transform);
         var card = go.GetComponent<CardHolder>();
         card.Init(newcard);
         CardsInHand.Add(card);
@@ -51,11 +51,11 @@ public class PlayerHand : MonoBehaviour
 
     private void Reposition()
     {
-        float pos = 1;
+        
         for (var i = 0; i < CardsInHand.Count; i++)
         {
-            var goalpos = math.lerp(LeftSide, RightSide, (i+1f) / CardsInHand.Count);
-            CardsInHand[i].gameObject.GetComponent<Rigidbody>().MovePosition(new Vector3(goalpos, 0, -1));
+            float pos = math.lerp(LeftSide, RightSide, (i + 1f) / CardsInHand.Count);
+            CardsInHand[i].MoveToPosition(pos);
         }
     }
 }
