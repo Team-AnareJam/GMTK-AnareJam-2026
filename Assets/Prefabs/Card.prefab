@@ -974,4 +974,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c040d4636e82354c877bb07806757ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardHolder
-  card: {fileID: 0}
+  Card: {fileID: 0}
+  rb: {fileID: 7760642400434743091}
+  nextPos: {x: 0, y: 0, z: 0}
