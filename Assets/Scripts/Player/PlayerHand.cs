@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class PlayerHand : MonoBehaviour
 {
-    [SerializeField]private List<GameObject> CardsInHand = new();
+    [SerializeField]private List<Card> CardsInHand = new();
     public int HandSize;
     public float CardMoveTime;
     public GameObject CardPrefab;
+    
+    //private float Width => (gameObject.transform as RectTransform).
     
     public Card AddCard(Card newcard)
     {
@@ -16,8 +18,7 @@ public class PlayerHand : MonoBehaviour
         {
             return null;
         }
-        var card = Instantiate(CardPrefab);
-        CardsInHand.Add(card);
+        CardsInHand.Add(newcard);
         Reposition();
         return newcard;
     }
