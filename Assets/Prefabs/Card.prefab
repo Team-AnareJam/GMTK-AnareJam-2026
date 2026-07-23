@@ -830,7 +830,7 @@ GameObject:
   - component: {fileID: 1655669129876322069}
   m_Layer: 5
   m_Name: Card
-  m_TagString: Untagged
+  m_TagString: Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -975,8 +975,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardHolder
   Card: {fileID: 0}
+  IsPreviewing: 0
+  Index: 0
   rb: {fileID: 7760642400434743091}
   nextPos: 0
   moveSpeed: 4067
-  Index: 0
   previewZValue: -50

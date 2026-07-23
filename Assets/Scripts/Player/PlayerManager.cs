@@ -61,10 +61,14 @@ public class PlayerManager : MonoBehaviour
         var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
         if (Physics.Raycast(ray, out var hit, maxDistance:1000))
         {
-            if (hit.transform.TryGetComponent<CardHolder>( out var component))
+            if (hit.collider.CompareTag("Cards"))
             {
-                hand.HoverCard(component.Index);
+                if (hit.transform.TryGetComponent<CardHolder>(out var component))
+                {
+                    hand.HoverCard(component.Index);
+                }
             }
+            
         }
     }
 

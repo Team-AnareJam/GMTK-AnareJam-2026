@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public int MovementSpeed;
-    public InputAction MoveAction;
+    private InputAction MoveAction;
 
     private void OnEnable()
     {
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ContextManager.Instance.CardCtx.PlayerPosition = transform.position;
     }
 
     private void FixedUpdate()
