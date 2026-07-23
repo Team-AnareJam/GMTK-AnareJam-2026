@@ -13,7 +13,8 @@ public class CardHolder : MonoBehaviour
     private float StandardZOffset;
     private Vector3 scale;
     [SerializeField] private float previewZValue;
-
+    [SerializeField] private float TargetScale;
+    
     public void Init(Card card, int index)
     {
         Card = card;
@@ -39,14 +40,27 @@ public class CardHolder : MonoBehaviour
             targetPos, 
             moveSpeed * Time.deltaTime
         );
-
-        //TODO: change scale over time instead of setting like below
+        
+        if (IsPreviewing)
+        {
+            if (transform.localScale.magnitude <= (scale * TargetScale).magnitude)
+            {
+                transform.localScale *= 1.1f;
+            }
+        }
+        else
+        {
+            if (transform.localScale.magnitude >= scale.magnitude)
+            {
+                transform.localScale *= 0.9f;
+            }
+        }
     }
 
     
     public void ToggleHover(bool toggle)
     {
         IsPreviewing = toggle;
-        transform.localScale = IsPreviewing ? scale * 1.5f : scale;
+        //transform.localScale = IsPreviewing ? scale * 1.5f : scale;
     }
 }

@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ContextManager : MonoBehaviour
 {
     public static ContextManager Instance;
     public CardContext CardCtx;
-    [SerializeField] private PlayerManager player;
+    [SerializeField] private PlayerUIManager playerUI;
 
     private void Awake()
     {
@@ -22,6 +23,6 @@ public class ContextManager : MonoBehaviour
     {
         CardCtx = new();
         CardLogic.ctx = CardCtx;
-        CardLogic.ctx.player = player;
+        CardLogic.ctx.playerUI = playerUI;
     }
 }

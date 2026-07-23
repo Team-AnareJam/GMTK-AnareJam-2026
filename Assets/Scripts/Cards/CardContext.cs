@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class CardContext
@@ -6,6 +7,6 @@ public class CardContext
     public Vector2 PlayerPosition;
     public Vector2 MousePosInWorld;
     public Vector2 AimingDirection => (PlayerPosition - MousePosInWorld).normalized;
-    public PlayerManager player;
+    [FormerlySerializedAs("player")] public PlayerUIManager playerUI;
     //hovering enemy;
 }

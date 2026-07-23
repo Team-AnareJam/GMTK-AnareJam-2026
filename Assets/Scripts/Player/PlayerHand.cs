@@ -10,7 +10,6 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private List<Card> DiscardPile = new();
     [SerializeField] private List<Card> GraveyardPile = new();
     public int HandSize;
-    public float CardMoveTime;
     public GameObject CardPrefab;
 
     public RectTransform Transform;
@@ -21,6 +20,7 @@ public class PlayerHand : MonoBehaviour
 
     private void Start()
     {
+        VoidEveryone();
         deck = GetComponent<PlayerDeck>();
         //function call to clear everything
         GetCardsFromDeck();
@@ -42,17 +42,44 @@ public class PlayerHand : MonoBehaviour
         Reposition();
         return card;
     }
-    //TODO: function to clear out all lists (and remove objects) before getting cards from deck
+    
+    /// <summary>
+    /// Destroys all shreds.
+    /// </summary>
+    public void VoidEveryone()
+    {
+        foreach (var crd in CardsInHand)
+        {
+            Destroy(crd.gameObject);
+        }
+
+        CardsInHand = new List<CardHolder>();
+        DrawPile = new List<Card>();
+        DiscardPile = new List<Card>();
+        GraveyardPile = new List<Card>();
+    }
+
+
     public void GetCardsFromDeck()
     {
         DrawPile = deck.GetCopy();
     }
-    public void DrawCard()
+    public bool DrawCard()
     {
+        if (DrawPile.Count <= 0)
+        {
+            if (DiscardPile.Count <= 0)
+            {
+                return false;
+            }
+            DrawPile.AddRange(DiscardPile);
+            DiscardPile = new List<Card>();
+        }
         int index = Random.Range(0, DrawPile.Count);
         Card card = DrawPile[index];
         AddCardToHand (card);
         DrawPile.RemoveAt(index);
+        return true;
     }
 
     public Card TestCard;
@@ -87,7 +114,6 @@ public class PlayerHand : MonoBehaviour
 
     private void Reposition()
     {
-        
         for (var i = 0; i < CardsInHand.Count; i++)
         {
             float pos = Mathf.Lerp(LeftSide, RightSide, (i + 1f) / (CardsInHand.Count+1));

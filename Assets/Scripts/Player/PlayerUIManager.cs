@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerUIManager : MonoBehaviour
 {
     public Camera cam;
     private InputAction mousepos;
@@ -56,8 +56,7 @@ public class PlayerManager : MonoBehaviour
     {
         var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
         Physics.RaycastNonAlloc(ray, bgCheck, maxDistance: 100, backgroundLayerMask);
-        Debug.Log(bgCheck[0].collider.tag);
-        if (bgCheck[0].collider != null)
+        if (bgCheck[0].collider)
         {
             if (bgCheck[0].collider.CompareTag("Background"))
             {
