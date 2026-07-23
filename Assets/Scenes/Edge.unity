@@ -298,8 +298,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1694250209}
+  m_Children: []
   m_Father: {fileID: 1572830259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -453,6 +452,7 @@ MonoBehaviour:
   HandSize: 6
   CardMoveTime: 1
   CardPrefab: {fileID: 9057030435038561765, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
+  Transform: {fileID: 1463738587}
   TestCard: {fileID: 11400000, guid: af3ba106400a0b44a8d1a079ac2882ac, type: 2}
 --- !u!114 &1572830262
 MonoBehaviour:
@@ -476,80 +476,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
---- !u!1001 &1694250208
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1463738587}
-    m_Modifications:
-    - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9057030435038561765, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      propertyPath: m_Name
-      value: Card
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7119447694137764419, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 3261837121530027195, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 5872136579906249081, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 7028197473164448224, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-  m_SourcePrefab: {fileID: 100100000, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
---- !u!4 &1694250209 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-  m_PrefabInstance: {fileID: 1694250208}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1904687578
 GameObject:
   m_ObjectHideFlags: 0
