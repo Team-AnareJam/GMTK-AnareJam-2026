@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541635f715df02440a46ced586c66caf, type: 3}
   m_Name: MagicSwirl
   m_EditorClassIdentifier: Assembly-CSharp::Card
-  ID: 
-  Name: 
-  Cost: 0
+  ID: magic_swirl
+  Name: Magic Swirl
+  Cost: 10
   Art: {fileID: 0}
-  Description: 
+  Description: a swirl of magic
   Background: {fileID: 0}
-  Credits: 
+  Credits: Blue
   Logic: {fileID: 0}

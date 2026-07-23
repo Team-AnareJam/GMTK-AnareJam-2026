@@ -8,13 +8,15 @@ using UnityEngine;
 public class PlayerHand : MonoBehaviour
 {
     [SerializeField] private List<CardHolder> CardsInHand = new();
+    [SerializeField] private List<CardHolder> DrawPile = new();
+    [SerializeField] private List<CardHolder> DiscardPile = new();
+    [SerializeField] private List<CardHolder> GraveyardPile = new();
     public int HandSize;
     public float CardMoveTime;
     public GameObject CardPrefab;
 
     public RectTransform Transform;
     private float Width => Transform.rect.width;
-    private float Height => Transform.rect.height;
     private Vector2 Center => Transform.rect.center;
     private float LeftSide => Center.x - Width / 2;
     private float RightSide => LeftSide + Width;

@@ -2,8 +2,11 @@
   <Project Path="NaughtyAttributes.Test.csproj" />
   <Project Path="NaughtyAttributes.Core.csproj" />
   <Project Path="Unity.CastVisualizer.Editor.csproj" />
+  <Project Path="AYellowpaper.SerializedCollections.csproj" />
   <Project Path="NaughtyAttributes.Editor.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="AYellowpaper.SerializedCollections.Editor.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.CastVisualizer.Runtime.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
 </Solution>
