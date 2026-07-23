@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,8 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private PlayerDeck Deck;
     [SerializeField] private PlayerHand hand;
+    [SerializeField] private LayerMask objectLayerMask;
+    [SerializeField] private LayerMask backgroundLayerMask;
 
     private void OnEnable()
     {
@@ -59,28 +62,33 @@ public class PlayerManager : MonoBehaviour
     void PreviewCard(InputAction.CallbackContext ctx)
     {
         var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
-        if (Physics.Raycast(ray, out var hit, maxDistance:1000))
+        if (Physics.Raycast(ray, out var hit, maxDistance:100, objectLayerMask))
         {
-            if (hit.collider.CompareTag("Cards"))
+            switch (hit.collider.tag)
             {
-                if (hit.transform.TryGetComponent<CardHolder>(out var component))
-                {
-                    hand.HoverCard(component.Index);
-                }
+                case "Cards":
+                    if (hit.transform.TryGetComponent<CardHolder>(out var component))
+                    {
+                        hand.HoverCard(component.Index);
+                    }
+                    break;
+                case "Enemy":
+                    break;
             }
-            
         }
     }
 
-    // Update is called once per frame
-    // void FixedUpdate()
-    // {
-    //     var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
-    //     if (Physics.Raycast(ray, 10000f))
-    //     {
-    //         
-    //     }
-    // }
+    private void Update()
+    {
+        var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
+        if (Physics.Raycast(ray, out var bgHit, maxDistance: 100, backgroundLayerMask))
+        {
+            if (bgHit.collider.CompareTag("Background"))
+            {
+                ContextManager.Instance.CardCtx.MousePosInWorld = bgHit.point;
+            }
+        }
+    }
 
-    
+
 }
