@@ -1,4 +1,5 @@
 using System;
+using Cards;
 using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,4 +15,5 @@ public class Card : ScriptableObject
     public string Description;
     public Texture2D Background;
     public string Credits;
+    public CardLogic Logic;
 }
