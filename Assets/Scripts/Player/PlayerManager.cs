@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     public Camera cam;
-    public InputAction mousepos;
+    private InputAction mousepos;
 
     [SerializeField] private PlayerDeck Deck;
     [SerializeField] private PlayerHand hand;
@@ -63,16 +63,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (hit.transform.TryGetComponent<CardHolder>( out var component))
             {
-                if (component.Index != hoverindex)
-                {
-                    hover?.ToggleHover();
-                    hover = component;
-                    hover.ToggleHover();
-                }
-                else
-                {
-                    hover.ToggleHover();
-                }
+                hand.HoverCard(component.Index);
             }
         }
     }

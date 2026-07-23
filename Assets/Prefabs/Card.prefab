@@ -978,3 +978,5 @@ MonoBehaviour:
   rb: {fileID: 7760642400434743091}
   nextPos: 0
   moveSpeed: 4067
+  Index: 0
+  previewZValue: -50

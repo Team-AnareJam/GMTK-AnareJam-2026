@@ -5,13 +5,15 @@ using UnityEngine;
 public class CardHolder : MonoBehaviour
 {
     public Card Card;
+    public bool IsPreviewing;
+    public int Index;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float nextPos;
     [SerializeField] private float moveSpeed;
     private float StandardZOffset;
-    public int Index;
     private Vector3 scale;
-    
+    [SerializeField] private float previewZValue;
+
     public void Init(Card card, int index)
     {
         Card = card;
@@ -30,31 +32,21 @@ public class CardHolder : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 targetPos = new Vector3(nextPos, transform.localPosition.y, StandardZOffset - Index);
+        Vector3 targetPos = new Vector3(nextPos, transform.localPosition.y, IsPreviewing ? previewZValue : StandardZOffset - Index);
         
         transform.localPosition = Vector3.MoveTowards(
             transform.localPosition, 
             targetPos, 
             moveSpeed * Time.deltaTime
         );
+
+        //TODO: change scale over time instead of setting like below
     }
 
-    private bool IsPreviewing;
-    public void ToggleHover()
+    
+    public void ToggleHover(bool toggle)
     {
-        if (!IsPreviewing)
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y,
-                StandardZOffset + 50);
-            transform.localScale *= 1.5f;
-            IsPreviewing = true;
-        }
-        else
-        {
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y,
-                StandardZOffset - Index);
-            transform.localScale = scale;
-            IsPreviewing = false;
-        }
+        IsPreviewing = toggle;
+        transform.localScale = IsPreviewing ? scale * 1.5f : scale;
     }
 }

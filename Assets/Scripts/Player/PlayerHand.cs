@@ -25,7 +25,6 @@ public class PlayerHand : MonoBehaviour
         {
             return null;
         }
-
         var go = Instantiate(CardPrefab, Transform);
         var card = go.GetComponent<CardHolder>();
         card.Init(newcard, CardsInHand.Count+1);
@@ -46,6 +45,21 @@ public class PlayerHand : MonoBehaviour
         foreach (var Card in Cards)
         {
             if (AddCard(Card) == null) return;
+        }
+    }
+
+    public void HoverCard(int index)
+    {
+        for(int i = 0; i < CardsInHand.Count; i++)
+        {
+            if(i == index)
+            {
+                CardsInHand[i].ToggleHover(!CardsInHand[i].IsPreviewing);
+            }
+            else
+            {
+                CardsInHand[i].ToggleHover(false);
+            }
         }
     }
 
