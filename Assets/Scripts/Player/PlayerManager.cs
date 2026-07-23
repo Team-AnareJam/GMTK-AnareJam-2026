@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     public Camera cam;
+    public InputAction mousepos;
 
     private void OnEnable()
     {
@@ -24,8 +25,8 @@ public class PlayerManager : MonoBehaviour
             switch (actionMap.name)
             {
                 case nameof(InputManager.Actions.Player):
-                    MoveAction = InputManager.Actions.Player.MousePosition;
-                    InputManager.Actions.Player.Attack += TestRay;
+                    mousepos = InputManager.Actions.Player.MousePosition;
+                    InputManager.Actions.Player.Attack.performed += TestRay;
                     break;
             }
         }
@@ -33,8 +34,8 @@ public class PlayerManager : MonoBehaviour
 
     void UnsubscribeAllListeners()
     {
-        MoveAction = null;
-        InputManager.Actions.Player.Attack -= TestRay;
+        mousepos = null;
+        InputManager.Actions.Player.Attack.performed -= TestRay;
     }
     #endregion
 
@@ -43,18 +44,15 @@ public class PlayerManager : MonoBehaviour
     {
         
     }
-    void TestRay()
+    void TestRay(InputAction.CallbackContext ctx)
     {
-        Debug.Log(cam.ScreenPointToRay(Input.mousePosition));
+        var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
+        Debug.Log(Physics.Raycast(ray, 10000f));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log(cam.ScreenPointToRay(Input.mousePosition));
-        }
     }
 
     
