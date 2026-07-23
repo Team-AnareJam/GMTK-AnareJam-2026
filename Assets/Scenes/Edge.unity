@@ -298,7 +298,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1694250209}
   m_Father: {fileID: 1572830259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -449,9 +450,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   CardsInHand: []
-  HandSize: 0
-  CardMoveTime: 0
-  CardPrefab: {fileID: 0}
+  HandSize: 6
+  CardMoveTime: 1
+  CardPrefab: {fileID: 9057030435038561765, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
+  TestCard: {fileID: 11400000, guid: af3ba106400a0b44a8d1a079ac2882ac, type: 2}
 --- !u!114 &1572830262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   cam: {fileID: 2008576147}
   mousepos:
-    m_Name: 
+    m_Name: Mousepos
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: d05ebed2-55e0-4487-a4de-b66642d90c96
@@ -480,7 +482,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1463738587}
     m_Modifications:
     - target: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -530,9 +532,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9057030435038561765, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1694250216}
     - targetCorrespondingSourceObject: {fileID: 7119447694137764419, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -546,24 +545,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
---- !u!1 &1694250210 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9057030435038561765, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
+--- !u!4 &1694250209 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6199590275625968165, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
   m_PrefabInstance: {fileID: 1694250208}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1694250216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1694250210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c040d4636e82354c877bb07806757ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardHolder
-  card: {fileID: 0}
 --- !u!1 &1904687578
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,4 +823,3 @@ SceneRoots:
   - {fileID: 1528534649}
   - {fileID: 771275468}
   - {fileID: 1137798089}
-  - {fileID: 1694250208}

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541635f715df02440a46ced586c66caf, type: 3}
   m_Name: TestCard
   m_EditorClassIdentifier: Assembly-CSharp::Card
-  ID: 
-  Name: 
-  Cost: 0
+  ID: test
+  Name: Testicle!
+  Cost: 1
   Art: {fileID: 0}
-  Description: 
+  Description: wadd
   Background: {fileID: 0}
-  Credits: 
+  Credits: awdaw
+  Logic: {fileID: 0}

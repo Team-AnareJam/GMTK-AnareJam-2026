@@ -2,5 +2,10 @@ using UnityEngine;
 
 public class CardHolder : MonoBehaviour
 {
-    public Card card;
+    public Card Card;
+
+    public void Init(Card card)
+    {
+        Card = card;
+    }
 }
