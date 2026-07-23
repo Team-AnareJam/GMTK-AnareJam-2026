@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(MoveAction.ReadValue<Vector2>());
         Vector3 moveTo = MoveAction.ReadValue<Vector2>().normalized * MovementSpeed * Time.fixedDeltaTime;
         transform.position += moveTo;
     }
