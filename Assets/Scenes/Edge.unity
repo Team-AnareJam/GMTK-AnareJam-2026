@@ -436,6 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359827674280a5a438aefac097a5675a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  Deck: []
+  newCardID: 
 --- !u!114 &1572830261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,8 +451,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   CardsInHand: []
+  DrawPile: []
+  DiscardPile: []
+  GraveyardPile: []
   HandSize: 100
-  CardMoveTime: 1
   CardPrefab: {fileID: 9057030435038561765, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
   Transform: {fileID: 1463738587}
   TestCard: {fileID: 11400000, guid: af3ba106400a0b44a8d1a079ac2882ac, type: 2}
@@ -467,17 +471,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   cam: {fileID: 2008576147}
-  mousepos:
-    m_Name: Mousepos
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: d05ebed2-55e0-4487-a4de-b66642d90c96
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  Deck: {fileID: 0}
-  hand: {fileID: 0}
+  Deck: {fileID: 1572830260}
+  hand: {fileID: 1572830261}
+  objectLayerMask:
+    serializedVersion: 2
+    m_Bits: 224
+  backgroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &1904687578
 GameObject:
   m_ObjectHideFlags: 0

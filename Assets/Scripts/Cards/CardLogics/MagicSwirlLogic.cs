@@ -10,8 +10,7 @@ public class MagicSwirlLogic : CardLogic
     }
     public override void Play()
     {
-        Debug.Log("Cast Magic Swirl");
-        //cast aoe
+        ContextManager.InstantiateObject(ctx.GetPrefab("magic_swirl"));
     }
 
 }

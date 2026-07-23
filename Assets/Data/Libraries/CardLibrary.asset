@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020085087ff1b194183e0c91bcb1297f, type: 3}
   m_Name: CardLibrary
   m_EditorClassIdentifier: Assembly-CSharp::CardLibrary
+  Cards:
+  - {fileID: 11400000, guid: e5ea15cf5ad1ddc45abfc590859c63f5, type: 2}
+  - {fileID: 11400000, guid: af3ba106400a0b44a8d1a079ac2882ac, type: 2}
