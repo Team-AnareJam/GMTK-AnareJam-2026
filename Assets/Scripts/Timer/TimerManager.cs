@@ -1,6 +1,8 @@
 using NaughtyAttributes;
 using System;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,10 +17,16 @@ public class TimerManager : MonoBehaviour
     public float MaxTime;
     public bool TimerHasStarted;
     public bool TimerIsActive;
+    public float TimerSpeed;
 
     public TMP_Text TimerMinute;
     public TMP_Text TimerSecond;
     public Image TimerBar;
+    public Image TimerBarBG;
+
+    [SerializeField] private Material textMaterial;
+    [SerializeField] private Gradient barGradient;
+    [SerializeField] private Gradient textGradient;
 
     private void Awake()
     {
@@ -36,7 +44,7 @@ public class TimerManager : MonoBehaviour
         
         if (TimeRemaining > 0)
         {
-            TimeRemaining -= Time.deltaTime;
+            TimeRemaining -= Time.deltaTime * TimerSpeed;
             UpdateTimerUI();
         }
 
@@ -78,13 +86,17 @@ public class TimerManager : MonoBehaviour
     public void UpdateTimerUI()
     {
         int minutes = Mathf.FloorToInt(TimeRemaining / 60);
-        int seconds = Mathf.FloorToInt(TimeRemaining % 60);
+        int seconds = Mathf.Clamp(Mathf.FloorToInt(TimeRemaining % 60), 0, 59);
         
         TimerMinute.text = Mathf.Clamp(minutes, 0, 100).ToString("00");
         TimerSecond.text = seconds.ToString("00");
 
+        float time = MathAE.RemapFloat(TimeRemaining, 0, MaxTime, 0, 1);
+
         float width = (TimeRemaining / MaxTime);
         TimerBar.fillAmount = Mathf.Clamp01(width);
+        TimerBarBG.color = barGradient.Evaluate(time);
+        textMaterial.SetColor("_UnderlayColor", textGradient.Evaluate(time));
     }
     #endregion
 }
