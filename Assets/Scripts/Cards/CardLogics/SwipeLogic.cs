@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "StrikeLogic", menuName = "CardLogic/Strike")]
-public class StrikeLogic : CardLogic
+public class SwipeLogic : CardLogic
 {
     public override void Visualize()
     {

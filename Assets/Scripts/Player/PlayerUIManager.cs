@@ -1,4 +1,5 @@
 using System;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -82,5 +83,15 @@ public class PlayerUIManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public Vector2 dir;
+    public float ang;
+    public float dist;
+
+    [Button]
+    public void TestSwipe()
+    {
+        Debug.Log(MathAE.SwipePositions(dir, ang, dist));
     }
 }

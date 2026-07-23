@@ -18,4 +18,12 @@ public static class MathAE
     {
         return (value - rangeMin) / (rangeMax - rangeMin);
     }
+
+    public static (Vector2 start, Vector2 end) SwipePositions(Vector2 direction, float angle, float distance)
+    {
+        direction.Normalize();
+        var pos1 = Quaternion.Euler(0, 0, angle) * direction;
+        var pos2 = Quaternion.Euler(0, 0, -angle) * direction;
+        return (pos1, pos2);
+    }
 }

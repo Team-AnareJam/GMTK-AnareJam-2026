@@ -8,7 +8,7 @@ public class CardContext
 {
     public Vector2 PlayerPosition;
     public Vector2 MousePosInWorld;
-    public Vector2 AimingDirection => (PlayerPosition - MousePosInWorld).normalized;
+    public Vector2 AimingDirection => ( MousePosInWorld - PlayerPosition).normalized;
     public PlayerUIManager playerUI;
     //hovering enemy;
 

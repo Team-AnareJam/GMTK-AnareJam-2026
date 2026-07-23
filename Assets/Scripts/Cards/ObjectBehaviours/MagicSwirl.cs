@@ -35,9 +35,12 @@ namespace Cards.ObjectBehaviours
             }
         }
 
-        public void Init(Vector2 mousepos, float TimeToDie)
+        public void Init(Vector2 mousepos, float TimeToDie, float cooldown, float damage, float radius)
         {
             transform.position = mousepos;
+            Cooldown = cooldown;
+            Damage = damage;
+            Radius = radius;
             Destroy(gameObject, TimeToDie);
         }
     }
