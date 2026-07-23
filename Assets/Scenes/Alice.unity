@@ -892,6 +892,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359827674280a5a438aefac097a5675a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  Deck:
+  - {fileID: 11400000, guid: e5ea15cf5ad1ddc45abfc590859c63f5, type: 2}
+  - {fileID: 11400000, guid: e5ea15cf5ad1ddc45abfc590859c63f5, type: 2}
+  - {fileID: 11400000, guid: e5ea15cf5ad1ddc45abfc590859c63f5, type: 2}
+  - {fileID: 11400000, guid: e5ea15cf5ad1ddc45abfc590859c63f5, type: 2}
+  - {fileID: 11400000, guid: e5ea15cf5ad1ddc45abfc590859c63f5, type: 2}
+  newCardID: 
 --- !u!114 &2137145489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,6 +912,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   CardsInHand: []
+  DrawPile: []
+  DiscardPile: []
+  GraveyardPile: []
   HandSize: 100
   CardMoveTime: 1
   CardPrefab: {fileID: 9057030435038561765, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}

@@ -1,16 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using NaughtyAttributes;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerHand : MonoBehaviour
 {
+    private PlayerDeck deck;
     [SerializeField] private List<CardHolder> CardsInHand = new();
-    [SerializeField] private List<CardHolder> DrawPile = new();
-    [SerializeField] private List<CardHolder> DiscardPile = new();
-    [SerializeField] private List<CardHolder> GraveyardPile = new();
+    [SerializeField] private List<Card> DrawPile = new();
+    [SerializeField] private List<Card> DiscardPile = new();
+    [SerializeField] private List<Card> GraveyardPile = new();
     public int HandSize;
     public float CardMoveTime;
     public GameObject CardPrefab;
@@ -21,7 +19,17 @@ public class PlayerHand : MonoBehaviour
     private float LeftSide => Center.x - Width / 2;
     private float RightSide => LeftSide + Width;
 
-    public CardHolder AddCard(Card newcard)
+    private void Start()
+    {
+        deck = GetComponent<PlayerDeck>();
+        //function call to clear everything
+        GetCardsFromDeck();
+        for(int i = 0; i < 5; i++)
+        {
+            DrawCard();
+        }
+    }
+    public CardHolder AddCardToHand(Card newcard)
     {
         if (CardsInHand.Count >= HandSize)
         {
@@ -34,19 +42,31 @@ public class PlayerHand : MonoBehaviour
         Reposition();
         return card;
     }
+    //TODO: function to clear out all lists (and remove objects) before getting cards from deck
+    public void GetCardsFromDeck()
+    {
+        DrawPile = deck.GetCopy();
+    }
+    public void DrawCard()
+    {
+        int index = Random.Range(0, DrawPile.Count);
+        Card card = DrawPile[index];
+        AddCardToHand (card);
+        DrawPile.RemoveAt(index);
+    }
 
     public Card TestCard;
     [Button(enabledMode:EButtonEnableMode.Playmode)]
     public void AddCardTest()
     {
-        AddCard(TestCard);
+        AddCardToHand(TestCard);
     }
 
     public void AddHand(params Card[] Cards)
     {
         foreach (var Card in Cards)
         {
-            if (AddCard(Card) == null) return;
+            if (AddCardToHand(Card) == null) return;
         }
     }
 
@@ -70,7 +90,7 @@ public class PlayerHand : MonoBehaviour
         
         for (var i = 0; i < CardsInHand.Count; i++)
         {
-            float pos = math.lerp(LeftSide, RightSide, (i + 1f) / (CardsInHand.Count+1));
+            float pos = Mathf.Lerp(LeftSide, RightSide, (i + 1f) / (CardsInHand.Count+1));
             CardsInHand[i].MoveToPosition(pos, i);
         }
     }
