@@ -69,7 +69,7 @@ public class WaveManager : MonoBehaviour
     #region Enemy Pool Functions
     private EnemyController CreateEnemy()
     {
-        GameObject pooledObject = EnemyPrefab;
+        GameObject pooledObject = Instantiate(EnemyPrefab);
         EnemyController controller = pooledObject.GetComponent<EnemyController>();
         pooledObject.SetActive(false);
         return controller;
