@@ -38,10 +38,15 @@ public class PlayerHand : MonoBehaviour
             switch (actionMap.name)
             {
                 case nameof(InputManager.Actions.Player):
-                    //InputManager.Actions.Player.Card1.performed += ;
+                    InputManager.Actions.Player.CardSelection.started += CardAction;
                     break;
             }
         }
+    }
+
+    public void CardAction(InputAction.CallbackContext ctx)
+    {
+        Debug.Log(ctx.control.name);
     }
 
     void UnsubscribeAllListeners()
