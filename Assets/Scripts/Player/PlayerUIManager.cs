@@ -57,6 +57,10 @@ public class PlayerUIManager : MonoBehaviour
 
     private void Update()
     {
+        if (mousepos == null)return;
+        {
+            
+        }
         var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
         Physics.RaycastNonAlloc(ray, bgCheck, maxDistance: 100, backgroundLayerMask);
         if (bgCheck[0].collider)

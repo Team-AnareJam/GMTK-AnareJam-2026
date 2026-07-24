@@ -14,7 +14,6 @@ public class CardLibrary : ScriptableObject
     public void RemoveDuplicates()
     {
         Cards = Cards.DistinctBy(card => card.ID).ToList();
-        Cards.Any(card => card.name == "uh");
     }
 
     [CanBeNull]

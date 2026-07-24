@@ -13,9 +13,12 @@ public class CardHolder : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float nextPos;
     [SerializeField] private float moveSpeed;
+    private float StandardYOffset;
     private float StandardZOffset;
     private Vector3 scale;
     [SerializeField] private float previewZValue;
+    [SerializeField] private float PreviewYOffset;
+    
     [SerializeField] private float TargetScale;
     [SerializeField]private SpriteRenderer Background;
     [SerializeField]private SpriteRenderer CardArt;
@@ -23,13 +26,15 @@ public class CardHolder : MonoBehaviour
     [SerializeField]private TMP_Text Name;
     [SerializeField]private TMP_Text Description;
     [SerializeField]private TMP_Text Credits;
+    [SerializeField] private bool Shop;
     
-    
+    //TODO make shop work
     public void Init(Card card, int index)
     {
         Card = card;
         scale = transform.localScale;
         nextPos = transform.localPosition.x;
+        StandardYOffset = transform.localPosition.y;
         StandardZOffset = transform.localPosition.z;
         Index = index;
         transform.localPosition = new Vector3(3000, transform.localPosition.y, (int)transform.localPosition.z - Index);
@@ -46,6 +51,12 @@ public class CardHolder : MonoBehaviour
         Credits.text = Card.Credits;
     }
 
+    public void ChangeCard(Card newCard)
+    {
+        Card = newCard;
+        ShowCard();
+    }
+
     public void MoveToPosition(float pos, int index)
     {
         nextPos = pos;
@@ -54,7 +65,8 @@ public class CardHolder : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 targetPos = new Vector3(nextPos, transform.localPosition.y, IsPreviewing ? previewZValue : StandardZOffset - Index);
+        if (Shop) return;
+        Vector3 targetPos = new Vector3(nextPos, IsPreviewing ?  StandardYOffset + PreviewYOffset : StandardYOffset, IsPreviewing ? previewZValue : StandardZOffset - Index);
         
         transform.localPosition = Vector3.MoveTowards(
             transform.localPosition, 
