@@ -38,7 +38,11 @@ public class PlayerHand : MonoBehaviour
             switch (actionMap.name)
             {
                 case nameof(InputManager.Actions.Player):
-                    InputManager.Actions.Player.CardSelection.started += CardAction;
+                    InputManager.Actions.Player.Card1.started += CardAction;
+                    InputManager.Actions.Player.Card2.started += CardAction;
+                    InputManager.Actions.Player.Card3.started += CardAction;
+                    InputManager.Actions.Player.Card4.started += CardAction;
+                    InputManager.Actions.Player.Card5.started += CardAction;
                     break;
             }
         }
@@ -46,12 +50,19 @@ public class PlayerHand : MonoBehaviour
 
     public void CardAction(InputAction.CallbackContext ctx)
     {
-        Debug.Log(ctx.control.name);
+        if(int.TryParse(ctx.control.name, out int index))
+        {
+            HoverCard(index);
+        }
     }
 
     void UnsubscribeAllListeners()
     {
-        InputManager.Actions.Player.CardSelection.started -= CardAction;
+        InputManager.Actions.Player.Card1.started -= CardAction;
+        InputManager.Actions.Player.Card2.started -= CardAction;
+        InputManager.Actions.Player.Card3.started -= CardAction;
+        InputManager.Actions.Player.Card4.started -= CardAction;
+        InputManager.Actions.Player.Card5.started -= CardAction;
     }
     #endregion
 
