@@ -645,6 +645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2141888545}
+  - component: {fileID: 2141888546}
   m_Layer: 0
   m_Name: ENEMIES-POOL
   m_TagString: Untagged
@@ -667,6 +668,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2141888546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141888544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cd275b34dba38459d66eeb9aca2d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveManager
+  Waves:
+  - {fileID: 11400000, guid: 9f298f4010f0f2543a363bd1fac01471, type: 2}
+  CurrentWave: {fileID: 0}
+  CurrentWaveIndex: 0
+  EnemyControllers: []
+  EnemyPoolHolder: {fileID: 2141888544}
+  EnemyPrefab: {fileID: 1170558913523557116, guid: 615093940bb4909449d2c9e64c311d12, type: 3}
 --- !u!1001 &4318314049218823869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -690,6 +710,22 @@ PrefabInstance:
     - target: {fileID: 1222655638017550753, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306841675408739154, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306841675408739154, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306841675408739154, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306841675408739154, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1492062686349034142, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
       propertyPath: m_Pivot.x
@@ -783,12 +819,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2506564420243833354, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506564420243833354, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506564420243833354, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506564420243833354, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5238785696836269229, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
       propertyPath: m_Name
       value: TIMER MANAGER
       objectReference: {fileID: 0}
     - target: {fileID: 8478541190512894350, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
       propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748290550548530779, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748290550548530779, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748290550548530779, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748290550548530779, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

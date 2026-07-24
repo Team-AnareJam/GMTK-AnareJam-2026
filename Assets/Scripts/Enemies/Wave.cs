@@ -6,4 +6,5 @@ public class Wave : ScriptableObject
 {
     public string Name;
     public List<EnemyDataReference> Enemies;
+    public float SpawnDelay;
 }

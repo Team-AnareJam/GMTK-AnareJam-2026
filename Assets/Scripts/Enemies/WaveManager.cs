@@ -1,4 +1,6 @@
+using NaughtyAttributes;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,7 +18,9 @@ public class WaveManager : MonoBehaviour
 
     public List<EnemyController> EnemyControllers;
     public ObjectPool<EnemyController> EnemyPool;
+    public GameObject EnemyPoolHolder;
     public GameObject EnemyPrefab;
+
     private void Awake()
     {
         if (Instance == null)
@@ -67,7 +71,6 @@ public class WaveManager : MonoBehaviour
     }
     #endregion
 
-
     #region Enemy Pool Functions
     private EnemyController CreateEnemy()
     {
@@ -94,7 +97,13 @@ public class WaveManager : MonoBehaviour
 
     #endregion
 
+    [Button]
     public void StartWave()
+    {
+        StartCoroutine(ProcessWave());
+    }
+
+    public IEnumerator ProcessWave()
     {
         CurrentWave = Waves[CurrentWaveIndex];
 
@@ -106,7 +115,10 @@ public class WaveManager : MonoBehaviour
             enemyController.DataRef = enemy;
             enemyController.Init();
             EnemyControllers.Add(enemyController);
+            enemyController.gameObject.transform.parent = EnemyPoolHolder.transform;
+            enemyController.gameObject.transform.position = new Vector3(0, 0, 10); //TODO: SPAWN POSITION
             enemyIndex++;
+            yield return new WaitForSeconds(CurrentWave.SpawnDelay);
         }
     }
 
@@ -116,7 +128,6 @@ public class WaveManager : MonoBehaviour
         //TODO: Handle starting the next wave
         //TODO: Handle logic for end of round
     }
-
 
     public void RemoveEnemyFromActiveWave(DamageInstance instance)
     {
