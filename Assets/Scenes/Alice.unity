@@ -595,6 +595,7 @@ MonoBehaviour:
     PlayerPosition: {x: 0, y: 0}
     MousePosInWorld: {x: 0, y: 0}
     playerUI: {fileID: 0}
+    CardPrefabs: []
   playerUI: {fileID: 0}
 --- !u!1 &1675332536
 GameObject:
@@ -1048,6 +1049,66 @@ MonoBehaviour:
   backgroundLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  dir: {x: 0, y: 0}
+  ang: 0
+  dist: 0
+--- !u!1001 &375227987941715456
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8511589257695441272, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.34585
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511589257695441272, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.25306
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511589257695441272, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511589257695441272, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511589257695441272, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511589257695441272, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511589257695441272, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511589257695441272, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511589257695441272, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511589257695441272, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999080769508439552, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+      propertyPath: m_Name
+      value: MagicSwirl
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1060,3 +1121,4 @@ SceneRoots:
   - {fileID: 198257348}
   - {fileID: 597875006}
   - {fileID: 789804782}
+  - {fileID: 375227987941715456}

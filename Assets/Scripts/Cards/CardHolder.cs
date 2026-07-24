@@ -68,12 +68,19 @@ public class CardHolder : MonoBehaviour
             {
                 transform.localScale *= 1.1f;
             }
+            else
+            {
+                transform.localScale = scale * TargetScale;
+            }
         }
         else
         {
             if (transform.localScale.magnitude >= scale.magnitude)
             {
                 transform.localScale *= 0.9f;
+            }else
+            {
+                transform.localScale = scale;
             }
         }
     }
