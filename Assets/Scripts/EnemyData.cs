@@ -36,5 +36,6 @@ public class EnemyData
         HP = data.HP;
         AttackPower = data.AttackPower;
         MaxAttackTime = data.MaxAttackTime;
+        
     }
 }

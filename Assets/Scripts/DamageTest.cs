@@ -13,18 +13,8 @@ public class DamageTest : MonoBehaviour
         DamageMediator.OnDealDamageStart += FuckUrDmg;
     }
 
-    [Button]
-    public void TestDamage()
-    {
-        DamageInstance dmg = new DamageInstance()
-        {
-            target = TimerManager.Instance
-        };
-        DamageMediator.DealDamage(dmg);
-    }
-
     public void FuckUrDmg(DamageInstance instance)
     {
-        instance.damage = 0;
+        instance.Damage = 0;
     }
 }

@@ -121,6 +121,12 @@ public class TimerManager : MonoBehaviour, IDamageable
     {
         UpdateTimer(addedSeconds);
     }
+
+    public void UpdateTimer(float seconds)
+    {
+        UpdateTimer((int)seconds);
+    }
+
     public void UpdateTimer(int seconds)
     {
         TimeRemaining += seconds;
@@ -160,6 +166,6 @@ public class TimerManager : MonoBehaviour, IDamageable
     #endregion
     public void TakeDamage(DamageInstance instance)
     {
-        Debug.Log("oh fuck lost seconds!");
+        UpdateTimer(instance.Damage * -1f);
     }
 }

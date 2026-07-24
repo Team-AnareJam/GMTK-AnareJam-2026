@@ -12,7 +12,7 @@ namespace Cards.ObjectBehaviours
         private Vector2 pos1;
         private Vector2 pos2;
 
-        private void Init(Vector2 mousedir, float dist, float timeInSeconds, float damage, float angle)
+        public void Init(Vector2 mousedir, float dist, float timeInSeconds, float damage, float angle)
         {
             TimeInSeconds = timeInSeconds;
             Damage = damage;
@@ -29,7 +29,10 @@ namespace Cards.ObjectBehaviours
 
         private void OnTriggerEnter(Collider other)
         {
-            throw new NotImplementedException();
+            if (!other.CompareTag("Enemy")) return;
+            
+            var damg = new DamageInstance(other.GetComponent<EnemyController>(), TargetType.Enemy, Damage);
+            DamageMediator.DealDamage(damg);
         }
     }
 }

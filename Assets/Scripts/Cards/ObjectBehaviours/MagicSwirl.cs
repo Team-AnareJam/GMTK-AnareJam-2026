@@ -43,7 +43,8 @@ namespace Cards.ObjectBehaviours
                     }
                     if (hit.TryGetComponent<EnemyController>(out var controller))
                     {
-                        controller.TakeDamage(Damage);
+                        var properly = new DamageInstance(controller, TargetType.Enemy, Damage);
+                        DamageMediator.DealDamage(properly);
                     }
                 }
             }
