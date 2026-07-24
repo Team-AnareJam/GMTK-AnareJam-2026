@@ -11,12 +11,12 @@ public class PlayerHand : MonoBehaviour
     [SerializeField] private List<Card> GraveyardPile = new();
     public int HandSize;
     public GameObject CardPrefab;
-
     public RectTransform Transform;
     private float Width => Transform.rect.width;
     private Vector2 Center => Transform.rect.center;
     private float LeftSide => Center.x - Width / 2;
     private float RightSide => LeftSide + Width;
+    private int SelectedIndex;
 
     private void Start()
     {
@@ -104,6 +104,7 @@ public class PlayerHand : MonoBehaviour
             if(i == index)
             {
                 CardsInHand[i].ToggleHover(!CardsInHand[i].IsPreviewing);
+                SelectedIndex = i;
             }
             else
             {

@@ -479,6 +479,9 @@ MonoBehaviour:
   backgroundLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  dir: {x: 0, y: 1}
+  ang: 90
+  dist: 1
 --- !u!1 &1904687578
 GameObject:
   m_ObjectHideFlags: 0

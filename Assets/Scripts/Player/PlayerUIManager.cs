@@ -34,7 +34,7 @@ public class PlayerUIManager : MonoBehaviour
             {
                 case nameof(InputManager.Actions.Player):
                     mousepos = InputManager.Actions.Player.MousePosition;
-                    InputManager.Actions.Player.PreviewCard.performed += PreviewCard;
+                    InputManager.Actions.Player.SelectCard.performed += PreviewCard;
                     break;
             }
         }
@@ -43,7 +43,7 @@ public class PlayerUIManager : MonoBehaviour
     void UnsubscribeAllListeners()
     {
         mousepos = null;
-        InputManager.Actions.Player.PreviewCard.performed -= PreviewCard;
+        InputManager.Actions.Player.SelectCard.performed -= PreviewCard;
     }
     #endregion
 
