@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IDamageable
 {
-    [SerializeField] public EnemyDataReference DataRef;
-    private EnemyData data;
+    public EnemyDataReference DataRef;
+    [SerializeField]private EnemyData data;
 
     [SerializeField] EnemyMovement movement;
     [SerializeField] private Vector3 playerPosition;
@@ -19,12 +19,15 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         data = DataRef.GetCopy();
     }
-    public void TakeDamage(DamageInstance instance)
+    public DamageInstance TakeDamage(DamageInstance instance)
     {
-        
+        data.HP -= (int)instance.Damage;
+        if(data.HP < 0) instance.IsDead = true;
+        return instance;
     }
     private void FixedUpdate()
     {
+        if (data == null) return;
         if (data.IsMelee)
         {
             if (remainingAttackTime > 0) remainingAttackTime -= Time.fixedDeltaTime;
@@ -41,6 +44,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        if (data == null) return;
         if (timestamp + data.TaskDelay <= Time.time)
         {
             timestamp = Time.time;
@@ -81,7 +85,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         switch (task)
         {
             case ETask.Idle:
-                movement.MovementTarget = transform.position;
+                if(movement != null) movement.MovementTarget = transform.position;
                 break;
             case ETask.Attack:
                 Debug.Log("Attack!");
@@ -99,13 +103,6 @@ public class EnemyController : MonoBehaviour, IDamageable
                 movement.MovementTarget = strafePos;
                 break;
         }
-    }
-
-    public bool TakeDamage(int dmg)
-    {
-        data.HP -= dmg;
-        if (data.HP <= 0) return true;
-        return false;
     }
 
     private void OnTriggerEnter(Collider collision)

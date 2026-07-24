@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -16,7 +17,6 @@ public class WaveManager : MonoBehaviour
     public List<EnemyController> EnemyControllers;
     public ObjectPool<EnemyController> EnemyPool;
     public GameObject EnemyPrefab;
-
     private void Awake()
     {
         if (Instance == null)
@@ -45,11 +45,13 @@ public class WaveManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnStartGame += StartWave;
+        DamageMediator.OnDealDamageEnd += RemoveEnemyFromActiveWave;
     }
 
     private void OnDisable()
     {
         GameManager.OnStartGame -= StartWave;
+        DamageMediator.OnDealDamageEnd -= RemoveEnemyFromActiveWave;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -110,13 +112,17 @@ public class WaveManager : MonoBehaviour
 
     public void EndWave()
     {
+        //TODO: Open card reward
         //TODO: Handle starting the next wave
         //TODO: Handle logic for end of round
     }
 
 
-    public void RemoveEnemyFromActiveWave(EnemyController controller)
+    public void RemoveEnemyFromActiveWave(DamageInstance instance)
     {
+        if(!instance.IsDead) return;
+        if (instance.TType != ETargetType.Enemy) return;
+        EnemyController controller = (EnemyController)instance.Target;
         EnemyControllers.Remove(controller);
         OnKillEnemy?.Invoke(controller);
         EnemyPool.Release(controller);

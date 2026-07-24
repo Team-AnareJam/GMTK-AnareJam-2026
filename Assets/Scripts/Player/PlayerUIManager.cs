@@ -10,7 +10,7 @@ public class PlayerUIManager : MonoBehaviour
 
     [SerializeField] private PlayerDeck Deck;
     [SerializeField] private PlayerHand hand;
-    [SerializeField] private LayerMask objectLayerMask;
+    [SerializeField] private LayerMask castingLayerMask;
     [SerializeField] private LayerMask backgroundLayerMask;
     private RaycastHit[] bgCheck;
 
@@ -35,6 +35,7 @@ public class PlayerUIManager : MonoBehaviour
                 case nameof(InputManager.Actions.Player):
                     mousepos = InputManager.Actions.Player.MousePosition;
                     InputManager.Actions.Player.SelectCard.performed += Select;
+                    InputManager.Actions.Player.Attack.performed += Attack;
                     break;
             }
         }
@@ -44,6 +45,7 @@ public class PlayerUIManager : MonoBehaviour
     {
         mousepos = null;
         InputManager.Actions.Player.SelectCard.performed -= Select;
+        InputManager.Actions.Player.Attack.performed -= Attack;
     }
     #endregion
 
@@ -68,7 +70,7 @@ public class PlayerUIManager : MonoBehaviour
     void Select(InputAction.CallbackContext ctx)
     {
         var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
-        if (Physics.Raycast(ray, out var hit, maxDistance:100, objectLayerMask))
+        if (Physics.Raycast(ray, out var hit, maxDistance:100, castingLayerMask))
         {
             switch (hit.collider.tag)
             {
@@ -78,11 +80,22 @@ public class PlayerUIManager : MonoBehaviour
                         hand.HoverCard(component.Index);    
                     }
                     break;
+            }
+        }
+    }
+
+    void Attack(InputAction.CallbackContext ctx)
+    {
+        var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
+        if (Physics.Raycast(ray, out var hit, maxDistance: 100, castingLayerMask))
+        {
+            switch (hit.collider.tag)
+            {
+                case "Player":
                 case "Enemy":
                 case "Background":
-                case "Player":
+                    Debug.Log("casting card");
                     hand.CastCard();
-                    //set selected enemy in cardctx through contextmanager
                     break;
             }
         }

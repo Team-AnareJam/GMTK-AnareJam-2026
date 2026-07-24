@@ -29,7 +29,7 @@ namespace Cards.ObjectBehaviours
 
         private void StopDamage(DamageInstance instance)
         {
-            if (instance.TType == TargetType.Player)
+            if (instance.TType == ETargetType.Player)
             {
                 if (instance.Damage > 0)
                 {

@@ -20,20 +20,22 @@ public static class DamageMediator
 [System.Serializable]
 public class DamageInstance
 {
-    public DamageInstance(IDamageable target, TargetType type, float damage)
+    public DamageInstance(IDamageable target, ETargetType type, float damage)
     {
         Target = target;
         TType = type;
         Damage = damage;
+        IsDead = false;
     }
 
     //origin
     public IDamageable Target;
-    public TargetType TType;
+    public ETargetType TType;
     public float Damage;
+    public bool IsDead = false;
 }
 
-public enum TargetType
+public enum ETargetType
 {
     Player,
     Enemy

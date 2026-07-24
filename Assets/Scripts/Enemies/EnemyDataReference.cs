@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyData", menuName = "Game Data/Enemy")]
+[CreateAssetMenu(fileName = "EnemyDataReference", menuName = "Game Data/Enemy")]
 public class EnemyDataReference : ScriptableObject
 {
     public EnemyData Data;
@@ -36,6 +36,5 @@ public class EnemyData
         HP = data.HP;
         AttackPower = data.AttackPower;
         MaxAttackTime = data.MaxAttackTime;
-        
     }
 }

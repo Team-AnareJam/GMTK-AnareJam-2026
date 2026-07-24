@@ -30,7 +30,6 @@ namespace Cards.ObjectBehaviours
         private void CheckDamage()
         {
             if (!(TimeSinceLastDamage > Cooldown)) return;
-            Debug.Log("cast!");
             TimeSinceLastDamage = 0;
             var x = Physics.OverlapSphere(transform.position, Radius);
             if (x.Length > 0)
@@ -43,7 +42,7 @@ namespace Cards.ObjectBehaviours
                     }
                     if (hit.TryGetComponent<EnemyController>(out var controller))
                     {
-                        var properly = new DamageInstance(controller, TargetType.Enemy, Damage);
+                        var properly = new DamageInstance(controller, ETargetType.Enemy, Damage);
                         DamageMediator.DealDamage(properly);
                     }
                 }

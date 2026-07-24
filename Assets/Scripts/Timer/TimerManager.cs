@@ -164,8 +164,9 @@ public class TimerManager : MonoBehaviour, IDamageable
     }
 
     #endregion
-    public void TakeDamage(DamageInstance instance)
+    public DamageInstance TakeDamage(DamageInstance instance)
     {
         UpdateTimer(instance.Damage * -1f);
+        return instance;
     }
 }

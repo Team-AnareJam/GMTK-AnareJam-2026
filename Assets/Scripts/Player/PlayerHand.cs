@@ -52,7 +52,7 @@ public class PlayerHand : MonoBehaviour
     {
         if(int.TryParse(ctx.control.name, out int index))
         {
-            HoverCard(index);
+            HoverCard(index-1);
         }
     }
 
@@ -122,6 +122,11 @@ public class PlayerHand : MonoBehaviour
                 break;
         }
         CardsInHand.RemoveAt(SelectedIndex);
+        if(CardsInHand.Count == 0)
+        {
+
+        }
+        Reposition();
     }
 
 
