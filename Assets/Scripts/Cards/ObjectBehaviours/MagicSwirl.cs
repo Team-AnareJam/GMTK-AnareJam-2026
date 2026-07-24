@@ -17,6 +17,7 @@ namespace Cards.ObjectBehaviours
         private bool isInit = false;
         [SerializeField] private AnimationCurve scaleCurve;
         [SerializeField] private AnimationCurve rotationCurve;
+        [SerializeField] private LayerMask mask;
         private float angle;
 
         public void Update()
@@ -31,20 +32,21 @@ namespace Cards.ObjectBehaviours
         {
             if (!(TimeSinceLastDamage > Cooldown)) return;
             TimeSinceLastDamage = 0;
-            var x = Physics.OverlapSphere(transform.position, Radius);
+            var x = Physics.OverlapSphere(transform.position, Radius,mask);
             if (x.Length > 0)
             {
                 foreach (var hit in x)
                 {
-                    if (!hit.CompareTag("Enemy"))
+                    if (hit.CompareTag("Enemy"))
                     {
-                        continue;
+                        if (hit.TryGetComponent<EnemyController>(out var controller))
+                        {
+                            Debug.Log("damage time!");
+                            var instance = new DamageInstance(controller, ETargetType.Enemy, Damage);
+                            DamageMediator.DealDamage(instance);
+                        }
                     }
-                    if (hit.TryGetComponent<EnemyController>(out var controller))
-                    {
-                        var properly = new DamageInstance(controller, ETargetType.Enemy, Damage);
-                        DamageMediator.DealDamage(properly);
-                    }
+                    
                 }
             }
         }
@@ -68,12 +70,6 @@ namespace Cards.ObjectBehaviours
             lifetime = duration;
             Destroy(gameObject, duration);
             isInit = true;
-        }
-
-        [Button(enabledMode:EButtonEnableMode.Playmode)]
-        public void Test()
-        {
-            Init(transform.position,5, 1, 1, 1);
         }
     }
 }

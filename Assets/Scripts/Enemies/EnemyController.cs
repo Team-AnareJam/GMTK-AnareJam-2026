@@ -1,4 +1,5 @@
 using Enemies;
+using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     private Collider target;
     private float timestamp;
 
+    [Button]
     public void Init()
     {
         data = DataRef.GetCopy();

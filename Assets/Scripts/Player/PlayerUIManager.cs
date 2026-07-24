@@ -94,8 +94,13 @@ public class PlayerUIManager : MonoBehaviour
                 case "Player":
                 case "Enemy":
                 case "Background":
-                    Debug.Log("casting card");
                     hand.CastCard();
+                    break;
+                case "Cards":
+                    if (hit.transform.TryGetComponent<CardHolder>(out var component))
+                    {
+                        hand.HoverCard(component.Index);
+                    }
                     break;
             }
         }

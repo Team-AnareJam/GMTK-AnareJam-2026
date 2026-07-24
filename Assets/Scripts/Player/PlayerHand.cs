@@ -124,7 +124,10 @@ public class PlayerHand : MonoBehaviour
         CardsInHand.RemoveAt(SelectedIndex);
         if(CardsInHand.Count == 0)
         {
-
+            for(int i = 0; i < 5; i++)
+            {
+                DrawCard();
+            }
         }
         Reposition();
     }
