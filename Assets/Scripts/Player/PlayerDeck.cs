@@ -17,4 +17,9 @@ public class PlayerDeck : MonoBehaviour
     {
         //cards.Add()
     }
+
+    public void AddCard(Card card)
+    {
+        Deck.Add(card);
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Cards
@@ -12,12 +13,15 @@ namespace Cards
         [SerializeField]private GameObject CardSeller;
         [SerializeField] private List<CardHolderHolderHolder> Cards;
         [SerializeField] private GameObject CardPrefab;
-        [SerializeField] private GameObject Daddy;
+        [SerializeField] private GameObject Hand;
+        [SerializeField] private Button button;
+        [SerializeField] private PlayerDeck Deck;
         [SerializeField] private float bonusCardLuck;
         [SerializeField] private float CommonChance;
         [SerializeField] private float RareChance;
         [SerializeField] private float SRareChance;
         [SerializeField] private float LegendaryChance;
+        private int SelectedCard;
 
         private float NormalDeltaTime;
 
@@ -32,6 +36,8 @@ namespace Cards
             Time.timeScale = 0;
             NormalDeltaTime = Time.fixedDeltaTime;
             Time.fixedDeltaTime = 0;
+            SelectedCard = -1;
+            button.interactable = false;
             bool BonusCard = Random.value < bonusCardLuck / 100;
             for (int i = 0; i < ( BonusCard ? 3 : 4); i++)
             {
@@ -60,13 +66,22 @@ namespace Cards
         private void ShowStore(bool BonusCard)
         {
             Cards[3].CardHolderHolder.SetActive(BonusCard);
-            Debug.Log("ooioioii");
+            Hand.SetActive(false);
             CardSeller.SetActive(true);
         }
 
-        private void CloseStore()
+        public void ClickCard(int Card)
+        {
+            SelectedCard = Card;
+            button.interactable = true;
+        }
+
+        public void CloseStore()
         {
             Time.timeScale = 1;
+            InputManager.Instance.ToggleActionMap(InputManager.Actions.Player);
+            Hand.SetActive(true);
+            Deck.AddCard(Cards[SelectedCard].CardHolder.Card);
             CardSeller.SetActive(false);
         }
     }

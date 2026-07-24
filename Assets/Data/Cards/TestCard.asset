@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Card
   ID: test
   Name: Testicle!
-  cardRarity: 0
+  cardRarity: 3
   cardType: 0
   playType: 1
   Cost: 1

@@ -1,8 +1,4 @@
-using System;
-using System.Globalization;
-using System.Text;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class CardHolder : MonoBehaviour
@@ -28,7 +24,6 @@ public class CardHolder : MonoBehaviour
     [SerializeField]private TMP_Text Credits;
     [SerializeField] private bool Shop;
     
-    //TODO make shop work
     public void Init(Card card, int index)
     {
         Card = card;
