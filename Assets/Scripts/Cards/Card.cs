@@ -8,10 +8,11 @@ public class Card : ScriptableObject
     public string Name;
     public CardRarity cardRarity;
     public CardType cardType;
+    public PlayType playType;
     public float Cost;
-    public Texture2D Art;
+    public Sprite Art;
     public string Description;
-    public Texture2D Background;
+    public Sprite Background;
     public string Credits;
     public CardLogic Logic;
 
@@ -23,6 +24,9 @@ public class Card : ScriptableObject
     {
         ID = reference.ID;
         Name = reference.Name;
+        cardRarity = reference.cardRarity;
+        cardType = reference.cardType;
+        playType = reference.playType;
         Cost = reference.Cost;
         Art = reference.Art;
         Description = reference.Description;
@@ -45,4 +49,10 @@ public enum CardType
     Attack,
     Skill,
     Status
+}
+
+public enum PlayType
+{
+    Grave,
+    Discard,
 }

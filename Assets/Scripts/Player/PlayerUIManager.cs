@@ -34,7 +34,7 @@ public class PlayerUIManager : MonoBehaviour
             {
                 case nameof(InputManager.Actions.Player):
                     mousepos = InputManager.Actions.Player.MousePosition;
-                    InputManager.Actions.Player.SelectCard.performed += PreviewCard;
+                    InputManager.Actions.Player.SelectCard.performed += Select;
                     break;
             }
         }
@@ -43,7 +43,7 @@ public class PlayerUIManager : MonoBehaviour
     void UnsubscribeAllListeners()
     {
         mousepos = null;
-        InputManager.Actions.Player.SelectCard.performed -= PreviewCard;
+        InputManager.Actions.Player.SelectCard.performed -= Select;
     }
     #endregion
 
@@ -65,7 +65,7 @@ public class PlayerUIManager : MonoBehaviour
             }
         }
     }
-    void PreviewCard(InputAction.CallbackContext ctx)
+    void Select(InputAction.CallbackContext ctx)
     {
         var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
         if (Physics.Raycast(ray, out var hit, maxDistance:100, objectLayerMask))
@@ -75,10 +75,13 @@ public class PlayerUIManager : MonoBehaviour
                 case "Cards":
                     if (hit.transform.TryGetComponent<CardHolder>(out var component))
                     {
-                        hand.HoverCard(component.Index);
+                        hand.HoverCard(component.Index);    
                     }
                     break;
                 case "Enemy":
+                case "Background":
+                case "Player":
+                    hand.CastCard();
                     //set selected enemy in cardctx through contextmanager
                     break;
             }

@@ -59,6 +59,23 @@ public class PlayerHand : MonoBehaviour
         GraveyardPile = new List<Card>();
     }
 
+    public void CastCard()
+    {
+        CardsInHand[SelectedIndex].Card.Logic.Play();
+        Destroy(CardsInHand[SelectedIndex].gameObject);
+        switch (CardsInHand[SelectedIndex].Card.playType)
+        {
+            case PlayType.Grave:
+                GraveyardPile.Add(CardsInHand[SelectedIndex].Card);
+                break;
+            case PlayType.Discard:
+            default:    
+                DiscardPile.Add(CardsInHand[SelectedIndex].Card);
+                break;
+        }
+        CardsInHand.RemoveAt(SelectedIndex);
+    }
+
 
     public void GetCardsFromDeck()
     {
@@ -69,7 +86,7 @@ public class PlayerHand : MonoBehaviour
         if (DrawPile.Count <= 0)
         {
             if (DiscardPile.Count <= 0)
-            {
+            { 
                 return false;
             }
             DrawPile.AddRange(DiscardPile);

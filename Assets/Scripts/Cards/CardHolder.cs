@@ -1,4 +1,7 @@
 using System;
+using System.Globalization;
+using System.Text;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -14,6 +17,13 @@ public class CardHolder : MonoBehaviour
     private Vector3 scale;
     [SerializeField] private float previewZValue;
     [SerializeField] private float TargetScale;
+    [SerializeField]private SpriteRenderer Background;
+    [SerializeField]private SpriteRenderer CardArt;
+    [SerializeField]private TMP_Text Cost;
+    [SerializeField]private TMP_Text Name;
+    [SerializeField]private TMP_Text Description;
+    [SerializeField]private TMP_Text Credits;
+    
     
     public void Init(Card card, int index)
     {
@@ -23,6 +33,17 @@ public class CardHolder : MonoBehaviour
         StandardZOffset = transform.localPosition.z;
         Index = index;
         transform.localPosition = new Vector3(3000, transform.localPosition.y, (int)transform.localPosition.z - Index);
+        ShowCard();
+    }
+
+    private void ShowCard()
+    {
+        Background.sprite = Card.Background;
+        CardArt.sprite = Card.Art;
+        Cost.text = $"{Card.Cost}";
+        Name.text = Card.Name;
+        Description.text = Card.Description;
+        Credits.text = Card.Credits;
     }
 
     public void MoveToPosition(float pos, int index)

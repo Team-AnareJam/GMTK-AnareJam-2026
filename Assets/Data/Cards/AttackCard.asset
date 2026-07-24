@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 541635f715df02440a46ced586c66caf, type: 3}
-  m_Name: TestCard
+  m_Name: AttackCard
   m_EditorClassIdentifier: Assembly-CSharp::Card
-  ID: test
-  Name: Testicle!
+  ID: Heartseeker
+  Name: Heartseeker
   cardRarity: 0
   cardType: 0
   playType: 1
-  Cost: 1
+  Cost: 5
   Art: {fileID: 21300000, guid: e621f3d5e4819574297846b5a1b23edf, type: 3}
-  Description: wadd
+  Description: Throws out a dagger, piercing infinitely. Has a chance of dealing
+    double damage.
   Background: {fileID: 21300000, guid: 8fde6e8e1a767b34881f17007ed7b95f, type: 3}
-  Credits: awdaw
+  Credits: Blue
   Logic: {fileID: 0}

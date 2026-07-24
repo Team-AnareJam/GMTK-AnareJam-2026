@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 541635f715df02440a46ced586c66caf, type: 3}
-  m_Name: TestCard
+  m_Name: StatusCard
   m_EditorClassIdentifier: Assembly-CSharp::Card
-  ID: test
-  Name: Testicle!
-  cardRarity: 0
-  cardType: 0
-  playType: 1
-  Cost: 1
-  Art: {fileID: 21300000, guid: e621f3d5e4819574297846b5a1b23edf, type: 3}
-  Description: wadd
-  Background: {fileID: 21300000, guid: 8fde6e8e1a767b34881f17007ed7b95f, type: 3}
-  Credits: awdaw
+  ID: 'StrahdCurse '
+  Name: Curse of Strahd
+  cardRarity: 2
+  cardType: 2
+  playType: 0
+  Cost: 10
+  Art: {fileID: 21300000, guid: 12a6782b2e402854798e8ab4818e5a2e, type: 3}
+  Description: Hits all enemies around you. After 5 seconds, they die.
+  Background: {fileID: 21300000, guid: f8c88edd3cfe133448aac1294e449f62, type: 3}
+  Credits: Blue
   Logic: {fileID: 0}
