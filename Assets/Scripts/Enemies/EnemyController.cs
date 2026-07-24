@@ -4,35 +4,33 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] public EnemyDataReference DataRef;
+    private EnemyData data;
+
     [SerializeField] EnemyMovement movement;
     [SerializeField] private Vector3 playerPosition;
-    [SerializeField] private List<TaskObject> tasks;
     [SerializeField] private ETask currentTask;
-    [SerializeField] private float movementDistance;
-    [SerializeField] private float taskDelay;
-    
-    #region Stats
-    [SerializeField] private bool isMelee;
-    [SerializeField] private int hp;
-    [SerializeField] private int attackPower;
-    [SerializeField] private float maxAttackTime;
     [SerializeField] private float remainingAttackTime;
-    #endregion
 
     private Collider target;
     private float timestamp;
 
+    public void Init()
+    {
+        data = DataRef.GetCopy();
+    }
+
     private void FixedUpdate()
     {
-        if (isMelee)
+        if (data.IsMelee)
         {
             if (remainingAttackTime > 0) remainingAttackTime -= Time.fixedDeltaTime;
             if (remainingAttackTime <= 0)
             {
                 if (target != null)
                 {
-                    TimerManager.Instance.UpdateTimer(attackPower);
-                    remainingAttackTime = maxAttackTime;
+                    TimerManager.Instance.UpdateTimer(data.AttackPower);
+                    remainingAttackTime = data.MaxAttackTime;
                 }
             }
         }
@@ -40,7 +38,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (timestamp + taskDelay <= Time.time)
+        if (timestamp + data.TaskDelay <= Time.time)
         {
             timestamp = Time.time;
             ETask task = EvaluateTask();
@@ -53,7 +51,7 @@ public class EnemyController : MonoBehaviour
     }
     private ETask EvaluateTask()
     {
-        foreach(var task in tasks)
+        foreach(var task in data.Tasks)
         {
             if (CheckCondition(task))
             {
@@ -89,12 +87,12 @@ public class EnemyController : MonoBehaviour
                 movement.MovementTarget = playerPosition;
                 break;
             case ETask.MoveFurther:
-                Vector2 pos = (playerPosition - transform.position) * -1 * movementDistance;
+                Vector2 pos = (playerPosition - transform.position) * -1 * data.MovementDistance;
                 movement.MovementTarget = pos;
                 break;
             case ETask.Strafe:
                 Vector2 strafePos = Vector2.Perpendicular((playerPosition - transform.position).normalized) 
-                    * movementDistance * (Random.Range(0, 2) == 0 ? 1 : -1);
+                    * data.MovementDistance * (Random.Range(0, 2) == 0 ? 1 : -1);
                 movement.MovementTarget = strafePos;
                 break;
         }
@@ -102,8 +100,8 @@ public class EnemyController : MonoBehaviour
 
     public bool TakeDamage(int dmg)
     {
-        hp -= dmg;
-        if (hp <= 0) return true;
+        data.HP -= dmg;
+        if (data.HP <= 0) return true;
         return false;
     }
 
