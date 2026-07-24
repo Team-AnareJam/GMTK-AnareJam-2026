@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerManager : MonoBehaviour
+public class TimerManager : MonoBehaviour, IDamageable
 {
     #region Variables
     public static TimerManager Instance;
@@ -156,5 +156,10 @@ public class TimerManager : MonoBehaviour
         TimerBarIndicator.color = activeIndicatorGradient.Evaluate(IndicatorCurrentDuration);
         if (IndicatorCurrentDuration < 0) IndicatorIsActive = false;
     }
+
     #endregion
+    public void TakeDamage(DamageInstance instance)
+    {
+        Debug.Log("oh fuck lost seconds!");
+    }
 }

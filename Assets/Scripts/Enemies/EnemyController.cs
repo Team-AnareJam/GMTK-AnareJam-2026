@@ -2,7 +2,7 @@ using Enemies;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDamageable
 {
     [SerializeField] public EnemyDataReference DataRef;
     private EnemyData data;
@@ -19,7 +19,10 @@ public class EnemyController : MonoBehaviour
     {
         data = DataRef.GetCopy();
     }
-
+    public void TakeDamage(DamageInstance instance)
+    {
+        
+    }
     private void FixedUpdate()
     {
         if (data.IsMelee)
@@ -120,6 +123,8 @@ public class EnemyController : MonoBehaviour
             target = null;
         }
     }
+
+    
 }
 
 [System.Serializable]
