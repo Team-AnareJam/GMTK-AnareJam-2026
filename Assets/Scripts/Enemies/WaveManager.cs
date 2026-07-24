@@ -131,7 +131,7 @@ public class WaveManager : MonoBehaviour
 
     public void RemoveEnemyFromActiveWave(DamageInstance instance)
     {
-        if(!instance.IsDead) return;
+        if (!instance.IsDead) return;
         if (instance.TType != ETargetType.Enemy) return;
         EnemyController controller = (EnemyController)instance.Target;
         EnemyControllers.Remove(controller);

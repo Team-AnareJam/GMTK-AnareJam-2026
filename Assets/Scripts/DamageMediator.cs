@@ -7,10 +7,8 @@ public static class DamageMediator
     public static event Action<DamageInstance> OnDealDamageEnd;
     public static DamageInstance DealDamage(DamageInstance instance)
     {
-        instance.Damage = 5;
-        Debug.Log("damage before event is " + instance.Damage);
         OnDealDamageStart?.Invoke(instance);
-        instance.Target.TakeDamage(instance);
+        instance = instance.Target.TakeDamage(instance);
         OnDealDamageEnd?.Invoke(instance);
 
         return instance;

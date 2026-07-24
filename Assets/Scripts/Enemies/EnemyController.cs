@@ -23,6 +23,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     }
     public DamageInstance TakeDamage(DamageInstance instance)
     {
+        Debug.Log("takin damage");
         data.HP -= (int)instance.Damage;
         if(data.HP < 0) instance.IsDead = true;
         return instance;

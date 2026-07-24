@@ -33,6 +33,7 @@ namespace Cards.ObjectBehaviours
             if (!(TimeSinceLastDamage > Cooldown)) return;
             TimeSinceLastDamage = 0;
             var x = Physics.OverlapSphere(transform.position, Radius,mask);
+            Debug.Log(x.Length);
             if (x.Length > 0)
             {
                 foreach (var hit in x)
@@ -41,7 +42,6 @@ namespace Cards.ObjectBehaviours
                     {
                         if (hit.TryGetComponent<EnemyController>(out var controller))
                         {
-                            Debug.Log("damage time!");
                             var instance = new DamageInstance(controller, ETargetType.Enemy, Damage);
                             DamageMediator.DealDamage(instance);
                         }
