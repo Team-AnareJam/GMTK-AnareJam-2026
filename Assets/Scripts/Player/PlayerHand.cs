@@ -51,7 +51,7 @@ public class PlayerHand : MonoBehaviour
 
     void UnsubscribeAllListeners()
     {
-
+        InputManager.Actions.Player.CardSelection.started -= CardAction;
     }
     #endregion
 
