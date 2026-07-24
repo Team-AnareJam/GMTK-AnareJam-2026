@@ -10,6 +10,7 @@ public class SoundEffectsManager : MonoBehaviour
     public ObjectPool<AudioSource> SFXPool;
     public GameObject SFXPrefab;
     public SFXLibrary SFXLib;
+    public GameObject SFXPoolHolder;
 
     public int defaultPoolSize = 10;
     public int maxPoolSize = 20;
@@ -42,6 +43,7 @@ public class SoundEffectsManager : MonoBehaviour
     private AudioSource CreateSFX()
     {
         GameObject pooledObject = Instantiate(SFXPrefab);
+        pooledObject.transform.parent = SFXPoolHolder.transform;
         AudioSource pooledSource = pooledObject.GetComponent<AudioSource>();
         pooledObject.SetActive(false);
         return pooledSource;

@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b78813dde3cae4c95d0a11df5cf343, type: 3}
   m_Name: SFXLibrary
   m_EditorClassIdentifier: Assembly-CSharp::SFXLibrary
+  SoundEffects:
+  - Name: test
+    Clip: {fileID: 8300000, guid: ede181fc6afb27247add2c60c00b6d03, type: 3}
+    MinPitch: 1
+    MaxPitch: 1.2
