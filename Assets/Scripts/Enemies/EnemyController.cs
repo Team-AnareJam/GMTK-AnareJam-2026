@@ -1,3 +1,4 @@
+using Enemies;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,33 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private ETask currentTask;
     [SerializeField] private float movementDistance;
     [SerializeField] private float taskDelay;
+    
+    #region Stats
+    [SerializeField] private bool isMelee;
+    [SerializeField] private int hp;
+    [SerializeField] private int attackPower;
+    [SerializeField] private float maxAttackTime;
+    [SerializeField] private float remainingAttackTime;
+    #endregion
+
+    private Collider target;
     private float timestamp;
+
+    private void FixedUpdate()
+    {
+        if (isMelee)
+        {
+            if (remainingAttackTime > 0) remainingAttackTime -= Time.fixedDeltaTime;
+            if (remainingAttackTime <= 0)
+            {
+                if (target != null)
+                {
+                    TimerManager.Instance.UpdateTimer(attackPower);
+                    remainingAttackTime = maxAttackTime;
+                }
+            }
+        }
+    }
 
     private void Update()
     {
@@ -70,6 +97,29 @@ public class EnemyController : MonoBehaviour
                     * movementDistance * (Random.Range(0, 2) == 0 ? 1 : -1);
                 movement.MovementTarget = strafePos;
                 break;
+        }
+    }
+
+    public bool TakeDamage(int dmg)
+    {
+        hp -= dmg;
+        if (hp <= 0) return true;
+        return false;
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            target = collision;
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            target = null;
         }
     }
 }
