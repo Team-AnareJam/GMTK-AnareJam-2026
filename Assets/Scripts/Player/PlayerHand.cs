@@ -1,6 +1,7 @@
-using System.Collections.Generic;
 using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerHand : MonoBehaviour
 {
@@ -17,6 +18,37 @@ public class PlayerHand : MonoBehaviour
     private float LeftSide => Center.x - Width / 2;
     private float RightSide => LeftSide + Width;
     private int SelectedIndex;
+
+    private void OnEnable()
+    {
+        InputManager.OnActionMapChange += SetInputListeners;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.OnActionMapChange -= SetInputListeners;
+    }
+
+    #region Input Listeners
+    void SetInputListeners(InputActionMap actionMap)
+    {
+        UnsubscribeAllListeners();
+        if (actionMap != null)
+        {
+            switch (actionMap.name)
+            {
+                case nameof(InputManager.Actions.Player):
+                    //InputManager.Actions.Player.Card1.performed += ;
+                    break;
+            }
+        }
+    }
+
+    void UnsubscribeAllListeners()
+    {
+
+    }
+    #endregion
 
     private void Start()
     {

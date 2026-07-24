@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Card
   ID: magic_swirl
   Name: Magic Swirl
+  cardRarity: 0
+  cardType: 0
+  playType: 1
   Cost: 10
-  Art: {fileID: 0}
+  Art: {fileID: 21300000, guid: a3e1d7109dd0dc44ba6e9004bdfb514a, type: 3}
   Description: a swirl of magic
-  Background: {fileID: 0}
+  Background: {fileID: 21300000, guid: 8fde6e8e1a767b34881f17007ed7b95f, type: 3}
   Credits: Blue
-  Logic: {fileID: 0}
+  Logic: {fileID: 11400000, guid: 4c2adbd7866c01e48ad71c20c8123fb2, type: 2}

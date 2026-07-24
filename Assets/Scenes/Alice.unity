@@ -1024,7 +1024,7 @@ MonoBehaviour:
   DrawPile: []
   DiscardPile: []
   GraveyardPile: []
-  HandSize: 100
+  HandSize: 10
   CardPrefab: {fileID: 9057030435038561765, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
   Transform: {fileID: 2095127060}
   TestCard: {fileID: 11400000, guid: af3ba106400a0b44a8d1a079ac2882ac, type: 2}

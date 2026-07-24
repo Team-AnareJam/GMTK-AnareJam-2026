@@ -64,7 +64,7 @@ public class CardHolder : MonoBehaviour
         
         if (IsPreviewing)
         {
-            if (transform.localScale.magnitude <= (scale * TargetScale).magnitude)
+            if (transform.localScale.magnitude < (scale * TargetScale).magnitude)
             {
                 transform.localScale *= 1.1f;
             }
@@ -75,7 +75,7 @@ public class CardHolder : MonoBehaviour
         }
         else
         {
-            if (transform.localScale.magnitude >= scale.magnitude)
+            if (transform.localScale.magnitude > scale.magnitude)
             {
                 transform.localScale *= 0.9f;
             }else
