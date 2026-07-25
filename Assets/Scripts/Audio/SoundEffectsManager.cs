@@ -78,6 +78,7 @@ public class SoundEffectsManager : MonoBehaviour
         SoundEffect effect = SFXLib.SoundEffects.First(SFX => SFX.Name == name);
         sfxObj.clip = effect.Clip;
         sfxObj.pitch = UnityEngine.Random.Range(effect.MinPitch, effect.MaxPitch);
+        sfxObj.Play();
         StartCoroutine(ReleaseSound(sfxObj, 1 + sfxObj.clip.length / sfxObj.pitch));
     }
 

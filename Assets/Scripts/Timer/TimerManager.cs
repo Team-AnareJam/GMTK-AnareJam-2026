@@ -8,7 +8,7 @@ public class TimerManager : MonoBehaviour, IDamageable
 {
     #region Variables
     public static TimerManager Instance;
-    //public static event Action OnStartTimer;
+    public static event Action OnStartTimer;
     //public static event Action OnPauseTimer;
     //public static event Action OnUpdateTimer;
 
@@ -107,6 +107,7 @@ public class TimerManager : MonoBehaviour, IDamageable
 
         TimerIsActive = true;
         UpdateTimerUI();
+        OnStartTimer?.Invoke();
     }
 
     public void PauseTimer()
