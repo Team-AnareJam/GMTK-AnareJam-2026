@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public bool CanMove;
     public int MovementSpeed;
+    public float MovementMult;
     private InputAction MoveAction;
 
     private void OnEnable()
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 moveTo = MoveAction.ReadValue<Vector2>().normalized * MovementSpeed * Time.fixedDeltaTime;
+        Vector3 moveTo = MoveAction.ReadValue<Vector2>().normalized * MovementSpeed * MovementMult * Time.fixedDeltaTime;
         transform.position += moveTo;
     }
 }

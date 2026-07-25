@@ -12,7 +12,7 @@ public class Card : ScriptableObject
     public float Cost;
     public Sprite Art;
     public string Description;
-    public Sprite Background;
+    [HideInInspector] public Sprite Background;
     public string Credits;
     public CardLogic Logic;
 

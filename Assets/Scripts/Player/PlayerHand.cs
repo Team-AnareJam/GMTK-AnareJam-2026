@@ -1,10 +1,12 @@
 using NaughtyAttributes;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerHand : MonoBehaviour
 {
+    public static event Action<CardHolder> OnDrawCard;
     private PlayerDeck deck;
     [SerializeField] private List<CardHolder> CardsInHand = new();
     [SerializeField] private List<Card> DrawPile = new();
@@ -86,6 +88,7 @@ public class PlayerHand : MonoBehaviour
         }
         var go = Instantiate(CardPrefab, Transform);
         var card = go.GetComponent<CardHolder>();
+        OnDrawCard?.Invoke(card);
         card.Init(newcard, CardsInHand.Count+1);
         CardsInHand.Add(card);
         Reposition();
@@ -149,7 +152,7 @@ public class PlayerHand : MonoBehaviour
             DrawPile.AddRange(DiscardPile);
             DiscardPile = new List<Card>();
         }
-        int index = Random.Range(0, DrawPile.Count);
+        int index = UnityEngine.Random.Range(0, DrawPile.Count);
         Card card = DrawPile[index];
         AddCardToHand (card);
         DrawPile.RemoveAt(index);
