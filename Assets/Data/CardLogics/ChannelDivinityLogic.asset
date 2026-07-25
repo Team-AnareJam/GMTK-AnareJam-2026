@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ChannelDivinityLogic
   m_EditorClassIdentifier: Assembly-CSharp::ChannelDivinityLogic
   Prefab: {fileID: 0}
-  Radius: 0
+  Radius: 10000

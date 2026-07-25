@@ -10,7 +10,7 @@ public abstract class CardLogic : ScriptableObject
     public abstract void Visualize();
     public abstract void Play();
 
-    [ContextMenu("CardLogic/Generate Logics")]
+    [ContextMenu("Generate Logics")]
     protected void Generate()
     {
         var classes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes())

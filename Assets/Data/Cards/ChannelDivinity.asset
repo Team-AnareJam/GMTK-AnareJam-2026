@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541635f715df02440a46ced586c66caf, type: 3}
   m_Name: ChannelDivinity
   m_EditorClassIdentifier: Assembly-CSharp::Card
-  ID: 
-  Name: 
-  cardRarity: 0
-  cardType: 0
+  ID: ChannelDivinity
+  Name: Channel Bovinity
+  cardRarity: 3
+  cardType: 1
   playType: 0
-  Cost: 0
-  Art: {fileID: 0}
-  Description: 
-  Credits: 
-  Logic: {fileID: 0}
+  Cost: 180
+  Art: {fileID: 21300000, guid: 0a3863d2c845340429b83ef867ccc7d9, type: 3}
+  Description: Kills all enemies.
+  Credits: Jano
+  Logic: {fileID: 11400000, guid: 450436ac6715c8146bc2f9bee57da625, type: 2}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541635f715df02440a46ced586c66caf, type: 3}
   m_Name: WODCard
   m_EditorClassIdentifier: Assembly-CSharp::Card
-  ID: WaveOfDeath
-  Name: Wave Of Death
+  ID: HealingWave
+  Name: Healing Wave
   cardRarity: 2
   cardType: 0
   playType: 0
