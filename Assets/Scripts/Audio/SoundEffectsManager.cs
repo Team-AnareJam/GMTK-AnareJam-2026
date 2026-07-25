@@ -32,7 +32,7 @@ public class SoundEffectsManager : MonoBehaviour
             createFunc: CreateSFX,
             actionOnGet: OnGet,
             actionOnRelease: OnRelease,
-            actionOnDestroy: OnDestroyEnemy,
+            actionOnDestroy: OnDestroySound,
             collectionCheck: true,
             defaultCapacity: defaultPoolSize,
             maxSize: maxPoolSize
@@ -59,7 +59,7 @@ public class SoundEffectsManager : MonoBehaviour
         pooledObject.gameObject.SetActive(false);
     }
 
-    private void OnDestroyEnemy(AudioSource pooledObject)
+    private void OnDestroySound(AudioSource pooledObject)
     {
         Destroy(pooledObject.gameObject);
     }
@@ -82,9 +82,9 @@ public class SoundEffectsManager : MonoBehaviour
         StartCoroutine(ReleaseSound(sfxObj, 1 + sfxObj.clip.length / sfxObj.pitch));
     }
 
-    public IEnumerator ReleaseSound(AudioSource sfxObj, float duration)
+    public IEnumerator ReleaseSound(AudioSource sfxObj, float waitTime)
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(waitTime);
         SFXPool.Release(sfxObj);
     }
 }
