@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BreadCrumbsLogic
   Prefab: {fileID: 4816199888029652156, guid: 319a04ca210b0cb46908cfa0099b47c1, type: 3}
   Duration: 10
-  CrumbDuration: 5
+  CrumbDuration: 10
   CrumbSize: 2
   Damage: 10
-  FrequencyPerSecond: 0.5
+  FrequencyPerSecond: 0.1
   CrumbDamageFrequency: 0.2
