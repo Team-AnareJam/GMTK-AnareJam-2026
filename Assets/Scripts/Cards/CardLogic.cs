@@ -19,6 +19,10 @@ public abstract class CardLogic : ScriptableObject
 
         foreach (var cs in classes)
         {
+            if (AssetDatabase.AssetPathExists($"Assets/Data/CardLogics/{cs}.asset"))
+            {
+                continue;
+            }
             var cl = CreateInstance(cs);
             AssetDatabase.CreateAsset(cl, $"Assets/Data/CardLogics/{cs}.asset");
         }
