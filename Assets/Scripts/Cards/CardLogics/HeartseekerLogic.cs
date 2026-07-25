@@ -1,8 +1,7 @@
 ﻿using Cards.ObjectBehaviours;
 using UnityEngine;
 
-namespace Cards.CardLogics
-{
+
     public class HeartseekerLogic : CardLogic
     {
         [SerializeField]private float Damage;
@@ -21,4 +20,3 @@ namespace Cards.CardLogics
             hs.Init(Damage, TimeToDie, CritChance, Speed, ctx.AimingDirection);
         }
     }
-}

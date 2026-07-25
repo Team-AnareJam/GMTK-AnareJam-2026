@@ -1,7 +1,6 @@
 ﻿using Cards.ObjectBehaviours;
 
-namespace Cards.CardLogics
-{
+
     public class VampireShieldLogic : CardLogic
     {
         public int Hits;
@@ -19,4 +18,3 @@ namespace Cards.CardLogics
             vs.Init(Hits, TimeRecovered, Duration);
         }
     }
-}

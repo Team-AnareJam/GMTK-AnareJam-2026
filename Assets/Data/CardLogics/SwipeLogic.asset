@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 206a84633f941b04f8d0f53be0a94bf9, type: 3}
-  m_Name: MagicSwirlLogic
-  m_EditorClassIdentifier: Assembly-CSharp::MagicSwirlLogic
+  m_Script: {fileID: 11500000, guid: 728c829e4b90aa647a9ddb0a1ee1f527, type: 3}
+  m_Name: SwipeLogic
+  m_EditorClassIdentifier: Assembly-CSharp::SwipeLogic
   Prefab: {fileID: 0}
   Cost: 0
-  Duration: 5
-  Cooldown: 0
+  Distance: 0
+  SwipeSpeed: 0
   Damage: 0
-  Radius: 0
+  AngleWidth: 0
