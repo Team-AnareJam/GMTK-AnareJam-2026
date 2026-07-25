@@ -1030,6 +1030,7 @@ MonoBehaviour:
   Attack: {fileID: 21300000, guid: ecd634bb25235014ebb30950a3bdd250, type: 3}
   Skill: {fileID: 21300000, guid: 0401ad83c3d7d7e468000f37113cc77f, type: 3}
   Status: {fileID: 21300000, guid: 60308fd5ad103e24196bc9499632eb81, type: 3}
+  FlipTime: 0.1
 --- !u!1 &9143936893335206380
 GameObject:
   m_ObjectHideFlags: 0

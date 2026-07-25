@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
+using NaughtyAttributes;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class CardHolder : MonoBehaviour
@@ -15,11 +18,11 @@ public class CardHolder : MonoBehaviour
     private Vector3 scale;
     [SerializeField] private float previewZValue;
     [SerializeField] private float PreviewYOffset;
-    
+
     [SerializeField] private float TargetScale;
     [SerializeField] private SpriteRenderer CardBorder;
     [SerializeField] private SpriteRenderer CardArt;
-    [SerializeField]private SpriteRenderer CardArtBG;
+    [SerializeField] private SpriteRenderer CardArtBG;
     [SerializeField] private TMP_Text Cost;
     [SerializeField] private TMP_Text Name;
     [SerializeField] private TMP_Text Description;
@@ -30,6 +33,7 @@ public class CardHolder : MonoBehaviour
     [SerializeField] private Sprite Attack;
     [SerializeField] private Sprite Skill;
     [SerializeField] private Sprite Status;
+
     public void Init(Card card, int index)
     {
         Card = card;
@@ -59,9 +63,30 @@ public class CardHolder : MonoBehaviour
         Credits.text = Card.Credits;
     }
 
-    private void RotateCard()
+
+    private float progress;
+    [SerializeField] private float FlipTime;
+
+    [Button]
+    private void rotate()
     {
-        
+        StartCoroutine(RotateCard());
+    }
+
+    private IEnumerator RotateCard()
+    {
+        Flipped = !Flipped;
+        progress = 0;
+        Debug.Assert(FlipTime != 0);
+        var goal = Flipped ? 180 : 0;
+        var start = transform.localEulerAngles.y;
+        while (Mathf.Abs(transform.localEulerAngles.y - goal) > 1)
+        {
+            transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, Mathf.LerpAngle(start, goal, progress / FlipTime), transform.localEulerAngles.z);
+            progress += Time.deltaTime;
+            yield return null;
+        }
+        transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, goal, transform.localEulerAngles.z);
     }
 
     public void ChangeCard(Card newCard)
@@ -79,14 +104,15 @@ public class CardHolder : MonoBehaviour
     private void FixedUpdate()
     {
         if (Shop) return;
-        Vector3 targetPos = new Vector3(nextPos, IsPreviewing ?  StandardYOffset + PreviewYOffset : StandardYOffset, IsPreviewing ? previewZValue : StandardZOffset - Index);
-        
+        Vector3 targetPos = new Vector3(nextPos, IsPreviewing ? StandardYOffset + PreviewYOffset : StandardYOffset,
+            IsPreviewing ? previewZValue : StandardZOffset - Index);
+
         transform.localPosition = Vector3.MoveTowards(
-            transform.localPosition, 
-            targetPos, 
+            transform.localPosition,
+            targetPos,
             moveSpeed * Time.deltaTime
         );
-        
+
         if (IsPreviewing)
         {
             if (transform.localScale.magnitude < (scale * TargetScale).magnitude)
@@ -103,14 +129,15 @@ public class CardHolder : MonoBehaviour
             if (transform.localScale.magnitude > scale.magnitude)
             {
                 transform.localScale *= 0.9f;
-            }else
+            }
+            else
             {
                 transform.localScale = scale;
             }
         }
     }
 
-    
+
     public void ToggleHover(bool toggle)
     {
         IsPreviewing = toggle;
