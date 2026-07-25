@@ -59,6 +59,11 @@ public class CardHolder : MonoBehaviour
         Credits.text = Card.Credits;
     }
 
+    private void RotateCard()
+    {
+        
+    }
+
     public void ChangeCard(Card newCard)
     {
         Card = newCard;
