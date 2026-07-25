@@ -13,9 +13,38 @@ MonoBehaviour:
   m_Name: MusicLibrary
   m_EditorClassIdentifier: Assembly-CSharp::MusicLibrary
   MusicClips:
-  - Name: TestMain
-    Clip: {fileID: 8300000, guid: e7034ee9e2e06984e875dcdc623c772a, type: 3}
+  - Name: Intro
+    Clip: {fileID: 8300000, guid: e3187dbc78732bc4ca6d8a808959906d, type: 3}
     BPM: 120
     BeatsPerBar: 4
     LoopStartTime: 6
     LoopEndTime: 34
+    NextClip: 1
+  - Name: 1DEFAULT
+    Clip: {fileID: 8300000, guid: f741931a88bc9bf428be285191479111, type: 3}
+    BPM: 120
+    BeatsPerBar: 4
+    LoopStartTime: 6
+    LoopEndTime: 34
+    NextClip: 2
+  - Name: 2DEFAULT
+    Clip: {fileID: 8300000, guid: 28364469af014c04aaba562318a2c722, type: 3}
+    BPM: 120
+    BeatsPerBar: 4
+    LoopStartTime: 6
+    LoopEndTime: 34
+    NextClip: 1
+  - Name: 1INTENSE
+    Clip: {fileID: 8300000, guid: 7bf65af449fb4d64c9abd9cc3dc33c3a, type: 3}
+    BPM: 120
+    BeatsPerBar: 4
+    LoopStartTime: 6
+    LoopEndTime: 34
+    NextClip: 2
+  - Name: 2INTENSE
+    Clip: {fileID: 8300000, guid: 8fe3f4644f67d2747b5409bde9791ca2, type: 3}
+    BPM: 120
+    BeatsPerBar: 4
+    LoopStartTime: 6
+    LoopEndTime: 34
+    NextClip: 1

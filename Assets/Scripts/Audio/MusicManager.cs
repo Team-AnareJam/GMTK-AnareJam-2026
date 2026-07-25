@@ -1,5 +1,7 @@
 using NaughtyAttributes;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -7,14 +9,18 @@ using UnityEngine.Pool;
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance;
-    public ObjectPool<AudioSource> MusicPool;
-    public GameObject MusicPrefab;
     public MusicLibrary MusicLib;
-    public GameObject MusicPoolHolder;
+    public bool Intense;
+    public bool IntroStarted;
 
-    public int defaultPoolSize = 10;
-    public int maxPoolSize = 20;
+    public MusicClip CurrentClip;
+    public string NextClip;
+    public int MusicPlayerIndex = 0;
+    public AudioSource[] MusicPlayers;
+
     [SerializeField] private bool playingMusic;
+
+    public double GoalTime = 0;
 
     private void Awake()
     {
@@ -23,75 +29,41 @@ public class MusicManager : MonoBehaviour
             Instance = this;
         }
         else Destroy(this);
-
-        InstantiatePool();
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        TimerManager.OnStartTimer += PlayMusic;
+        StartIntroSong();
     }
 
-    private void OnDisable()
+    private void Update()
     {
-        TimerManager.OnStartTimer -= PlayMusic;
+        if (AudioSettings.dspTime > GoalTime - 5)
+        {
+            string nextClip = NextClip + (Intense ? "INTENSE" : "DEFAULT");
+            if (!MusicLib.MusicClips.Any(SFX => SFX.Name == nextClip)) { Debug.Log("fail"); return; }
+            CurrentClip = MusicLib.MusicClips.First(SFX => SFX.Name == nextClip);
+            PlayScheduledClip();
+        }
     }
 
-    public void InstantiatePool()
+    public void StartIntroSong()
     {
-        MusicPool = new ObjectPool<AudioSource>(
-            createFunc: CreateMusic,
-            actionOnGet: OnGet,
-            actionOnRelease: OnRelease,
-            actionOnDestroy: OnDestroyEnemy,
-            collectionCheck: true,
-            defaultCapacity: defaultPoolSize,
-            maxSize: maxPoolSize
-        );
+        CurrentClip = MusicLib.MusicClips.First(SFX => SFX.Name == "Intro");
+        GoalTime = AudioSettings.dspTime + 0.5;
+        PlayScheduledClip();
     }
 
-    #region SFX Pool Functions
-    private AudioSource CreateMusic()
+    public void PlayScheduledClip()
     {
-        GameObject pooledObject = Instantiate(MusicPrefab);
-        pooledObject.transform.parent = MusicPoolHolder.transform;
-        AudioSource pooledSource = pooledObject.GetComponent<AudioSource>();
-        pooledObject.SetActive(false);
-        return pooledSource;
-    }
+        MusicPlayers[MusicPlayerIndex].clip = CurrentClip.Clip;
+        MusicPlayers[MusicPlayerIndex].PlayScheduled(GoalTime);
 
-    private void OnGet(AudioSource pooledObject)
-    {
-        pooledObject.gameObject.SetActive(true);
-    }
+        GoalTime += CurrentClip.SongSampleCount / CurrentClip.Clip.frequency;
+        NextClip = CurrentClip.NextClip;
+        Debug.Log(NextClip);
 
-    private void OnRelease(AudioSource pooledObject)
-    {
-        pooledObject.gameObject.SetActive(false);
-    }
-
-    private void OnDestroyEnemy(AudioSource pooledObject)
-    {
-        Destroy(pooledObject.gameObject);
-    }
-    #endregion
-
-    [Button]
-    public void PlayMusic()
-    {
-        if (!playingMusic) return;
-        PlayMusic("TestMain");
-    }
-
-    public void PlayMusic(string name)
-    {
-        if (!MusicLib.MusicClips.Any(SFX => SFX.Name == name)) return;
-
-        AudioSource musicObj = MusicPool.Get();
-        MusicClip musicClip = MusicLib.MusicClips.First(SFX => SFX.Name == name);
-        musicObj.clip = musicClip.Clip;
-        musicObj.Play();
-        musicObj.GetComponent<MusicHolder>().CurrentClip = musicClip;
+        MusicPlayerIndex = 1 - MusicPlayerIndex;
     }
 }
 
@@ -105,7 +77,13 @@ public class MusicClip
 
     public float LoopStartTime;
     public float LoopEndTime;
-    public float BeatLength => 60 / BPM;
+
+    public string NextClip;
+
+    public float BeatLength => 60 / (float)BPM;
     public float BarLength => BeatLength * BeatsPerBar;
     public float LoopLength => LoopEndTime - LoopStartTime;
+    public float SongLength => Clip.length - BarLength;
+    public double SamplesPerBeat => Clip.samples / (Clip.length / BeatLength);
+    public double SongSampleCount => Clip.samples - (SamplesPerBeat * BeatsPerBar);
 }
