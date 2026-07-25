@@ -66,24 +66,24 @@ public class CardHolder : MonoBehaviour
 
     private float progress;
     [SerializeField] private float FlipTime;
-
-    [Button]
-    private void rotate()
+    
+    public void rotate(bool flip, float RotationSpeed, float WaitTime)
     {
-        StartCoroutine(RotateCard());
+        StartCoroutine(RotateCard(flip, RotationSpeed,WaitTime));
     }
 
-    private IEnumerator RotateCard()
+    private IEnumerator RotateCard(bool flip, float RotationTime, float WaitTime)
     {
-        Flipped = !Flipped;
+        yield return new WaitForSecondsRealtime(WaitTime);
+        Flipped = flip;
         progress = 0;
         Debug.Assert(FlipTime != 0);
-        var goal = Flipped ? 180 : 0;
+        var goal = Flipped ? 180 : 0; 
         var start = transform.localEulerAngles.y;
         while (Mathf.Abs(transform.localEulerAngles.y - goal) > 1)
         {
-            transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, Mathf.LerpAngle(start, goal, progress / FlipTime), transform.localEulerAngles.z);
-            progress += Time.deltaTime;
+            transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, Mathf.LerpAngle(start, goal, progress / RotationTime), transform.localEulerAngles.z);
+            progress += Time.unscaledDeltaTime;
             yield return null;
         }
         transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, goal, transform.localEulerAngles.z);

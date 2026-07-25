@@ -77,6 +77,7 @@ public class PlayerHand : MonoBehaviour
             DrawCard();
         }
     }
+    
     public CardHolder AddCardToHand(Card newcard)
     {
         if (CardsInHand.Count >= HandSize)

@@ -57,6 +57,11 @@ public class PlayerUIManager : MonoBehaviour
         CanPlay = true;
     }
 
+    private void Awake()
+    {
+        cam = Camera.main;
+    }
+
     private void Update()
     {
         if (mousepos == null)return;

@@ -15,6 +15,7 @@ namespace Cards
         [SerializeField] private GameObject CardPrefab;
         [SerializeField] private GameObject Hand;
         [SerializeField] private GameObject Button;
+        [SerializeField]private GameObject BG;
         [SerializeField] private Button button;
         [SerializeField] private PlayerDeck Deck;
         [SerializeField] private float bonusCardLuck;
@@ -37,6 +38,7 @@ namespace Cards
             Time.timeScale = 0;
             NormalDeltaTime = Time.fixedDeltaTime;
             Time.fixedDeltaTime = 0;
+            
             SelectedCard = -1;
             button.interactable = false;
             bool BonusCard = Random.value < bonusCardLuck / 100;
@@ -69,7 +71,13 @@ namespace Cards
             Cards[3].CardHolderHolder.SetActive(BonusCard);
             Hand.SetActive(false);
             Button.SetActive(true);
+            BG.SetActive(true);
             CardSeller.SetActive(true);
+            for (int i = 0; i < Cards.Count - (BonusCard ? 0 : 1); i++)
+            {
+                Cards[i].CardHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                Cards[i].CardHolder.rotate(false, .1f, i * 0.2f + 0.2f);
+            }
         }
 
         public void ClickCard(int Card)
@@ -84,6 +92,7 @@ namespace Cards
             InputManager.Instance.ToggleActionMap(InputManager.Actions.Player);
             Hand.SetActive(true);
             Button.SetActive(false);
+            BG.SetActive(false);
             Deck.AddCard(Cards[SelectedCard].CardHolder.Card);
             CardSeller.SetActive(false);
         }
