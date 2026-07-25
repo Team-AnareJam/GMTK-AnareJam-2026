@@ -23,6 +23,7 @@ namespace Cards.ObjectBehaviours
 
         private void FixedUpdate()
         {
+            //TODO: do smth with this pos
             Vector3.Slerp(pos1, pos2, timeElapsed / TimeInSeconds);
             timeElapsed += Time.fixedDeltaTime;
         }

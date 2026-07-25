@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -13,6 +14,7 @@ public class MusicManager : MonoBehaviour
 
     public int defaultPoolSize = 10;
     public int maxPoolSize = 20;
+    [SerializeField] private bool playingMusic;
 
     private void Awake()
     {
@@ -77,6 +79,7 @@ public class MusicManager : MonoBehaviour
     [Button]
     public void PlayMusic()
     {
+        if (!playingMusic) return;
         PlayMusic("TestMain");
     }
 

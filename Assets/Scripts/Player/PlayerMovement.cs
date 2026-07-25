@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool CanMove;
     public int MovementSpeed;
     private InputAction MoveAction;
 

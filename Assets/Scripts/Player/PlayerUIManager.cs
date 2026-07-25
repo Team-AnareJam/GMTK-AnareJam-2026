@@ -8,6 +8,7 @@ public class PlayerUIManager : MonoBehaviour
     public Camera cam;
     private InputAction mousepos;
 
+    public bool CanPlay;
     [SerializeField] private PlayerDeck Deck;
     [SerializeField] private PlayerHand hand;
     [SerializeField] private LayerMask castingLayerMask;
@@ -53,14 +54,13 @@ public class PlayerUIManager : MonoBehaviour
     void Start()
     {
         bgCheck = new RaycastHit[1];
+        CanPlay = true;
     }
 
     private void Update()
     {
         if (mousepos == null)return;
-        {
-            
-        }
+
         var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
         Physics.RaycastNonAlloc(ray, bgCheck, maxDistance: 100, backgroundLayerMask);
         if (bgCheck[0].collider)
@@ -73,6 +73,7 @@ public class PlayerUIManager : MonoBehaviour
     }
     void Select(InputAction.CallbackContext ctx)
     {
+        if(!CanPlay) return;
         var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
         if (Physics.Raycast(ray, out var hit, maxDistance:100, castingLayerMask))
         {
@@ -90,6 +91,7 @@ public class PlayerUIManager : MonoBehaviour
 
     void Attack(InputAction.CallbackContext ctx)
     {
+        if (!CanPlay) return;
         var ray = cam.ScreenPointToRay(mousepos.ReadValue<Vector2>());
         if (Physics.Raycast(ray, out var hit, maxDistance: 100, castingLayerMask))
         {

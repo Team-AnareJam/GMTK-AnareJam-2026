@@ -534,7 +534,97 @@ MonoBehaviour:
   CurrentWave: {fileID: 0}
   CurrentWaveIndex: 0
   EnemyControllers: []
+  EnemyPoolHolder: {fileID: 0}
   EnemyPrefab: {fileID: 0}
+--- !u!1001 &1633159873
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374735841141328768, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226443746867344567, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: rotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079621845262104066, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      propertyPath: m_Name
+      value: CardHolder
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 310919404455271678, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 942260414564627233, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 9143936893335206380, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 846436668011990422, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
 --- !u!1 &1675332536
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,7 +1053,7 @@ MonoBehaviour:
   DiscardPile: []
   GraveyardPile: []
   HandSize: 5
-  CardPrefab: {fileID: 9057030435038561765, guid: b5331b73c7bcb994d875b15ed4185fac, type: 3}
+  CardPrefab: {fileID: 9079621845262104066, guid: 7b9bbeebb66084d44a0b22f14310c5f6, type: 3}
   Transform: {fileID: 2095127060}
   TestCard: {fileID: 11400000, guid: af3ba106400a0b44a8d1a079ac2882ac, type: 2}
 --- !u!114 &2137145490
@@ -1120,3 +1210,4 @@ SceneRoots:
   - {fileID: 597875006}
   - {fileID: 8104996812417365408}
   - {fileID: 375227987941715456}
+  - {fileID: 1633159873}

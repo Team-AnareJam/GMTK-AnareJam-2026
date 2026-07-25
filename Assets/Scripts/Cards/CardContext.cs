@@ -10,7 +10,7 @@ public class CardContext
     public Vector2 MousePosInWorld;
     public Vector2 AimingDirection => ( MousePosInWorld - PlayerPosition).normalized;
     public PlayerUIManager playerUI;
-    //hovering enemy;
+    public PlayerMovement playerMovement;
 
     [SerializeField] private List<CardPrefab> CardPrefabs;
 

@@ -18,6 +18,8 @@ public class MagicSwirlLogic : CardLogic
     {
         var go = ContextManager.InstantiateObject(Prefab);
         var sw = go.GetComponent<MagicSwirl>();
+        //TODO: remove cost from timer
+
         sw.Init(ctx.MousePosInWorld, Duration, Cooldown, Damage, Radius);
     }
 

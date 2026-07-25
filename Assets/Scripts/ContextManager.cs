@@ -6,6 +6,7 @@ public class ContextManager : MonoBehaviour
     public static ContextManager Instance;
     public CardContext CardCtx;
     [SerializeField] private PlayerUIManager playerUI;
+    [SerializeField] private PlayerMovement playerMovement;
 
     private void Awake()
     {
