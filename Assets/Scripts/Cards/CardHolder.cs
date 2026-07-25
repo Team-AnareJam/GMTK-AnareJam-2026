@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -16,14 +17,19 @@ public class CardHolder : MonoBehaviour
     [SerializeField] private float PreviewYOffset;
     
     [SerializeField] private float TargetScale;
-    [SerializeField]private SpriteRenderer Background;
-    [SerializeField]private SpriteRenderer CardArt;
-    [SerializeField]private TMP_Text Cost;
-    [SerializeField]private TMP_Text Name;
-    [SerializeField]private TMP_Text Description;
-    [SerializeField]private TMP_Text Credits;
+    [SerializeField] private SpriteRenderer CardBorder;
+    [SerializeField] private SpriteRenderer CardArt;
+    [SerializeField]private SpriteRenderer CardArtBG;
+    [SerializeField] private TMP_Text Cost;
+    [SerializeField] private TMP_Text Name;
+    [SerializeField] private TMP_Text Description;
+    [SerializeField] private TMP_Text Credits;
     [SerializeField] private bool Shop;
-    
+    [SerializeField] private bool Flipped;
+
+    [SerializeField] private Sprite Attack;
+    [SerializeField] private Sprite Skill;
+    [SerializeField] private Sprite Status;
     public void Init(Card card, int index)
     {
         Card = card;
@@ -38,10 +44,17 @@ public class CardHolder : MonoBehaviour
 
     private void ShowCard()
     {
-        Background.sprite = Card.Background;
+        CardBorder.sprite = Card.Background;
         CardArt.sprite = Card.Art;
         Cost.text = $"{Card.Cost}";
         Name.text = Card.Name;
+        CardArtBG.sprite = Card.cardType switch
+        {
+            CardType.Attack => Attack,
+            CardType.Skill => Skill,
+            CardType.Status => Status,
+            _ => throw new ArgumentOutOfRangeException()
+        };
         Description.text = Card.Description;
         Credits.text = Card.Credits;
     }
@@ -96,6 +109,5 @@ public class CardHolder : MonoBehaviour
     public void ToggleHover(bool toggle)
     {
         IsPreviewing = toggle;
-        //transform.localScale = IsPreviewing ? scale * 1.5f : scale;
     }
 }

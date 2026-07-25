@@ -14,6 +14,7 @@ namespace Cards
         [SerializeField] private List<CardHolderHolderHolder> Cards;
         [SerializeField] private GameObject CardPrefab;
         [SerializeField] private GameObject Hand;
+        [SerializeField] private GameObject Button;
         [SerializeField] private Button button;
         [SerializeField] private PlayerDeck Deck;
         [SerializeField] private float bonusCardLuck;
@@ -67,6 +68,7 @@ namespace Cards
         {
             Cards[3].CardHolderHolder.SetActive(BonusCard);
             Hand.SetActive(false);
+            Button.SetActive(true);
             CardSeller.SetActive(true);
         }
 
@@ -81,6 +83,7 @@ namespace Cards
             Time.timeScale = 1;
             InputManager.Instance.ToggleActionMap(InputManager.Actions.Player);
             Hand.SetActive(true);
+            Button.SetActive(false);
             Deck.AddCard(Cards[SelectedCard].CardHolder.Card);
             CardSeller.SetActive(false);
         }
