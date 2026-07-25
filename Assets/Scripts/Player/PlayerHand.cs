@@ -186,6 +186,7 @@ public class PlayerHand : MonoBehaviour
         }
     }
 
+    [Button]
     private void Reposition()
     {
         for (var i = 0; i < CardsInHand.Count; i++)
