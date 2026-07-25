@@ -16,14 +16,19 @@ public abstract class CardLogic : ScriptableObject
         var classes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes())
             .Where(cs => typeof(CardLogic).IsAssignableFrom(cs) && cs != typeof(CardLogic) && !cs.IsAbstract);
 
+        string asset = "";
         foreach (var cs in classes)
         {
-            if (AssetDatabase.AssetPathExists($"Assets/Data/CardLogics/{cs}.asset"))
+            if (AssetDatabase.FindAssets($"t:{cs}").Length > 0)
             {
+                asset += $"Found {cs}\n";
                 continue;
             }
+
+            asset += $"Did not find {cs}, Creating...\n";
             var cl = CreateInstance(cs);
             AssetDatabase.CreateAsset(cl, $"Assets/Data/CardLogics/{cs}.asset");
         }
+        Debug.Log(asset);
     }
 }

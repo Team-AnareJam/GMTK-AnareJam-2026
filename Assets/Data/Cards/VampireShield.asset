@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 541635f715df02440a46ced586c66caf, type: 3}
-  m_Name: SkillCard
+  m_Name: VampireShield
   m_EditorClassIdentifier: Assembly-CSharp::Card
   ID: VampireShield
   Name: Vampire Shield

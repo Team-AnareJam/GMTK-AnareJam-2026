@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeartseekerLogic
   Prefab: {fileID: 8999080769508439552, guid: 0bf97bd50663d2046b7140360a29daf5, type: 3}
   Damage: 10
-  Duration: 0
+  Duration: 10
   CritChance: 10
   Speed: 8
   Size: 1.5

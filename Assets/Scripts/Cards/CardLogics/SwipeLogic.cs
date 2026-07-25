@@ -5,9 +5,10 @@ using UnityEngine;
 public class SwipeLogic : CardLogic
 {
     public float Distance;
-    public float SwipeSpeed;
+    public float Duration;
     public float Damage;
     public float AngleWidth;
+    public float Size;
     public override void Visualize()
     {
         
@@ -16,6 +17,6 @@ public class SwipeLogic : CardLogic
     {
         var go = ContextManager.InstantiateObject(Prefab);
         var sw = go.GetComponent<Swipe>();
-        sw.Init(ctx.MousePosInWorld, Distance, SwipeSpeed, Damage, AngleWidth);
+        sw.Init(ctx.MousePosInWorld, Distance, Duration, Damage, AngleWidth, Size);
     }
 }

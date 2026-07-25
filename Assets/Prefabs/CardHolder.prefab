@@ -1016,8 +1016,8 @@ MonoBehaviour:
   nextPos: 0
   moveSpeed: 4067
   previewZValue: -50
-  PreviewYOffset: 300
-  TargetScale: 2
+  PreviewYOffset: 200
+  TargetScale: 1.5
   CardBorder: {fileID: 3628039078326613074}
   CardArt: {fileID: 7757639864805473065}
   CardArtBG: {fileID: 1238819922901414067}
@@ -1027,6 +1027,9 @@ MonoBehaviour:
   Credits: {fileID: 6516387098930546028}
   Shop: 0
   Flipped: 0
+  AttackBorder: {fileID: 21300000, guid: 8fde6e8e1a767b34881f17007ed7b95f, type: 3}
+  SkillBorder: {fileID: 21300000, guid: 35bf60ea2d3da3a448411661bc500114, type: 3}
+  StatusBorder: {fileID: 21300000, guid: f8c88edd3cfe133448aac1294e449f62, type: 3}
   Attack: {fileID: 21300000, guid: ecd634bb25235014ebb30950a3bdd250, type: 3}
   Skill: {fileID: 21300000, guid: 0401ad83c3d7d7e468000f37113cc77f, type: 3}
   Status: {fileID: 21300000, guid: 60308fd5ad103e24196bc9499632eb81, type: 3}

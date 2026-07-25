@@ -30,6 +30,10 @@ public class CardHolder : MonoBehaviour
     [SerializeField] private bool Shop;
     [SerializeField] private bool Flipped;
 
+    [SerializeField] private Sprite AttackBorder;
+    [SerializeField] private Sprite SkillBorder;
+    [SerializeField] private Sprite StatusBorder;
+    
     [SerializeField] private Sprite Attack;
     [SerializeField] private Sprite Skill;
     [SerializeField] private Sprite Status;
@@ -48,7 +52,13 @@ public class CardHolder : MonoBehaviour
 
     private void ShowCard()
     {
-        CardBorder.sprite = Card.Background;
+        CardBorder.sprite = Card.cardType switch
+        {
+            CardType.Attack => AttackBorder,
+            CardType.Skill => SkillBorder,
+            CardType.Status => StatusBorder,
+            _ => throw new ArgumentOutOfRangeException()
+        };
         CardArt.sprite = Card.Art;
         Cost.text = $"{Card.Cost}";
         Name.text = Card.Name;

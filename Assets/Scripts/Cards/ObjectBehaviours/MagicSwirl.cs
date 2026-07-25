@@ -33,7 +33,6 @@ namespace Cards.ObjectBehaviours
             if (!(TimeSinceLastDamage > Cooldown)) return;
             TimeSinceLastDamage = 0;
             var x = Physics.OverlapSphere(transform.position, Radius,mask);
-            Debug.Log(x.Length);
             if (x.Length > 0)
             {
                 foreach (var hit in x)

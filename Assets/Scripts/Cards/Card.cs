@@ -12,7 +12,6 @@ public class Card : ScriptableObject
     public float Cost;
     public Sprite Art;
     public string Description;
-    [HideInInspector] public Sprite Background;
     public string Credits;
     public CardLogic Logic;
 
@@ -30,7 +29,6 @@ public class Card : ScriptableObject
         Cost = reference.Cost;
         Art = reference.Art;
         Description = reference.Description;
-        Background = reference.Background;
         Credits = reference.Credits;
         Logic = reference.Logic;
     }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728c829e4b90aa647a9ddb0a1ee1f527, type: 3}
   m_Name: SwipeLogic
   m_EditorClassIdentifier: Assembly-CSharp::SwipeLogic
-  Prefab: {fileID: 0}
-  Cost: 0
-  Distance: 0
-  SwipeSpeed: 0
-  Damage: 0
-  AngleWidth: 0
+  Prefab: {fileID: 8999080769508439552, guid: 10ed21c39d8d6314fa8c082aa7fed5dc, type: 3}
+  Distance: 500
+  Duration: 0.2
+  Damage: 5
+  AngleWidth: 180
+  Size: 2

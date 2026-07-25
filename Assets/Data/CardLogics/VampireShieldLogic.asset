@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9173d9653844d1796a713c5dddf541d, type: 3}
   m_Name: VampireShieldLogic
   m_EditorClassIdentifier: Assembly-CSharp::VampireShieldLogic
-  Prefab: {fileID: 0}
-  Cost: 0
-  Hits: 0
-  TimeRecovered: 0
-  Duration: 0
+  Prefab: {fileID: 5271059936897085521, guid: d78e62ecd1021224c81f3e0182d628c9, type: 3}
+  Hits: 4
+  TimeRecovered: 10
+  Duration: 5

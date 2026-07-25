@@ -53,7 +53,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 moveTo = MoveAction.ReadValue<Vector2>().normalized * MovementSpeed * MovementMult * Time.fixedDeltaTime;
+        if (InputManager.Instance.currentMap != InputManager.Actions.Player.Get()) return;
+        
+        Vector3 moveTo = MoveAction.ReadValue<Vector2>().normalized * (MovementSpeed * MovementMult * Time.fixedDeltaTime);
         transform.position += moveTo;
+
     }
 }

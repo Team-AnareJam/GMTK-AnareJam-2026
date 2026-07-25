@@ -12,7 +12,7 @@ namespace Cards.ObjectBehaviours
         private float CritChance;
         private float Speed;
         [SerializeField] private SpriteRenderer visual;
-        public void Init(float Damage, float TimeToDie, float critChance, float speed, Vector2 direction, float size)
+        public void Init(float Damage, float TimeToDie, float critChance, float speed, Vector2 direction, float size, CardContext ctx)
         {
             dmg = Damage;
             Destroy(gameObject, TimeToDie);
@@ -21,6 +21,7 @@ namespace Cards.ObjectBehaviours
             Speed = speed;
             transform.localRotation = Quaternion.Euler(0, 0, Vector2.Angle(Vector2.down, dir));
             transform.localScale *= size;
+            transform.position = ctx.PlayerPosition;
         }
 
         private void OnTriggerEnter(Collider other)

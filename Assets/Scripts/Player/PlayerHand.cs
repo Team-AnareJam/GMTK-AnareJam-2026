@@ -19,7 +19,7 @@ public class PlayerHand : MonoBehaviour
     private Vector2 Center => Transform.rect.center;
     private float LeftSide => Center.x - Width / 2;
     private float RightSide => LeftSide + Width;
-    private int SelectedIndex;
+    private int SelectedIndex = -1;
 
     private void OnEnable()
     {
@@ -113,16 +113,19 @@ public class PlayerHand : MonoBehaviour
 
     public void CastCard()
     {
-        CardsInHand[SelectedIndex].Card.Logic.Play();
-        Destroy(CardsInHand[SelectedIndex].gameObject);
-        switch (CardsInHand[SelectedIndex].Card.playType)
+        if (SelectedIndex <0) return;
+        var PlayedCard = CardsInHand[SelectedIndex];
+        PlayedCard.Card.Logic.Play();
+        TimerManager.Instance.UpdateTimer(-PlayedCard.Card.Cost);
+        Destroy(PlayedCard.gameObject);
+        switch (PlayedCard.Card.playType)
         {
             case PlayType.Grave:
-                GraveyardPile.Add(CardsInHand[SelectedIndex].Card);
+                GraveyardPile.Add(PlayedCard.Card);
                 break;
             case PlayType.Discard:
             default:    
-                DiscardPile.Add(CardsInHand[SelectedIndex].Card);
+                DiscardPile.Add(PlayedCard.Card);
                 break;
         }
         CardsInHand.RemoveAt(SelectedIndex);
@@ -133,6 +136,8 @@ public class PlayerHand : MonoBehaviour
                 DrawCard();
             }
         }
+
+        SelectedIndex = -1;
         Reposition();
     }
 
@@ -181,7 +186,7 @@ public class PlayerHand : MonoBehaviour
             if(i == index)
             {
                 CardsInHand[i].ToggleHover(!CardsInHand[i].IsPreviewing);
-                SelectedIndex = i;
+                SelectedIndex = CardsInHand[i].IsPreviewing ? i : -1;
             }
             else
             {

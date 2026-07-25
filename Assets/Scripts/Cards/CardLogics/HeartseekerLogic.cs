@@ -18,6 +18,6 @@ using UnityEngine;
         {
             var go = ContextManager.InstantiateObject(prefab);
             var hs = go.GetComponent<Heartseeker>();
-            hs.Init(Damage, Duration, CritChance, Speed, ctx.AimingDirection, Size);
+            hs.Init(Damage, Duration, CritChance, Speed, ctx.AimingDirection, Size, ctx);
         }
     }

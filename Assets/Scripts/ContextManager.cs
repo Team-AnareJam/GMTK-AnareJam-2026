@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -29,6 +30,11 @@ public class ContextManager : MonoBehaviour
 
     public static GameObject InstantiateObject(GameObject instance)
     {
-        return Instantiate(instance);
+        return Instantiate(instance, new Vector3(0,0,Constants.DEPTH), quaternion.identity);
+    }
+
+    public static GameObject InstantiateObject(GameObject instance, Vector2 position)
+    {
+        return Instantiate(instance, new Vector3(position.x, position.y, Constants.DEPTH), quaternion.identity);
     }
 }
