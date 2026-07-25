@@ -112,8 +112,8 @@ public class WaveManager : MonoBehaviour
         foreach (EnemyDataReference enemy in Waves[CurrentWaveIndex].Enemies)
         {
             EnemyController enemyController = EnemyPool.Get();
-            enemyController.DataRef = enemy;
-            enemyController.Init();
+            enemyController.name = enemy.name;
+            enemyController.Init(enemy);
             EnemyControllers.Add(enemyController);
             enemyController.gameObject.transform.parent = EnemyPoolHolder.transform;
             enemyController.gameObject.transform.position = new Vector3(0, 0, 10); //TODO: SPAWN POSITION

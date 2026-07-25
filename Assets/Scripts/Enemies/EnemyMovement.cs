@@ -6,10 +6,14 @@ public class EnemyMovement : MonoBehaviour
     public Vector2 MovementTarget;
     public float MovementSpeed;
     [SerializeField] private Rigidbody rb;
+    public void Init(float speed)
+    {
+        MovementSpeed = speed;
+    }
 
     private void FixedUpdate()
     {
-        Vector2 dir = (Vector2)transform.position - MovementTarget;
+        Vector2 dir = MovementTarget - (Vector2)transform.position;
         if (dir.magnitude > 0.1f)
         {
             float speedMod = Mathf.Clamp(dir.magnitude, 0.1f, 1f);

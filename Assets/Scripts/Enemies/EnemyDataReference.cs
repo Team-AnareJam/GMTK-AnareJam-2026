@@ -8,28 +8,29 @@ public class EnemyDataReference : ScriptableObject
 {
     public EnemyData Data;
 
-    public EnemyData GetCopy()
-    {
-        return new EnemyData(Data);
-    }
+    public EnemyData GetCopy() =>new EnemyData(Data);
 }
 
 [Serializable]
 public class EnemyData
 {
-    [SerializeField] public List<TaskObject> Tasks;
-    [SerializeField] public float MovementDistance;
-    [SerializeField] public float TaskDelay;
+    public Sprite Sprite;
+    public List<TaskObject> Tasks;
+    public float MovementSpeed;
+    public float MovementDistance;
+    public float TaskDelay;
 
     
-    [SerializeField] public bool IsMelee;
-    [SerializeField] public int HP;
-    [SerializeField] public int AttackPower;
-    [SerializeField] public float MaxAttackTime;
+    public bool IsMelee;
+    public int HP;
+    public int AttackPower;
+    public float MaxAttackTime;
 
     public EnemyData(EnemyData data)
     {
+        this.Sprite = data.Sprite;
         Tasks = new List<TaskObject>(data.Tasks);
+        MovementSpeed = data.MovementSpeed;
         MovementDistance = data.MovementDistance;
         TaskDelay = data.TaskDelay; 
         IsMelee = data.IsMelee;

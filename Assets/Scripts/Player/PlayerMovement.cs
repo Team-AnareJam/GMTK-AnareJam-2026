@@ -39,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
+    private void Awake()
+    {
+        ContextManager.Instance.CardCtx.PlayerPosition = transform.position;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

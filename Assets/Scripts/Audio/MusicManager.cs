@@ -33,6 +33,7 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
+        if (!playingMusic) return;
         StartIntroSong();
     }
 
@@ -41,7 +42,7 @@ public class MusicManager : MonoBehaviour
         if (AudioSettings.dspTime > GoalTime - 5)
         {
             string nextClip = NextClip + (Intense ? "INTENSE" : "DEFAULT");
-            if (!MusicLib.MusicClips.Any(SFX => SFX.Name == nextClip)) { Debug.Log("fail"); return; }
+            if (!MusicLib.MusicClips.Any(SFX => SFX.Name == nextClip)) return;
             CurrentClip = MusicLib.MusicClips.First(SFX => SFX.Name == nextClip);
             PlayScheduledClip();
         }

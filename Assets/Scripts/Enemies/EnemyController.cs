@@ -1,12 +1,14 @@
 using Enemies;
 using NaughtyAttributes;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IDamageable
 {
     public EnemyDataReference DataRef;
-    [SerializeField]private EnemyData data;
+    [SerializeField] private EnemyData data;
+    [SerializeField] private SpriteRenderer rend;
 
     [SerializeField] EnemyMovement movement;
     [SerializeField] private Vector3 playerPosition;
@@ -19,7 +21,17 @@ public class EnemyController : MonoBehaviour, IDamageable
     [Button]
     public void Init()
     {
-        data = DataRef.GetCopy();
+        Init(DataRef);
+    }
+    public void Init(EnemyDataReference reference)
+    {
+        playerPosition = ContextManager.Instance.CardCtx.PlayerPosition;
+        DataRef = reference;
+        data = reference.GetCopy();
+        rend.sprite = data.Sprite;
+        movement.Init(data.MovementSpeed);
+        currentTask = ETask.Idle;
+        Evaluate();
     }
     public DamageInstance TakeDamage(DamageInstance instance)
     {
@@ -30,6 +42,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     }
     private void FixedUpdate()
     {
+        playerPosition = ContextManager.Instance.CardCtx.PlayerPosition;
         if (data == null) return;
         if (data.IsMelee)
         {
@@ -50,14 +63,16 @@ public class EnemyController : MonoBehaviour, IDamageable
         if (data == null) return;
         if (timestamp + data.TaskDelay <= Time.time)
         {
-            timestamp = Time.time;
-            ETask task = EvaluateTask();
-            if (currentTask != task)
-            {
-                currentTask = task;
-                PerformTask(currentTask);
-            }
+            Evaluate();
         }
+    }
+
+    private void Evaluate()
+    {
+        timestamp = Time.time;
+        ETask task = EvaluateTask();
+        currentTask = task;
+        PerformTask(currentTask);
     }
     private ETask EvaluateTask()
     {
@@ -94,13 +109,17 @@ public class EnemyController : MonoBehaviour, IDamageable
                 Debug.Log("Attack!");
                 break;
             case ETask.MoveCloser:
+                Debug.Log("MoveCloser!");
+                Debug.Log(movement.MovementTarget + " = " + playerPosition);
                 movement.MovementTarget = playerPosition;
                 break;
             case ETask.MoveFurther:
+                Debug.Log("MoveCloser!");
                 Vector2 pos = (playerPosition - transform.position) * -1 * data.MovementDistance;
                 movement.MovementTarget = pos;
                 break;
             case ETask.Strafe:
+                Debug.Log("Move... strafer?");
                 Vector2 strafePos = Vector2.Perpendicular((playerPosition - transform.position).normalized) 
                     * data.MovementDistance * (Random.Range(0, 2) == 0 ? 1 : -1);
                 movement.MovementTarget = strafePos;

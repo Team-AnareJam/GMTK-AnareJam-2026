@@ -8,16 +8,9 @@ public class CardContext
 {
     public Vector2 PlayerPosition;
     public Vector2 MousePosInWorld;
-    public Vector2 AimingDirection => ( MousePosInWorld - PlayerPosition).normalized;
-    public PlayerUIManager playerUI;
-    public PlayerMovement playerMovement;
-
-    [SerializeField] private List<CardPrefab> CardPrefabs;
-
-    public GameObject GetPrefab(string Name)
-    {
-        return CardPrefabs.First(go => go.Name == Name).Object;
-    }
+    public Vector2 AimingDirection => (MousePosInWorld - PlayerPosition).normalized;
+    [HideInInspector] public PlayerUIManager playerUI;
+    [HideInInspector] public PlayerMovement playerMovement;
 }
 
 [Serializable]

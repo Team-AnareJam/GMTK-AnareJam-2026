@@ -26,6 +26,7 @@ public class ContextManager : MonoBehaviour
         CardCtx = new();
         CardLogic.ctx = CardCtx;
         CardLogic.ctx.playerUI = playerUI;
+        CardLogic.ctx.playerMovement = playerMovement;
     }
 
     public static GameObject InstantiateObject(GameObject instance)

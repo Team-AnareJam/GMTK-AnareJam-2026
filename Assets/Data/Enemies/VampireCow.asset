@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ce0e66fff15f8146a67e65f5d23b044, type: 3}
-  m_Name: Dummy
+  m_Name: VampireCow
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataReference
   Data:
-    Sprite: {fileID: 21300000, guid: 259d8d3c8e81c574690bb7c872535dbb, type: 3}
+    Sprite: {fileID: 21300000, guid: 0a3863d2c845340429b83ef867ccc7d9, type: 3}
     Tasks:
+    - Task: 2
+      Condition: 0
+      ConditionValue: 0.5
     - Task: 0
       Condition: 1
-      ConditionValue: 10
-    MovementSpeed: 0
-    MovementDistance: 0
-    TaskDelay: 9999
-    IsMelee: 0
-    HP: 999999999
-    AttackPower: 0
-    MaxAttackTime: 9999
+      ConditionValue: 0.5
+    MovementSpeed: 10
+    MovementDistance: 5
+    TaskDelay: 4
+    IsMelee: 1
+    HP: 10
+    AttackPower: 1
+    MaxAttackTime: 0.5
