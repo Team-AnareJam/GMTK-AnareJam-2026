@@ -23,6 +23,7 @@ public class CardHolder : MonoBehaviour
     [SerializeField] private SpriteRenderer CardBorder;
     [SerializeField] private SpriteRenderer CardArt;
     [SerializeField] private SpriteRenderer CardArtBG;
+    [SerializeField] private SpriteRenderer CardRaritySprite;
     [SerializeField] private TMP_Text Cost;
     [SerializeField] private TMP_Text Name;
     [SerializeField] private TMP_Text Description;
@@ -30,6 +31,11 @@ public class CardHolder : MonoBehaviour
     [SerializeField] private bool Shop;
     [SerializeField] private bool Flipped;
 
+    [SerializeField] private Sprite Common;
+    [SerializeField] private Sprite Rare;
+    [SerializeField] private Sprite SuperRare;
+    [SerializeField] private Sprite Legendary;
+    
     [SerializeField] private Sprite AttackBorder;
     [SerializeField] private Sprite SkillBorder;
     [SerializeField] private Sprite StatusBorder;
@@ -69,6 +75,16 @@ public class CardHolder : MonoBehaviour
             CardType.Status => Status,
             _ => throw new ArgumentOutOfRangeException()
         };
+
+        CardRaritySprite.sprite = Card.cardRarity switch
+        {
+            CardRarity.Common => Common,
+            CardRarity.Rare => Rare,
+            CardRarity.SuperRare => SuperRare,
+            CardRarity.Legendary => Legendary,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+        
         Description.text = Card.Description;
         Credits.text = Card.Credits;
     }

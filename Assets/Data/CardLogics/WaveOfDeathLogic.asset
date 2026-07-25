@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c134efe42c1f488da422e837fb233bed, type: 3}
   m_Name: WaveOfDeathLogic
   m_EditorClassIdentifier: Assembly-CSharp::WaveOfDeathLogic
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 4397743328201574406, guid: b12057d75381b1c4f8c949131d0f5e2f, type: 3}
+  Duration: 10
+  Size: 1
+  Damage: 3
+  Speed: 1
+  AddedTime: 5
