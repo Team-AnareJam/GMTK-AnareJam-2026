@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206a84633f941b04f8d0f53be0a94bf9, type: 3}
   m_Name: MagicSwirlLogic
   m_EditorClassIdentifier: Assembly-CSharp::MagicSwirlLogic
-  Prefab: {fileID: 0}
-  Cost: 0
-  Duration: 5
-  Cooldown: 0
-  Damage: 0
-  Radius: 0
+  Prefab: {fileID: 8999080769508439552, guid: 424b573eede0c4d4badfa1e89d025cfb, type: 3}
+  Cost: 5
+  Duration: 10
+  Cooldown: 1
+  Damage: 4
+  Radius: 2

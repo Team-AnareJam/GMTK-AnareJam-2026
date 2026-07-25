@@ -23,4 +23,4 @@ MonoBehaviour:
     double damage.
   Background: {fileID: 21300000, guid: 8fde6e8e1a767b34881f17007ed7b95f, type: 3}
   Credits: Blue
-  Logic: {fileID: 0}
+  Logic: {fileID: 11400000, guid: b043055282cc3bf49b0e3ffc92f01fb1, type: 2}

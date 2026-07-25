@@ -7,12 +7,11 @@ public abstract class CardLogic : ScriptableObject
 {
     public static CardContext ctx;
     [SerializeField] protected GameObject Prefab;
-    public int Cost;
     public abstract void Visualize();
     public abstract void Play();
 
     [ContextMenu("CardLogic/Generate Logics")]
-    private void Generate()
+    protected void Generate()
     {
         var classes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes())
             .Where(cs => typeof(CardLogic).IsAssignableFrom(cs) && cs != typeof(CardLogic) && !cs.IsAbstract);
