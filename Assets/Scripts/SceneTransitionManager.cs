@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class SceneTransitionManager : MonoBehaviour
 {
     public static SceneTransitionManager Instance;
+    [SerializeField] private GameData gameData;
+    [SerializeField] private Material backgroundMat;
+    private WaveManager waveManager;
 
     private void Awake()
     {
@@ -55,7 +58,15 @@ public class SceneTransitionManager : MonoBehaviour
             CurrentFade = 1;
             TransitionToScene();
         }
-
+        waveManager = (WaveManager)GameObject.FindAnyObjectByType(typeof(WaveManager));
+        if(gameData != null  && backgroundMat != null)
+        {
+            if (waveManager != null)
+            {
+                backgroundMat.SetTexture("_background", gameData.Levels[gameData.CurrentLevel].BackgroundTexture);
+                waveManager.Waves = gameData.Levels[gameData.CurrentLevel].Waves;
+            }
+        }
         if (!FadingIn && CurrentFade <= 0)
         {
             CurrentFade = 0;
