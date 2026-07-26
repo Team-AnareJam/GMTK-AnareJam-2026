@@ -76,7 +76,7 @@ namespace Cards
             for (int i = 0; i < Cards.Count - (BonusCard ? 0 : 1); i++)
             {
                 Cards[i].CardHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
-                Cards[i].CardHolder.rotate(false, .1f, i * 0.2f + 0.2f);
+                Cards[i].CardHolder.Rotate(false, .1f, i * 0.2f + 0.2f);
             }
         }
 

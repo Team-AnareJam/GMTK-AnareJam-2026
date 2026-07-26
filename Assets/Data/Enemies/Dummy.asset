@@ -21,7 +21,7 @@ MonoBehaviour:
     MovementSpeed: 0
     MovementDistance: 0
     TaskDelay: 9999
-    IsMelee: 0
+    IsMelee: 1
     HP: 999999999
-    AttackPower: 0
-    MaxAttackTime: 9999
+    AttackPower: 1
+    MaxAttackTime: 1

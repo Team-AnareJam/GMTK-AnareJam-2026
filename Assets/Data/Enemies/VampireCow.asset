@@ -26,5 +26,5 @@ MonoBehaviour:
     TaskDelay: 4
     IsMelee: 1
     HP: 10
-    AttackPower: 1
+    AttackPower: 2
     MaxAttackTime: 0.5

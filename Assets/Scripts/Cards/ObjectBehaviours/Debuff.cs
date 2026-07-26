@@ -55,7 +55,9 @@ public class Debuff : MonoBehaviour
 
     private void ConfuseCard(CardHolder card)
     {
-
+        card.Rotate(true, 0.01f, 0);
+        count--;
+        if (count <= 0) End();
     }
 
     private void End()

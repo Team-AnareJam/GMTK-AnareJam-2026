@@ -93,7 +93,7 @@ public class CardHolder : MonoBehaviour
     private float progress;
     [SerializeField] private float FlipTime;
     
-    public void rotate(bool flip, float RotationSpeed, float WaitTime)
+    public void Rotate(bool flip, float RotationSpeed, float WaitTime)
     {
         StartCoroutine(RotateCard(flip, RotationSpeed,WaitTime));
     }
