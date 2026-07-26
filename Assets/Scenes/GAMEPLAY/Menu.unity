@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionManager
   GameData: {fileID: 11400000, guid: d0589af61f6ce30419447ee574f78bd8, type: 2}
-  backgroundMat: {fileID: -876546973899608171, guid: f4a660fadeeaa694ba5809146ef7e774, type: 3}
+  backgroundMat: {fileID: 2100000, guid: fa1ba706986f3a04eae9f6eddc533cba, type: 2}
   TransitionHasStarted: 0
   SceneToTransitionTo: 
   FadingIn: 1

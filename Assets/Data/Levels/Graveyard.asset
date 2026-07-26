@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 417311346aca99c46993b3e9583423ba, type: 2}
   - {fileID: 11400000, guid: 9f298f4010f0f2543a363bd1fac01471, type: 2}
   - {fileID: 11400000, guid: 417311346aca99c46993b3e9583423ba, type: 2}
-  SpawnBoss: 0
+  SpawnBoss: 1

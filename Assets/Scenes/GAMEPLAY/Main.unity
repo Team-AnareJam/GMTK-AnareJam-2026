@@ -1610,7 +1610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
   gameData: {fileID: 11400000, guid: d0589af61f6ce30419447ee574f78bd8, type: 2}
-  BossRef: {fileID: 0}
+  BossRef: {fileID: 11400000, guid: c2984f555df5e71469d03c89c02c0b80, type: 2}
   Waves:
   - {fileID: 11400000, guid: 417311346aca99c46993b3e9583423ba, type: 2}
   CurrentWave: {fileID: 0}

@@ -77,19 +77,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!CanMove) return;
-        if (InputManager.Instance.currentMap != InputManager.Actions.Player.Get()) return;
-
-        Vector2 dir = MoveAction.ReadValue<Vector2>();
-        camTarget.transform.position = transform.position + (Vector3)(dir * camTargetDist);
-        if (dir.magnitude > 0.1f)
+        if (CanMove)
         {
-            rb.linearVelocity = dir.normalized * (MovementSpeed * MovementMult);
+            if (InputManager.Instance.currentMap != InputManager.Actions.Player.Get()) return;
+
+            Vector2 dir = MoveAction.ReadValue<Vector2>();
+            camTarget.transform.position = transform.position + (Vector3)(dir * camTargetDist);
+            if (dir.magnitude > 0.1f)
+            {
+                rb.linearVelocity = dir.normalized * (MovementSpeed * MovementMult);
+            }
+            else
+            {
+                rb.linearVelocity = Vector3.zero;
+            }
         }
         else
         {
             rb.linearVelocity = Vector3.zero;
         }
+        
 
     }
 }
