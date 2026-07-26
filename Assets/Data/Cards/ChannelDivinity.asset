@@ -17,7 +17,7 @@ MonoBehaviour:
   cardRarity: 3
   cardType: 1
   playType: 0
-  Cost: 180
+  Cost: 60
   Art: {fileID: 21300000, guid: 0a3863d2c845340429b83ef867ccc7d9, type: 3}
   Description: Kills all enemies.
   Credits: Jano

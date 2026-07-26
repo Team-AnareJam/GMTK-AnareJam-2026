@@ -30,7 +30,7 @@ MonoBehaviour:
     IsMelee: 0
     HP: 10
     AttackPower: 5
-    MaxAttackTime: 5
+    MaxAttackTime: 3
     ProjectilePrefab: {fileID: 383972123340452049, guid: f840016cdf5236547a6961703c22856c, type: 3}
     Scale: 1
     Speed: 4

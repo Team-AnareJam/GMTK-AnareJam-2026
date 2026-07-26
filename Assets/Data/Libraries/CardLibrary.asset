@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: CardLibrary
   m_EditorClassIdentifier: Assembly-CSharp::CardLibrary
   Cards:
+  - {fileID: 11400000, guid: fd68608ded151444fa145cb3f11b293c, type: 2}
   - {fileID: 11400000, guid: 6021636a9c937c347a9edac02fb02f45, type: 2}
   - {fileID: 11400000, guid: 6dea7b7cc47a80b41b695bd74a5ede21, type: 2}
   - {fileID: 11400000, guid: 3ffbbf890ad0e174eb8ee50028ee77bb, type: 2}
   - {fileID: 11400000, guid: 2be8ff2f32056b2499c46905281d8f9b, type: 2}
   - {fileID: 11400000, guid: f24d45bba9cafae4884fa29d4908fed1, type: 2}
   - {fileID: 11400000, guid: e5ea15cf5ad1ddc45abfc590859c63f5, type: 2}
-  - {fileID: 11400000, guid: 7b588e42ba06c104482dccacbc046904, type: 2}
   - {fileID: 11400000, guid: 5bb5c9a40db9ebb4a80eb0125cf1ce45, type: 2}
-  - {fileID: 11400000, guid: af3ba106400a0b44a8d1a079ac2882ac, type: 2}
   - {fileID: 11400000, guid: 9d9268a373fafe342bf91b4b99a5c73c, type: 2}
   - {fileID: 11400000, guid: 61cfcb79bb557a14786e37aa594ca723, type: 2}

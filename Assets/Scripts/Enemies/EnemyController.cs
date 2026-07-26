@@ -131,17 +131,13 @@ public class EnemyController : MonoBehaviour, IDamageable
                 }
                 break;
             case ETask.MoveCloser:
-                Debug.Log("MoveCloser!");
-                Debug.Log(movement.MovementTarget + " = " + playerPosition);
                 movement.MovementTarget = playerPosition;
                 break;
             case ETask.MoveFurther:
-                Debug.Log("MoveFart!");
                 Vector2 pos = (playerPosition - transform.position) * (-1 * data.MovementDistance);
                 movement.MovementTarget = pos;
                 break;
             case ETask.Strafe:
-                Debug.Log("Move... strafer?");
                 Vector2 strafePos = Vector2.Perpendicular((playerPosition - transform.position).normalized) *
                                     (data.MovementDistance * (Random.Range(0, 2) == 0 ? 1 : -1));
                 movement.MovementTarget = strafePos;

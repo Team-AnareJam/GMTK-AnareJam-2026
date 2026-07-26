@@ -22,6 +22,11 @@ MonoBehaviour:
     MovementDistance: 0
     TaskDelay: 9999
     IsMelee: 1
-    HP: 999999999
+    HP: 5
     AttackPower: 1
     MaxAttackTime: 1
+    ProjectilePrefab: {fileID: 0}
+    Scale: 0
+    Speed: 0
+    Lifetime: 0
+    ProjectileSprite: {fileID: 0}

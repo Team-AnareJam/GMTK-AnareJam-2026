@@ -18,9 +18,6 @@ MonoBehaviour:
     - Task: 2
       Condition: 0
       ConditionValue: 0.5
-    - Task: 0
-      Condition: 1
-      ConditionValue: 0.5
     MovementSpeed: 10
     MovementDistance: 5
     TaskDelay: 4
@@ -28,3 +25,8 @@ MonoBehaviour:
     HP: 10
     AttackPower: 2
     MaxAttackTime: 0.5
+    ProjectilePrefab: {fileID: 0}
+    Scale: 0
+    Speed: 0
+    Lifetime: 0
+    ProjectileSprite: {fileID: 0}

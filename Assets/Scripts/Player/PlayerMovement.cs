@@ -63,9 +63,14 @@ public class PlayerMovement : MonoBehaviour
     {
         ContextManager.Instance.CardCtx.PlayerPosition = transform.position;
         var move = new Vector2(); 
-        if (!CanMove) MoveAction.ReadValue<Vector2>();
+        if (!CanMove)
+        {
+            return;
+        }
+        move = MoveAction.ReadValue<Vector2>();
         if (move.magnitude > 0.1f)
         {
+            Debug.Log(move.x);
             sr.flipX = move.x < 0;
             anim.Play("Walking");
         }
