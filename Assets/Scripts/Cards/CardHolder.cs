@@ -166,6 +166,7 @@ public class CardHolder : MonoBehaviour
 
     public void ToggleHover(bool toggle)
     {
+        if (toggle) SoundEffectsManager.Instance.PlaySound("HoverCard");
         IsPreviewing = toggle;
     }
 }

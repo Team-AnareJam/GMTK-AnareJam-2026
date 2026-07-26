@@ -133,8 +133,8 @@ public class TimerManager : MonoBehaviour, IDamageable
         TimeRemaining += seconds;
         IndicatorIsActive = true;
 
-        if (seconds >= 0) activeIndicatorGradient = timeUpGradient;        
-        else activeIndicatorGradient = timeDownGradient;
+        if (seconds >= 0) { activeIndicatorGradient = timeUpGradient; SoundEffectsManager.Instance.PlaySound("TimeUp"); }
+        else { activeIndicatorGradient = timeDownGradient; SoundEffectsManager.Instance.PlaySound("TimeDown"); }
         IndicatorCurrentDuration = IndicatorMaxDuration;
     }
     #endregion
