@@ -9,7 +9,7 @@ public class PlayerHand : MonoBehaviour
     public static event Action<CardHolder> OnDrawCard;
     private PlayerDeck deck;
     [SerializeField] private List<CardHolder> CardsInHand = new();
-    [SerializeField] private List<Card> DrawPile = new();
+    public List<Card> DrawPile = new();
     [SerializeField] private List<Card> DiscardPile = new();
     [SerializeField] private List<Card> GraveyardPile = new();
     public int HandSize;

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 359827674280a5a438aefac097a5675a, type: 3}
+  m_Name: PlayerDeck
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeck
+  Deck:
+  - {fileID: 11400000, guid: 5bb5c9a40db9ebb4a80eb0125cf1ce45, type: 2}
+  - {fileID: 11400000, guid: 5bb5c9a40db9ebb4a80eb0125cf1ce45, type: 2}
+  - {fileID: 11400000, guid: 5bb5c9a40db9ebb4a80eb0125cf1ce45, type: 2}
+  - {fileID: 11400000, guid: fd68608ded151444fa145cb3f11b293c, type: 2}
+  - {fileID: 11400000, guid: 2be8ff2f32056b2499c46905281d8f9b, type: 2}
+  - {fileID: 11400000, guid: 9d9268a373fafe342bf91b4b99a5c73c, type: 2}
+  Hand: {fileID: 0}

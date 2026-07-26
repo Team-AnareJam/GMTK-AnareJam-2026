@@ -12,6 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5556d8aee49f44e8288eb5e4abafcd, type: 3}
   m_Name: L1W2
   m_EditorClassIdentifier: Assembly-CSharp::Wave
-  Name: 
-  Enemies: []
-  SpawnDelay: 0
+  Name: spooky dookies
+  Enemies:
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  SpawnDelay: 0.5

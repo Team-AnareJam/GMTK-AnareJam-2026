@@ -2,20 +2,14 @@ using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDeck : MonoBehaviour
+[CreateAssetMenu(fileName = "PlayerDeck", menuName = "CardLogic/Create Deck")]
+public class PlayerDeck : ScriptableObject
 {
     [SerializeField] private List<Card> Deck;
 
     public List<Card> GetCopy()
     {
         return new List<Card>(Deck);
-    }
-
-    [SerializeField] private string newCardID;
-    [Button]
-    public void AddCardByID()
-    {
-        //cards.Add()
     }
 
     public void AddCard(Card card)

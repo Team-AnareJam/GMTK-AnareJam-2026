@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaxGolem
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataReference
   Data:
-    Sprite: {fileID: 21300000, guid: 259d8d3c8e81c574690bb7c872535dbb, type: 3}
+    Sprite: {fileID: 21300000, guid: 1e959d1e5ebd750459781576d3984231, type: 3}
     Tasks:
     - Task: 3
       Condition: 1
@@ -26,8 +26,13 @@ MonoBehaviour:
       ConditionValue: 10
     MovementSpeed: 2
     MovementDistance: 3
-    TaskDelay: 0.5
+    TaskDelay: 0.1
     IsMelee: 0
     HP: 10
     AttackPower: 5
-    MaxAttackTime: 1
+    MaxAttackTime: 5
+    ProjectilePrefab: {fileID: 383972123340452049, guid: f840016cdf5236547a6961703c22856c, type: 3}
+    Scale: 1
+    Speed: 4
+    Lifetime: 5
+    ProjectileSprite: {fileID: 21300000, guid: ede66dad7dd102c4c8d9f609cf2bc8d2, type: 3}

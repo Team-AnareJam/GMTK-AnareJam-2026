@@ -86,6 +86,7 @@ namespace Cards
             button.interactable = true;
         }
 
+        [SerializeField]private PlayerHand _hand;
         public void CloseStore()
         {
             Time.timeScale = 1;
@@ -94,6 +95,7 @@ namespace Cards
             Button.SetActive(false);
             BG.SetActive(false);
             Deck.AddCard(Cards[SelectedCard].CardHolder.Card);
+            _hand.DrawPile.Add(Cards[SelectedCard].CardHolder.Card);
             CardSeller.SetActive(false);
         }
     }
