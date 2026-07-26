@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject camTarget;
     [SerializeField] private float camTargetDist;
     private InputAction MoveAction;
+    [SerializeField] private Animator anim;
+    [SerializeField] private SpriteRenderer sr;
 
     private void OnEnable()
     {
@@ -53,10 +55,22 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+
+    
     // Update is called once per frame
     void Update()
     {
         ContextManager.Instance.CardCtx.PlayerPosition = transform.position;
+        var move = MoveAction.ReadValue<Vector2>();
+        if (move.magnitude > 0.1f)
+        {
+            sr.flipX = move.x < 0;
+            anim.Play("Walking");
+        }
+        else
+        {
+            anim.Play("Idle");
+        }
     }
 
     private void FixedUpdate()

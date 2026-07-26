@@ -13,10 +13,43 @@ MonoBehaviour:
   m_Name: BatStormLogic
   m_EditorClassIdentifier: Assembly-CSharp::BatStormLogic
   Prefab: {fileID: 487939345719976670, guid: e5f19410d1fb8904a95c9047ed07da6f, type: 3}
-  Count: 5
+  Count: 10
   Size: 1
   Damage: 1
-  ExpansionRate: 1
+  ExpansionRate: 4
   Duration: 1
-  RotationSpeed: 50
-  StartOffset: 1
+  RotationSpeed: 360
+  StartOffset: 0.1
+  Curvy:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.013338947
+      outSlope: -0.013338947
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6265863
+      value: 0.991642
+      inSlope: -0.013338947
+      outSlope: 0.2782985
+      tangentMode: 5
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.61535954
+    - serializedVersion: 3
+      time: 0.9927368
+      value: -0.069992065
+      inSlope: -0.31119525
+      outSlope: -4.9956303
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.51693636
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

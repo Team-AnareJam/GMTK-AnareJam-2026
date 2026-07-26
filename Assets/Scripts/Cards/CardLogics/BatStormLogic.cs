@@ -11,6 +11,7 @@ public class BatStormLogic : CardLogic
     public float Duration;
     public float RotationSpeed;
     public float StartOffset;
+    public AnimationCurve Curvy;
 
     public override void Visualize()
     {
@@ -24,7 +25,7 @@ public class BatStormLogic : CardLogic
             var angle = Mathf.Lerp(0, 360, i / Count);
             var go = Instantiate(Prefab);
             var BS = go.GetComponent<BatStorm>();
-            BS.Init(angle, Size, Damage, ExpansionRate, Duration, RotationSpeed, ctx.playerMovement.transform, StartOffset);
+            BS.Init(angle, Size, Damage, ExpansionRate, Duration, RotationSpeed, ctx.playerMovement.transform, StartOffset, Curvy);
         }
     }
 }

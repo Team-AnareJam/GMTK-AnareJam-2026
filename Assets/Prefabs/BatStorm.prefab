@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330258e8eb6c4a00b0cca9738bc8f0d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cards.ObjectBehaviours.BatStorm
+  sr: {fileID: 2112928413942365411}
 --- !u!1 &3054227178390145259
 GameObject:
   m_ObjectHideFlags: 0
