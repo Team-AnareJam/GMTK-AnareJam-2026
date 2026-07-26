@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dc5043bde235d44b3482ab022a36c4, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: Assembly-CSharp::GameData
-  Levels: []
+  Levels:
+  - {fileID: 11400000, guid: dcd60929c0010a34b8b3e93e5d84e21b, type: 2}
+  - {fileID: 11400000, guid: 9cd56bdeed248854094c9f806b88c327, type: 2}
+  - {fileID: 11400000, guid: 183e67adcf34ecd44b155928901d0fbb, type: 2}
   CurrentLevel: 0
