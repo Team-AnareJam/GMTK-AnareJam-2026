@@ -54,7 +54,7 @@ MonoBehaviour:
     BeatsPerBar: 4
     LoopStartTime: 6
     LoopEndTime: 34
-    NextClip: 3
+    NextClip: 1
   - Name: 3INTENSE
     Clip: {fileID: 8300000, guid: 2d55fecec6ad16c4cbc368be018d003d, type: 3}
     BPM: 120
