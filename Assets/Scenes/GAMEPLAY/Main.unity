@@ -968,6 +968,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &953487579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3330909216807876864, guid: d448a0821f09a924ca6d64385f64c948, type: 3}
+  m_PrefabInstance: {fileID: 1028878098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1028878098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1019,6 +1024,14 @@ PrefabInstance:
     - target: {fileID: 1110305767948318753, guid: d448a0821f09a924ca6d64385f64c948, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310547450529471074, guid: d448a0821f09a924ca6d64385f64c948, type: 3}
+      propertyPath: camTarget
+      value: 
+      objectReference: {fileID: 953487579}
+    - target: {fileID: 4310547450529471074, guid: d448a0821f09a924ca6d64385f64c948, type: 3}
+      propertyPath: camTargetDist
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1199,7 +1212,7 @@ GameObject:
   - component: {fileID: 2022201506}
   - component: {fileID: 2022201505}
   m_Layer: 3
-  m_Name: Plane
+  m_Name: Background
   m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1267,7 +1280,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0415e149c0005434d8dee7b5f855c1d8, type: 2}
+  - {fileID: 2100000, guid: fa1ba706986f3a04eae9f6eddc533cba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

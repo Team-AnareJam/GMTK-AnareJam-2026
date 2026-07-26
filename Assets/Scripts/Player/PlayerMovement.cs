@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     public bool CanMove;
     public int MovementSpeed;
     public float MovementMult;
+    [SerializeField] private GameObject camTarget;
+    [SerializeField] private float camTargetDist;
     private InputAction MoveAction;
 
     private void OnEnable()
@@ -62,8 +64,9 @@ public class PlayerMovement : MonoBehaviour
         if (!CanMove) return;
         if (InputManager.Instance.currentMap != InputManager.Actions.Player.Get()) return;
 
-        
-        Vector3 moveTo = MoveAction.ReadValue<Vector2>().normalized * (MovementSpeed * MovementMult * Time.fixedDeltaTime);
+        Vector2 dir = MoveAction.ReadValue<Vector2>();
+        camTarget.transform.position = transform.position + (Vector3)(dir * camTargetDist);
+        Vector3 moveTo = dir.normalized * (MovementSpeed * MovementMult * Time.fixedDeltaTime);
         transform.position += moveTo;
 
     }
