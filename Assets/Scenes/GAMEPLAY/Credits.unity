@@ -5388,6 +5388,10 @@ PrefabInstance:
       value: Credits, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6004430257644753813, guid: 33cf1cb03732d7744892d931685b11a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004430257644753813, guid: 33cf1cb03732d7744892d931685b11a2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
