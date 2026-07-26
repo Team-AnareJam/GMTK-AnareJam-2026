@@ -90,6 +90,7 @@ namespace Cards
         public void CloseStore()
         {
             Time.timeScale = 1;
+            Time.fixedDeltaTime = NormalDeltaTime;
             InputManager.Instance.ToggleActionMap(InputManager.Actions.Player);
             Hand.SetActive(true);
             Button.SetActive(false);

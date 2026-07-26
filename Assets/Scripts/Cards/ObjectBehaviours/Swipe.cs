@@ -23,7 +23,7 @@ namespace Cards.ObjectBehaviours
             var pos2 = Quaternion.Euler(0, 0, angle/2) * mousedir;
             rot1 = Quaternion.FromToRotation(Vector2.up, pos1);
             rot2 = Quaternion.FromToRotation(Vector2.up, pos2);
-            
+            transform.localPosition = (Vector3)ContextManager.Instance.CardCtx.PlayerPosition + Constants.GetDepth();
             transform.localScale *= Size;
             transform.localRotation = rot1;
         }

@@ -21,7 +21,7 @@ namespace Cards.ObjectBehaviours
             Speed = speed;
             transform.localRotation = Quaternion.Euler(0, 0, Vector2.Angle(Vector2.down, dir));
             transform.localScale *= size;
-            transform.position = ctx.PlayerPosition;
+            transform.position = (Vector3)ctx.PlayerPosition + Constants.GetDepth();
         }
 
         private void OnTriggerEnter(Collider other)

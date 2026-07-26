@@ -25,6 +25,7 @@ namespace Cards.ObjectBehaviours
             AddedTime = addedTime;
             hits = new();
             dir = mouseDir;
+            transform.localPosition = (Vector3)ContextManager.Instance.CardCtx.PlayerPosition + Constants.GetDepth();
             transform.localRotation = Quaternion.Euler(0, 0, Vector2.Angle(Vector2.down, dir));
             DamageMediator.OnDealDamageEnd += OnKill;
         }

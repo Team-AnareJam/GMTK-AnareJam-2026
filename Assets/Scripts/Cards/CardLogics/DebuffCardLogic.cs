@@ -15,7 +15,6 @@ public class DebuffCardLogic : CardLogic
     }
     public override void Play()
     {
-        //TODO: add to timer
         foreach (DebuffData data in debuffs)
         {
             var go = ContextManager.InstantiateObject(Prefab);

@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         Init(DataRef);
     }
+
     public void Init(EnemyDataReference reference)
     {
         playerPosition = ContextManager.Instance.CardCtx.PlayerPosition;
@@ -38,15 +39,18 @@ public class EnemyController : MonoBehaviour, IDamageable
         Initialized = true;
         Evaluate();
     }
+
     public DamageInstance TakeDamage(DamageInstance instance)
     {
         Debug.Log("takin damage");
         data.HP -= (int)instance.Damage;
-        if(data.HP < 0) instance.IsDead = true;
+        if (data.HP < 0) instance.IsDead = true;
         return instance;
     }
+
     private void FixedUpdate()
     {
+        
         playerPosition = (Vector3)ContextManager.Instance.CardCtx.PlayerPosition + Constants.GetDepth();
         if (data == null || !Initialized) return;
         if (data.IsMelee)
@@ -56,16 +60,19 @@ public class EnemyController : MonoBehaviour, IDamageable
             {
                 if (target != null)
                 {
-                    var instance = new DamageInstance(TimerManager.Instance, this, ETargetType.Player, data.AttackPower);
+                    var instance =
+                        new DamageInstance(TimerManager.Instance, this, ETargetType.Player, data.AttackPower);
                     DamageMediator.DealDamage(instance);
-                    remainingAttackTime = data.MaxAttackTime;
                 }
+
+                remainingAttackTime = data.MaxAttackTime;
             }
         }
     }
 
     private void Update()
     {
+        LastAttack += Time.deltaTime;
         if (data == null || !Initialized) return;
         if (timestamp + data.TaskDelay <= Time.time)
         {
@@ -77,26 +84,29 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         timestamp = Time.time;
         ETask task = EvaluateTask();
-        if (currentTask != task)
-        {
-            currentTask = task;
-            PerformTask(currentTask);
-        }
+
+        currentTask = task;
+        PerformTask(currentTask);
     }
+
     private ETask EvaluateTask()
     {
-        foreach(var task in data.Tasks)
+        foreach (var task in data.Tasks)
         {
             if (CheckCondition(task))
             {
                 return task.Task;
             }
         }
+
         return ETask.Idle;
     }
 
+    public float Distance;
+
     private bool CheckCondition(TaskObject task)
     {
+        Distance = (playerPosition - transform.position).magnitude;
         return task.Condition switch
         {
             ECondition.FurtherThan => (playerPosition - transform.position).magnitude >= task.ConditionValue,
@@ -105,15 +115,21 @@ public class EnemyController : MonoBehaviour, IDamageable
         };
     }
 
+    [SerializeField]private float LastAttack;
     private void PerformTask(ETask task)
     {
         switch (task)
         {
             case ETask.Idle:
-                if(movement != null) movement.MovementTarget = transform.position;
+                if (movement != null) movement.MovementTarget = transform.position;
                 break;
             case ETask.Attack:
-                DoAttack();
+                if (LastAttack > data.MaxAttackTime)
+                {
+                    DoAttack();
+                    LastAttack = 0;
+                }
+                
                 break;
             case ETask.MoveCloser:
                 Debug.Log("MoveCloser!");
@@ -127,7 +143,8 @@ public class EnemyController : MonoBehaviour, IDamageable
                 break;
             case ETask.Strafe:
                 Debug.Log("Move... strafer?");
-                Vector2 strafePos = Vector2.Perpendicular((playerPosition - transform.position).normalized) * (data.MovementDistance * (Random.Range(0, 2) == 0 ? 1 : -1));
+                Vector2 strafePos = Vector2.Perpendicular((playerPosition - transform.position).normalized) *
+                                    (data.MovementDistance * (Random.Range(0, 2) == 0 ? 1 : -1));
                 movement.MovementTarget = strafePos;
                 break;
         }
@@ -156,8 +173,6 @@ public class EnemyController : MonoBehaviour, IDamageable
             target = null;
         }
     }
-
-    
 }
 
 [System.Serializable]
@@ -173,6 +188,7 @@ public enum ECondition
     FurtherThan,
     CloserThan,
 }
+
 public enum ETask
 {
     Idle,
