@@ -6,8 +6,8 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] private SpriteRenderer rend;
     private bool initiated;
     private IDamageable origin;
-    private int damage;
-    public void Init(IDamageable _origin, Sprite sprite, Vector2 dir, float scale, float speed,float lifetime, int _damage)
+    private float damage;
+    public void Init(IDamageable _origin, Sprite sprite, Vector2 dir, float scale, float speed,float lifetime, float _damage)
     {
         initiated = true;
         origin = _origin;
@@ -16,7 +16,7 @@ public class EnemyProjectile : MonoBehaviour
         rend.sprite = sprite;
         transform.localScale = new Vector3(scale, scale, scale);
         transform.localRotation = Quaternion.Euler(0, 0, Vector2.Angle(Vector2.up, dir));
-        rb.linearVelocity = dir * speed;
+        rb.linearVelocity = dir.normalized * speed;
         Destroy(gameObject, lifetime);
     }
 

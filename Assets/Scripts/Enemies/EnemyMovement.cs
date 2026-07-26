@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
         if (dir.magnitude > 0.1f)
         {
             float speedMod = Mathf.Clamp(dir.magnitude, 0.1f, 1f);
-            rb.linearVelocity = (dir.normalized * MovementSpeed * speedMod);
+            rb.linearVelocity = (dir.normalized * (MovementSpeed * speedMod));
         }
         else
         {

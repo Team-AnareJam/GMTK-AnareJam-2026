@@ -2,7 +2,10 @@ using Enemies;
 using NaughtyAttributes;
 using System.Collections.Generic;
 using System.Data;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyController : MonoBehaviour, IDamageable
 {
@@ -14,6 +17,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private Vector3 playerPosition;
     [SerializeField] private ETask currentTask;
     [SerializeField] private float remainingAttackTime;
+    private bool Initialized;
 
     private Collider target;
     private float timestamp;
@@ -31,6 +35,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         rend.sprite = data.Sprite;
         movement.Init(data.MovementSpeed);
         currentTask = ETask.Idle;
+        Initialized = true;
         Evaluate();
     }
     public DamageInstance TakeDamage(DamageInstance instance)
@@ -42,8 +47,8 @@ public class EnemyController : MonoBehaviour, IDamageable
     }
     private void FixedUpdate()
     {
-        playerPosition = ContextManager.Instance.CardCtx.PlayerPosition;
-        if (data == null) return;
+        playerPosition = (Vector3)ContextManager.Instance.CardCtx.PlayerPosition + Constants.GetDepth();
+        if (data == null || !Initialized) return;
         if (data.IsMelee)
         {
             if (remainingAttackTime > 0) remainingAttackTime -= Time.fixedDeltaTime;
@@ -61,7 +66,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (data == null) return;
+        if (data == null || !Initialized) return;
         if (timestamp + data.TaskDelay <= Time.time)
         {
             Evaluate();
@@ -72,8 +77,11 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         timestamp = Time.time;
         ETask task = EvaluateTask();
-        currentTask = task;
-        PerformTask(currentTask);
+        if (currentTask != task)
+        {
+            currentTask = task;
+            PerformTask(currentTask);
+        }
     }
     private ETask EvaluateTask()
     {
@@ -89,14 +97,12 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private bool CheckCondition(TaskObject task)
     {
-        switch (task.Condition)
+        return task.Condition switch
         {
-            case ECondition.FurtherThan:
-                return (playerPosition - transform.position).magnitude > task.ConditionValue;
-            case ECondition.CloserThan:
-                return (playerPosition - transform.position).magnitude > task.ConditionValue;
-        }
-        return false;
+            ECondition.FurtherThan => (playerPosition - transform.position).magnitude >= task.ConditionValue,
+            ECondition.CloserThan => (playerPosition - transform.position).magnitude <= task.ConditionValue,
+            _ => false
+        };
     }
 
     private void PerformTask(ETask task)
@@ -107,7 +113,7 @@ public class EnemyController : MonoBehaviour, IDamageable
                 if(movement != null) movement.MovementTarget = transform.position;
                 break;
             case ETask.Attack:
-                Debug.Log("Attack!");
+                DoAttack();
                 break;
             case ETask.MoveCloser:
                 Debug.Log("MoveCloser!");
@@ -115,7 +121,7 @@ public class EnemyController : MonoBehaviour, IDamageable
                 movement.MovementTarget = playerPosition;
                 break;
             case ETask.MoveFurther:
-                Debug.Log("MoveCloser!");
+                Debug.Log("MoveFart!");
                 Vector2 pos = (playerPosition - transform.position) * (-1 * data.MovementDistance);
                 movement.MovementTarget = pos;
                 break;
@@ -125,6 +131,14 @@ public class EnemyController : MonoBehaviour, IDamageable
                 movement.MovementTarget = strafePos;
                 break;
         }
+    }
+
+    private void DoAttack()
+    {
+        var go = Instantiate(data.ProjectilePrefab, transform.position, Quaternion.identity);
+        var pj = go.GetComponent<EnemyProjectile>();
+        Vector2 dir = (Vector3)ContextManager.Instance.CardCtx.PlayerPosition - transform.position;
+        pj.Init(this, data.ProjectileSprite, dir, data.Scale, data.Speed, data.Lifetime, data.AttackPower);
     }
 
     private void OnTriggerEnter(Collider collision)

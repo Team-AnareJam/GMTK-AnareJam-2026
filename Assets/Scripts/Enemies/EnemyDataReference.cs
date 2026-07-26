@@ -26,6 +26,11 @@ public class EnemyData
     public int AttackPower;
     public float MaxAttackTime;
 
+    [Header("Projectile")]
+    public GameObject ProjectilePrefab;
+    public float Scale, Speed, Lifetime;
+    public Sprite ProjectileSprite;
+
     public EnemyData(EnemyData data)
     {
         this.Sprite = data.Sprite;
@@ -37,5 +42,11 @@ public class EnemyData
         HP = data.HP;
         AttackPower = data.AttackPower;
         MaxAttackTime = data.MaxAttackTime;
+        
+        ProjectilePrefab = data.ProjectilePrefab;
+        Scale = data.Scale;
+        Speed = data.Speed;
+        Lifetime = data.Lifetime;
+        ProjectileSprite = data.ProjectileSprite;
     }
 }

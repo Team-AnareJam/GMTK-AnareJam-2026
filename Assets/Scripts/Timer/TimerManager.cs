@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -76,6 +77,10 @@ public class TimerManager : MonoBehaviour, IDamageable
 
     }
 
+    private float graceTimePassed;
+    [SerializeField]private float GraceTimeDuration;
+
+    private bool IsInGraceTime;
     // Update is called once per frame
     void Update()
     {
@@ -90,10 +95,34 @@ public class TimerManager : MonoBehaviour, IDamageable
 
         if (TimeRemaining <= 0)
         {
+            if (!IsInGraceTime)
+            {
+                StartCoroutine(GraceTime());
+            }
             //TODO: IF CARDS ARE ACTIVE, MAINTAIN GRACE PERIOD
             //TODO: IF NO CARDS ACTIVE (ANYMORE), INITIATE GAME END.
         }
     }
+
+    private IEnumerator GraceTime()
+    {
+        IsInGraceTime = true;
+        graceTimePassed = 0;
+        while (graceTimePassed < GraceTimeDuration)
+        {
+            if (timeRemaining > 0)
+            {
+                IsInGraceTime = false;
+                yield break;
+            }
+
+            graceTimePassed += Time.deltaTime;
+            yield return null;
+        }
+
+        SceneTransitionManager.Instance.StartTransition("Lose");
+    }
+
     #endregion
 
     #region Internal Timer Management
