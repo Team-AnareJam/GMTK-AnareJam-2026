@@ -16,23 +16,10 @@ MonoBehaviour:
   Enemies:
   - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
   - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
-  - {fileID: 11400000, guid: a9139ea576cc29f4394fb48e61472eaa, type: 2}
+  - {fileID: 11400000, guid: 4e1161c1db3a588419f9885ace99c65b, type: 2}
+  - {fileID: 11400000, guid: 4e1161c1db3a588419f9885ace99c65b, type: 2}
+  - {fileID: 11400000, guid: 4e1161c1db3a588419f9885ace99c65b, type: 2}
+  - {fileID: 11400000, guid: 4e1161c1db3a588419f9885ace99c65b, type: 2}
+  - {fileID: 11400000, guid: 4e1161c1db3a588419f9885ace99c65b, type: 2}
+  - {fileID: 11400000, guid: 4e1161c1db3a588419f9885ace99c65b, type: 2}
   SpawnDelay: 0.5
