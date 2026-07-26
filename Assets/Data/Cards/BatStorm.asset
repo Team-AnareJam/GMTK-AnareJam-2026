@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541635f715df02440a46ced586c66caf, type: 3}
   m_Name: BatStorm
   m_EditorClassIdentifier: Assembly-CSharp::Card
-  ID: 
-  Name: 
-  cardRarity: 0
+  ID: BatStorm
+  Name: Bat Storm
+  cardRarity: 1
   cardType: 0
-  playType: 0
-  Cost: 0
-  Art: {fileID: 0}
-  Description: 
-  Credits: 
-  Logic: {fileID: 0}
+  playType: 1
+  Cost: 20
+  Art: {fileID: 21300000, guid: ee91d8397e7d2e044b6fa11e7ce092a5, type: 3}
+  Description: Releases a storm of bats to batter your enemy.
+  Credits: Blue
+  Logic: {fileID: 11400000, guid: 8055f3e18ead2004788980f29dfa1a04, type: 2}

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using Random = UnityEngine.Random;
 
 public class WaveManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class WaveManager : MonoBehaviour
     public ObjectPool<EnemyController> EnemyPool;
     public GameObject EnemyPoolHolder;
     public GameObject EnemyPrefab;
+    public GameObject BBL;
+    public GameObject BBR;
+    [SerializeField] private float PlayerSafeZone;
 
     private void Awake()
     {
@@ -46,6 +50,7 @@ public class WaveManager : MonoBehaviour
     }
 
     #region Start/Update/Enable/Disable
+
     private void OnEnable()
     {
         GameManager.OnStartGame += StartWave;
@@ -61,17 +66,17 @@ public class WaveManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
+
     #endregion
 
     #region Enemy Pool Functions
+
     private EnemyController CreateEnemy()
     {
         GameObject pooledObject = Instantiate(EnemyPrefab);
@@ -116,7 +121,17 @@ public class WaveManager : MonoBehaviour
             enemyController.Init(enemy);
             EnemyControllers.Add(enemyController);
             enemyController.gameObject.transform.parent = EnemyPoolHolder.transform;
-            enemyController.gameObject.transform.position = new Vector3(0, 0, 10); //TODO: SPAWN POSITION
+            var x = Mathf.Lerp(BBL.transform.position.x, BBR.transform.position.x, Random.value);
+            var y = Mathf.Lerp(BBL.transform.position.y, BBR.transform.position.y, Random.value);
+            
+            Vector2 spawnpos = new Vector2(x, y);
+            if (Vector3.Distance(spawnpos, ContextManager.Instance.CardCtx.PlayerPosition)  < PlayerSafeZone)
+            {
+                var dir = ContextManager.Instance.CardCtx.PlayerPosition - spawnpos;
+                dir.Normalize();
+                spawnpos = dir * PlayerSafeZone;
+            }
+            enemyController.gameObject.transform.position = new Vector3(spawnpos.x, spawnpos.y, 10);
             enemyIndex++;
             yield return new WaitForSeconds(CurrentWave.SpawnDelay);
         }
@@ -124,9 +139,9 @@ public class WaveManager : MonoBehaviour
 
     public void EndWave()
     {
-        //TODO: Open card reward
-        //TODO: Handle starting the next wave
-        //TODO: Handle logic for end of round
+        OnWaveEnd?.Invoke();
+        CurrentWaveIndex++;
+        StartWave();
     }
 
     public void RemoveEnemyFromActiveWave(DamageInstance instance)

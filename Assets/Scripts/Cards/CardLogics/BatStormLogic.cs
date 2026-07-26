@@ -21,10 +21,10 @@ public class BatStormLogic : CardLogic
     {
         for (int i = 0; i < Count; i++)
         {
-            var angle = Mathf.Lerp(0, 360, i / 4f);
+            var angle = Mathf.Lerp(0, 360, i / Count);
             var go = Instantiate(Prefab);
             var BS = go.GetComponent<BatStorm>();
-            BS.Init(angle, Size, Damage, ExpansionRate, Duration, RotationSpeed, ctx.PlayerPosition, StartOffset);
+            BS.Init(angle, Size, Damage, ExpansionRate, Duration, RotationSpeed, ctx.playerMovement.transform, StartOffset);
         }
     }
 }

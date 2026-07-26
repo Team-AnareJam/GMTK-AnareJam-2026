@@ -18,4 +18,5 @@ MonoBehaviour:
   Damage: 1
   ExpansionRate: 1
   Duration: 1
-  RotationSpeed: 1
+  RotationSpeed: 50
+  StartOffset: 1

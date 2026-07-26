@@ -44,7 +44,7 @@ public static class MathAE
         {
             newX = z.Value;
         }
-
+        
         return new Vector3(newX, newY, newZ);
     }
 }
