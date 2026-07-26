@@ -1769,9 +1769,41 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4311123764014236265, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311123764014236265, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311123764014236265, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311123764014236265, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5238785696836269229, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
       propertyPath: m_Name
       value: TIMER MANAGER
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553595046099549485, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553595046099549485, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553595046099549485, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553595046099549485, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5863138529550455238, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
       propertyPath: MaxTime
@@ -1783,6 +1815,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8478541190512894350, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
       propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673216835843925032, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673216835843925032, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673216835843925032, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673216835843925032, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8748290550548530779, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
@@ -1856,7 +1904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1225344619627817551, guid: da50644ba0fd24446ac8fee51dd59683, type: 3}
       propertyPath: playingMusic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8664403922446252281, guid: da50644ba0fd24446ac8fee51dd59683, type: 3}
       propertyPath: m_Name
