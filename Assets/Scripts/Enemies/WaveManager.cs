@@ -13,6 +13,8 @@ public class WaveManager : MonoBehaviour
     public static event Action OnWaveEnd;
     public static event Action<EnemyController> OnKillEnemy;
     [SerializeField] private GameData gameData;
+    private bool spawnedBoss;
+    [SerializeField] EnemyDataReference BossRef;
 
     public List<Wave> Waves;
     public Wave CurrentWave;
@@ -33,6 +35,7 @@ public class WaveManager : MonoBehaviour
             Instance = this;
         }
         else Destroy(this);
+        spawnedBoss = !gameData.Levels[gameData.CurrentLevel].SpawnBoss;
 
         InstantiatePool();
     }
@@ -106,7 +109,22 @@ public class WaveManager : MonoBehaviour
     [Button]
     public void StartWave()
     {
+        if (!spawnedBoss)
+        {
+            spawnedBoss = true;
+            SpawnBoss();
+        }
         StartCoroutine(ProcessWave());
+    }
+
+    private void SpawnBoss()
+    {
+        EnemyController enemyController = EnemyPool.Get();
+        enemyController.name = BossRef.name;
+        enemyController.Init(BossRef);
+        EnemyControllers.Add(enemyController);
+        enemyController.gameObject.transform.parent = EnemyPoolHolder.transform;
+        enemyController.gameObject.transform.position = new Vector3(30, 0, 10);
     }
 
     public IEnumerator ProcessWave()

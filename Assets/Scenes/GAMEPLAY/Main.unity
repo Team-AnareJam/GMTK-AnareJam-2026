@@ -192,6 +192,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 492022299}
+    - target: {fileID: 4899415952308715231, guid: 906200ed24326ed42855fa72a974c139, type: 3}
+      propertyPath: deck
+      value: 
+      objectReference: {fileID: 11400000, guid: 0345898f5c880d94aa8ec0b8f962f872, type: 2}
     - target: {fileID: 6582448123213170220, guid: 906200ed24326ed42855fa72a974c139, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1606,6 +1610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
   gameData: {fileID: 11400000, guid: d0589af61f6ce30419447ee574f78bd8, type: 2}
+  BossRef: {fileID: 0}
   Waves:
   - {fileID: 11400000, guid: 417311346aca99c46993b3e9583423ba, type: 2}
   CurrentWave: {fileID: 0}

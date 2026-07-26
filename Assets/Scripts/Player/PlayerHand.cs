@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerHand : MonoBehaviour
 {
     public static event Action<CardHolder> OnDrawCard;
-    private PlayerDeck deck;
+    [SerializeField] PlayerDeck deck;
     [SerializeField] private List<CardHolder> CardsInHand = new();
     public List<Card> DrawPile = new();
     [SerializeField] private List<Card> DiscardPile = new();
@@ -71,7 +71,7 @@ public class PlayerHand : MonoBehaviour
     private void Start()
     {
         VoidEveryone();
-        deck = GetComponent<PlayerDeck>();
+        //deck = GetComponent<PlayerDeck>();
         //function call to clear everything
         GetCardsFromDeck();
         for(int i = 0; i < 5; i++)
