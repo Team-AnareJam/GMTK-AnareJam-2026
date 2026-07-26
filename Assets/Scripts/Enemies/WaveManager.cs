@@ -12,6 +12,7 @@ public class WaveManager : MonoBehaviour
     public static WaveManager Instance;
     public static event Action OnWaveEnd;
     public static event Action<EnemyController> OnKillEnemy;
+    [SerializeField] private GameData gameData;
 
     public List<Wave> Waves;
     public Wave CurrentWave;
@@ -141,6 +142,15 @@ public class WaveManager : MonoBehaviour
     {
         OnWaveEnd?.Invoke();
         CurrentWaveIndex++;
+        if(CurrentWaveIndex >= Waves.Count)
+        {
+            gameData.CurrentLevel++;
+            if(gameData.CurrentLevel >= gameData.Levels.Count)
+            {
+                SceneTransitionManager.Instance.StartTransition("Win");
+            }
+            SceneTransitionManager.Instance.StartTransition("Main");
+        }
         StartWave();
     }
 

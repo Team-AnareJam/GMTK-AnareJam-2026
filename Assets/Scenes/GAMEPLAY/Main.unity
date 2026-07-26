@@ -1853,6 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cd275b34dba38459d66eeb9aca2d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
+  gameData: {fileID: 11400000, guid: d0589af61f6ce30419447ee574f78bd8, type: 2}
   Waves:
   - {fileID: 11400000, guid: 9f298f4010f0f2543a363bd1fac01471, type: 2}
   CurrentWave: {fileID: 0}
