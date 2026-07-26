@@ -27,13 +27,6 @@ MonoBehaviour:
     LoopStartTime: 6
     LoopEndTime: 34
     NextClip: 2
-  - Name: 2DEFAULT
-    Clip: {fileID: 8300000, guid: 28364469af014c04aaba562318a2c722, type: 3}
-    BPM: 120
-    BeatsPerBar: 4
-    LoopStartTime: 6
-    LoopEndTime: 34
-    NextClip: 1
   - Name: 1INTENSE
     Clip: {fileID: 8300000, guid: 7bf65af449fb4d64c9abd9cc3dc33c3a, type: 3}
     BPM: 120
@@ -41,10 +34,31 @@ MonoBehaviour:
     LoopStartTime: 6
     LoopEndTime: 34
     NextClip: 2
+  - Name: 2DEFAULT
+    Clip: {fileID: 8300000, guid: 28364469af014c04aaba562318a2c722, type: 3}
+    BPM: 120
+    BeatsPerBar: 4
+    LoopStartTime: 6
+    LoopEndTime: 34
+    NextClip: 3
   - Name: 2INTENSE
     Clip: {fileID: 8300000, guid: 8fe3f4644f67d2747b5409bde9791ca2, type: 3}
     BPM: 120
     BeatsPerBar: 4
     LoopStartTime: 6
     LoopEndTime: 34
-    NextClip: 1
+    NextClip: 3
+  - Name: 3DEFAULT
+    Clip: {fileID: 8300000, guid: 773e5bada060b3c4c83c42b57db9e91c, type: 3}
+    BPM: 120
+    BeatsPerBar: 4
+    LoopStartTime: 6
+    LoopEndTime: 34
+    NextClip: 3
+  - Name: 3INTENSE
+    Clip: {fileID: 8300000, guid: 2d55fecec6ad16c4cbc368be018d003d, type: 3}
+    BPM: 120
+    BeatsPerBar: 4
+    LoopStartTime: 6
+    LoopEndTime: 34
+    NextClip: 3

@@ -13,7 +13,7 @@ public class SceneTransitionManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-        else Destroy(this);
+        else Destroy(this.gameObject);
     }
     public static event Action OnTransitionFinished;
     
@@ -60,6 +60,7 @@ public class SceneTransitionManager : MonoBehaviour
         {
             CurrentFade = 0;
             TransitionHasStarted = false;
+            FadingIn = true;
             EndTransition();
         }
     }
