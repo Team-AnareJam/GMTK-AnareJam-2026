@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneTransitionManager : MonoBehaviour
 {
     public static SceneTransitionManager Instance;
-    [SerializeField] private GameData gameData;
+    public GameData GameData;
     [SerializeField] private Material backgroundMat;
     private WaveManager waveManager;
 
@@ -25,14 +26,7 @@ public class SceneTransitionManager : MonoBehaviour
     public bool FadingIn = true;
     public float CurrentFade = 0;
     public float FadeSpeed = 1f;
-    public SpriteRenderer SR;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        SR = gameObject.GetComponent<SpriteRenderer>();
-    }
+    public Image FadeImage;
 
     // Update is called once per frame
     void Update()
@@ -50,7 +44,7 @@ public class SceneTransitionManager : MonoBehaviour
     public void Fade()
     {
         CurrentFade += (FadingIn ? FadeSpeed : -FadeSpeed) * Time.deltaTime;
-        SR.color = new Color(0, 0, 0, CurrentFade);
+        FadeImage.color = new Color(0, 0, 0, CurrentFade);
 
         if (FadingIn && CurrentFade >= 1)
         {
@@ -59,12 +53,12 @@ public class SceneTransitionManager : MonoBehaviour
             TransitionToScene();
         }
         waveManager = (WaveManager)GameObject.FindAnyObjectByType(typeof(WaveManager));
-        if(gameData != null  && backgroundMat != null)
+        if(GameData != null  && backgroundMat != null)
         {
             if (waveManager != null)
             {
-                backgroundMat.SetTexture("_background", gameData.Levels[gameData.CurrentLevel].BackgroundTexture);
-                waveManager.Waves = gameData.Levels[gameData.CurrentLevel].Waves;
+                backgroundMat.SetTexture("_background", GameData.Levels[GameData.CurrentLevel].BackgroundTexture);
+                waveManager.Waves = GameData.Levels[GameData.CurrentLevel].Waves;
             }
         }
         if (!FadingIn && CurrentFade <= 0)

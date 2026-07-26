@@ -1775,11 +1775,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5863138529550455238, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
       propertyPath: MaxTime
-      value: 60
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 5863138529550455238, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
       propertyPath: timeRemaining
-      value: 60
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 8478541190512894350, guid: 304b284af7183a44fa15a0acbf10983e, type: 3}
       propertyPath: m_RenderMode

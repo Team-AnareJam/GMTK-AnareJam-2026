@@ -156,6 +156,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    [Button]
     public void EndWave()
     {
         OnWaveEnd?.Invoke();

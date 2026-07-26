@@ -11,4 +11,9 @@ public class AudioPreferenceSaver : MonoBehaviour
         Mixer.SetFloat("BGM_VOLUME", Mathf.Log10(PlayerPrefs.GetFloat("BGM_VOLUME", 1f)));
         Mixer.SetFloat("SFX_VOLUME", Mathf.Log10(PlayerPrefs.GetFloat("SFX_VOLUME", 1f)));
     }
+
+    private void Start()
+    {
+        SceneTransitionManager.Instance.GameData.CurrentLevel = 0;
+    }
 }
