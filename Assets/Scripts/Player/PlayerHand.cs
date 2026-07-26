@@ -118,6 +118,8 @@ public class PlayerHand : MonoBehaviour
         PlayedCard.Card.Logic.Play();
         TimerManager.Instance.UpdateTimer(-PlayedCard.Card.Cost);
         Destroy(PlayedCard.gameObject);
+        SoundEffectsManager.Instance.PlaySound("CastCard");
+
         switch (PlayedCard.Card.playType)
         {
             case PlayType.Grave:

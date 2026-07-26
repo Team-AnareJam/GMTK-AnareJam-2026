@@ -21,7 +21,19 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 5cb28004dfeee0343b8b23590b92e4ee, type: 3}
     MinPitch: 1
     MaxPitch: 1
-  - Name: PullUp
+  - Name: HoverCard
     Clip: {fileID: 8300000, guid: b9cdeb7f428ef794292b53fcf774548c, type: 3}
-    MinPitch: 0.5
-    MaxPitch: 1.5
+    MinPitch: 0.9
+    MaxPitch: 1.3
+  - Name: CastCard
+    Clip: {fileID: 8300000, guid: c489200a42bf56e41aca6d706578cae3, type: 3}
+    MinPitch: 0.9
+    MaxPitch: 1.2
+  - Name: TimeUp
+    Clip: {fileID: 8300000, guid: c27164f239633ca489e1e7b2ffc18ba9, type: 3}
+    MinPitch: 1
+    MaxPitch: 1
+  - Name: TimeDown
+    Clip: {fileID: 8300000, guid: f1994e64c6c1ab84880e6aab0d7e236f, type: 3}
+    MinPitch: 1
+    MaxPitch: 1
