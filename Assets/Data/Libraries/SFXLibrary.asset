@@ -13,7 +13,15 @@ MonoBehaviour:
   m_Name: SFXLibrary
   m_EditorClassIdentifier: Assembly-CSharp::SFXLibrary
   SoundEffects:
-  - Name: test
-    Clip: {fileID: 8300000, guid: ede181fc6afb27247add2c60c00b6d03, type: 3}
+  - Name: Hover
+    Clip: {fileID: 8300000, guid: 85936f55c41017c4193c1ba280a62d1b, type: 3}
     MinPitch: 1
-    MaxPitch: 1.2
+    MaxPitch: 1
+  - Name: Confirm
+    Clip: {fileID: 8300000, guid: 5cb28004dfeee0343b8b23590b92e4ee, type: 3}
+    MinPitch: 1
+    MaxPitch: 1
+  - Name: PullUp
+    Clip: {fileID: 8300000, guid: b9cdeb7f428ef794292b53fcf774548c, type: 3}
+    MinPitch: 0.5
+    MaxPitch: 1.5

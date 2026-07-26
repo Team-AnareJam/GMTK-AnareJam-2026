@@ -39,6 +39,8 @@ public class MusicManager : MonoBehaviour
 
     private void Update()
     {
+        Intense = (TimerManager.Instance.MaxTime / 2f) > TimerManager.Instance.TimeRemaining;
+
         if (AudioSettings.dspTime > GoalTime - 5)
         {
             string nextClip = NextClip + (Intense ? "INTENSE" : "DEFAULT");

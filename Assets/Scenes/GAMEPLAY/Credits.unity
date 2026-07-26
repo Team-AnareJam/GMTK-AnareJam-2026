@@ -610,6 +610,7 @@ GameObject:
   - component: {fileID: 276931704}
   - component: {fileID: 276931703}
   - component: {fileID: 276931706}
+  - component: {fileID: 276931707}
   m_Layer: 5
   m_Name: CREDITS
   m_TagString: Untagged
@@ -743,6 +744,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b211dbcc6e53835458a9cc00c999e1ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &276931707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276931701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb5951e698678e4c81f5d1988711d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnHoverButton
 --- !u!1001 &286404643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3520,6 +3533,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2965842431586846895, guid: 084cc15c372ddb44d87d38d20046f30d, type: 3}
   m_PrefabInstance: {fileID: 1042398737}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1268352485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1268352486}
+  m_Layer: 0
+  m_Name: SFX-POOL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1268352486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268352485}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1541363788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1275941626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4209,6 +4253,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538262512}
   m_CullTransparentMesh: 1
+--- !u!1 &1541363786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541363788}
+  - component: {fileID: 1541363787}
+  m_Layer: 0
+  m_Name: AUDIO MANAGERS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1541363787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541363786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581cac6d6fcc4eb458538ee1922e41eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectsManager
+  SFXPrefab: {fileID: 4502824988356024710, guid: d4ea224a941b7a0479204216fcb1c9eb, type: 3}
+  SFXLib: {fileID: 11400000, guid: ecacb59fc335abc4db738fa3411c3b52, type: 2}
+  SFXPoolHolder: {fileID: 1268352485}
+  defaultPoolSize: 10
+  maxPoolSize: 20
+--- !u!4 &1541363788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541363786}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.04285, y: 0, z: 5.88512}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1268352486}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1554053781
 GameObject:
   m_ObjectHideFlags: 0
@@ -5025,3 +5119,4 @@ SceneRoots:
   - {fileID: 1866328858}
   - {fileID: 857195877}
   - {fileID: 1554053784}
+  - {fileID: 1541363788}
