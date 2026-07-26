@@ -129,7 +129,6 @@ public class EnemyController : MonoBehaviour, IDamageable
                     DoAttack();
                     LastAttack = 0;
                 }
-                
                 break;
             case ETask.MoveCloser:
                 Debug.Log("MoveCloser!");
