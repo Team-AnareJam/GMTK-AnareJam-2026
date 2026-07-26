@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction MoveAction;
     [SerializeField] private Animator anim;
     [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private Rigidbody rb;
 
     private void OnEnable()
     {
@@ -80,8 +81,14 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 dir = MoveAction.ReadValue<Vector2>();
         camTarget.transform.position = transform.position + (Vector3)(dir * camTargetDist);
-        Vector3 moveTo = dir.normalized * (MovementSpeed * MovementMult * Time.fixedDeltaTime);
-        transform.position += moveTo;
+        if (dir.magnitude > 0.1f)
+        {
+            rb.linearVelocity = dir.normalized * (MovementSpeed * MovementMult);
+        }
+        else
+        {
+            rb.linearVelocity = Vector3.zero;
+        }
 
     }
 }
