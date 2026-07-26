@@ -39,12 +39,6 @@ public class SceneTransitionManager : MonoBehaviour
     {
         SceneToTransitionTo = name;
         TransitionHasStarted = true;
-
-        try { 
-            GameObject.Find("MUSIC1").GetComponent<AudioSource>().Stop();
-            GameObject.Find("MUSIC2").GetComponent<AudioSource>().Stop();
-        }
-        catch { }
     }
 
     public void Fade()

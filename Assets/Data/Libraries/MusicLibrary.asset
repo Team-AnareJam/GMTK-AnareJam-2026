@@ -61,4 +61,4 @@ MonoBehaviour:
     BeatsPerBar: 4
     LoopStartTime: 6
     LoopEndTime: 34
-    NextClip: 3
+    NextClip: 1

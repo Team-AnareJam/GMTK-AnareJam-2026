@@ -182,6 +182,7 @@ public class TimerManager : MonoBehaviour, IDamageable
 
         float width = (TimeRemaining / MaxTime);
         TimerBar.fillAmount = Mathf.Clamp01(width);
+        TimerBar.color = barGradient.Evaluate(time);
         TimerBarBG.color = barGradient.Evaluate(time);
         textMaterial.SetColor("_UnderlayColor", textGradient.Evaluate(time));
     }

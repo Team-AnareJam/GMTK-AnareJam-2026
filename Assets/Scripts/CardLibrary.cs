@@ -5,7 +5,6 @@ using JetBrains.Annotations;
 using NaughtyAttributes;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -26,17 +25,17 @@ public class CardLibrary : ScriptableObject
         return Cards.FirstOrDefault(Card => Card.ID == ID);
     }
 
-    [ContextMenu("Load Library Cards")]
-    public void LoadLib()
-    {
-        Cards.Clear();
-        var cards = AssetDatabase.FindAssets($"t:{typeof(Card)}");
-        foreach (var card in cards)
-        {
-            GUID.TryParse(card, out var result);
-            Cards.Add(AssetDatabase.LoadAssetByGUID<Card>(result));
-        }
-    }
+    //[ContextMenu("Load Library Cards")]
+    //public void LoadLib()
+    //{
+    //    Cards.Clear();
+    //    var cards = AssetDatabase.FindAssets($"t:{typeof(Card)}");
+    //    foreach (var card in cards)
+    //    {
+    //        GUID.TryParse(card, out var result);
+    //        Cards.Add(AssetDatabase.LoadAssetByGUID<Card>(result));
+    //    }
+    //}
 
     /// <summary>
 /// Returns random card from a specified rarity
