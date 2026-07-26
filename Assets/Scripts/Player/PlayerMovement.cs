@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         ContextManager.Instance.CardCtx.PlayerPosition = transform.position;
+        CanMove = true;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -58,7 +59,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!CanMove) return;
         if (InputManager.Instance.currentMap != InputManager.Actions.Player.Get()) return;
+
         
         Vector3 moveTo = MoveAction.ReadValue<Vector2>().normalized * (MovementSpeed * MovementMult * Time.fixedDeltaTime);
         transform.position += moveTo;
