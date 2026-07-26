@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6545975923350358016}
   - component: {fileID: 4138935827722105942}
+  - component: {fileID: 4221923153502215106}
   m_Layer: 0
   m_Name: BatStorm
   m_TagString: Untagged
@@ -46,6 +47,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cards.ObjectBehaviours.BatStorm
   sr: {fileID: 2112928413942365411}
+--- !u!135 &4221923153502215106
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487939345719976670}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.39503348
+  m_Center: {x: -0.008997202, y: 0, z: 0}
 --- !u!1 &3054227178390145259
 GameObject:
   m_ObjectHideFlags: 0

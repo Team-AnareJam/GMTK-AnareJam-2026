@@ -51,7 +51,7 @@ namespace Cards.ObjectBehaviours
             {
                 var id = other.GetComponent<IDamageable>();
                 hits.Add(id);
-                var instance = new DamageInstance(id, ETargetType.Enemy, Damage);
+                var instance = new DamageInstance(id, TimerManager.Instance, ETargetType.Enemy, Damage);
                 DamageMediator.DealDamage(instance);
             }
         }

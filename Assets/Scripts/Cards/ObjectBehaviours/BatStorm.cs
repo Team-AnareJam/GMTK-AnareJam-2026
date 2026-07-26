@@ -35,5 +35,14 @@ namespace Cards.ObjectBehaviours
             transform.position += (transform.position - PlayerPos.position).normalized * (ExpansionRate * Time.deltaTime);
             transform.RotateAround(PlayerPos.position, Vector3.forward, RotationSpeed * Time.deltaTime);
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Enemy"))
+            {
+                var instance = new DamageInstance(other.GetComponent<IDamageable>(),TimerManager.Instance, ETargetType.Enemy, Damage);
+                DamageMediator.DealDamage(instance);
+            }
+        }
     }
 }

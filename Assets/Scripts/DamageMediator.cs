@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public static class DamageMediator
@@ -18,9 +19,10 @@ public static class DamageMediator
 [System.Serializable]
 public class DamageInstance
 {
-    public DamageInstance(IDamageable target, ETargetType type, float damage)
+    public DamageInstance(IDamageable target,IDamageable origin, ETargetType type, float damage)
     {
         Target = target;
+        Origin = origin;
         TType = type;
         Damage = damage;
         IsDead = false;
@@ -28,6 +30,7 @@ public class DamageInstance
 
     //origin
     public IDamageable Target;
+    public IDamageable Origin;
     public ETargetType TType;
     public float Damage;
     public bool IsDead = false;

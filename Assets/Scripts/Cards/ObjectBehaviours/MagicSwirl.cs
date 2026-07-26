@@ -41,7 +41,7 @@ namespace Cards.ObjectBehaviours
                     {
                         if (hit.TryGetComponent<EnemyController>(out var controller))
                         {
-                            var instance = new DamageInstance(controller, ETargetType.Enemy, Damage);
+                            var instance = new DamageInstance(controller,TimerManager.Instance, ETargetType.Enemy, Damage);
                             DamageMediator.DealDamage(instance);
                         }
                     }

@@ -33,7 +33,7 @@ namespace Cards.ObjectBehaviours
             {
                 if (hit.CompareTag("Enemy"))
                 {
-                    var instance = new DamageInstance(hit.GetComponent<IDamageable>(), ETargetType.Enemy, Damage);
+                    var instance = new DamageInstance(hit.GetComponent<IDamageable>(),TimerManager.Instance, ETargetType.Enemy, Damage);
                     DamageMediator.DealDamage(instance);
                 }
             }

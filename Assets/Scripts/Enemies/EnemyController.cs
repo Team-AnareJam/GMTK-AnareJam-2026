@@ -51,7 +51,8 @@ public class EnemyController : MonoBehaviour, IDamageable
             {
                 if (target != null)
                 {
-                    TimerManager.Instance.UpdateTimer(data.AttackPower);
+                    var instance = new DamageInstance(TimerManager.Instance, this, ETargetType.Player, data.AttackPower);
+                    DamageMediator.DealDamage(instance);
                     remainingAttackTime = data.MaxAttackTime;
                 }
             }
@@ -115,13 +116,12 @@ public class EnemyController : MonoBehaviour, IDamageable
                 break;
             case ETask.MoveFurther:
                 Debug.Log("MoveCloser!");
-                Vector2 pos = (playerPosition - transform.position) * -1 * data.MovementDistance;
+                Vector2 pos = (playerPosition - transform.position) * (-1 * data.MovementDistance);
                 movement.MovementTarget = pos;
                 break;
             case ETask.Strafe:
                 Debug.Log("Move... strafer?");
-                Vector2 strafePos = Vector2.Perpendicular((playerPosition - transform.position).normalized) 
-                    * data.MovementDistance * (Random.Range(0, 2) == 0 ? 1 : -1);
+                Vector2 strafePos = Vector2.Perpendicular((playerPosition - transform.position).normalized) * (data.MovementDistance * (Random.Range(0, 2) == 0 ? 1 : -1));
                 movement.MovementTarget = strafePos;
                 break;
         }

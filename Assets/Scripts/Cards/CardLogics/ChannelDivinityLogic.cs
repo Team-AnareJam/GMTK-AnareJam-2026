@@ -18,7 +18,7 @@ public class ChannelDivinityLogic : CardLogic
                 if (hit.CompareTag("Enemy"))
                 {
                     var dmg = hit.GetComponent<IDamageable>();
-                    DamageInstance instance = new DamageInstance(dmg, ETargetType.Enemy, 99999999);
+                    DamageInstance instance = new DamageInstance(dmg,TimerManager.Instance, ETargetType.Enemy, 99999999);
                     DamageMediator.DealDamage(instance);
                 }
             }

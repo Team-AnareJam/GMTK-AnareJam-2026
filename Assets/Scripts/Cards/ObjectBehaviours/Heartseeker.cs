@@ -26,9 +26,12 @@ namespace Cards.ObjectBehaviours
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Enemy")) return;
-            var stats = other.GetComponent<EnemyStats>();
-            stats.TakeDamage(Random.value < CritChance/100 ? dmg * 2 : dmg);
+            if (other.CompareTag("Enemy"))
+            {
+                var instance = new DamageInstance(other.GetComponent<IDamageable>(), TimerManager.Instance,
+                    ETargetType.Enemy, dmg * CritChance > Random.value ? 2 : 1);
+                DamageMediator.DealDamage(instance);
+            }
         }
 
         public void FixedUpdate()

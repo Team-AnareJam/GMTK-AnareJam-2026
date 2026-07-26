@@ -44,7 +44,7 @@ namespace Cards.ObjectBehaviours
         {
             if (!other.CompareTag("Enemy")) return;
             
-            var damg = new DamageInstance(other.GetComponent<EnemyController>(), ETargetType.Enemy, Damage);
+            var damg = new DamageInstance(other.GetComponent<EnemyController>(),TimerManager.Instance, ETargetType.Enemy, Damage);
             DamageMediator.DealDamage(damg);
         }
     }
