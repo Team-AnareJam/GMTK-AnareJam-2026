@@ -34,6 +34,6 @@ MonoBehaviour:
     MinPitch: 1
     MaxPitch: 1
   - Name: TimeDown
-    Clip: {fileID: 8300000, guid: f1994e64c6c1ab84880e6aab0d7e236f, type: 3}
-    MinPitch: 1
-    MaxPitch: 1
+    Clip: {fileID: 8300000, guid: 437d6f7c3d3b5fa4a9bd8662f69eaed6, type: 3}
+    MinPitch: 0.9
+    MaxPitch: 1.2
