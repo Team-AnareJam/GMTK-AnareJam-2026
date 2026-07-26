@@ -26,4 +26,25 @@ public static class MathAE
         var pos2 = Quaternion.Euler(0, 0, -angle) * direction;
         return (pos1, pos2);
     }
+
+    public static Vector3 Set(this Vector3 prev, float? x = null, float? y = null, float? z = null)
+    {
+        float newX = prev.x;
+        if (x != null)
+        {
+            newX = x.Value;
+        }
+        float newY = prev.y;
+        if (y != null)
+        {
+            newX = y.Value;
+        }
+        float newZ = prev.z;
+        if (z != null)
+        {
+            newX = z.Value;
+        }
+
+        return new Vector3(newX, newY, newZ);
+    }
 }
