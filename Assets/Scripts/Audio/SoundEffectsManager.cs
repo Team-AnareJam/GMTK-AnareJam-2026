@@ -15,6 +15,9 @@ public class SoundEffectsManager : MonoBehaviour
     public int defaultPoolSize = 10;
     public int maxPoolSize = 20;
 
+    public float TimeOfLastDamageSFX;
+    public float MaxTimeBetweenDamageSFX = 1;
+
     private void Awake()
     {
         if (Instance == null)
@@ -28,6 +31,7 @@ public class SoundEffectsManager : MonoBehaviour
 
     public void InstantiatePool()
     {
+        TimeOfLastDamageSFX = Time.time;
         SFXPool = new ObjectPool<AudioSource>(
             createFunc: CreateSFX,
             actionOnGet: OnGet,
@@ -74,6 +78,8 @@ public class SoundEffectsManager : MonoBehaviour
     public void PlaySound(string name)
     {
         if (!SFXLib.SoundEffects.Any(SFX => SFX.Name == name)) return;
+        if (name == "TimeDown" && (Time.time - TimeOfLastDamageSFX < MaxTimeBetweenDamageSFX)) return;
+
         AudioSource sfxObj = SFXPool.Get();
         SoundEffect effect = SFXLib.SoundEffects.First(SFX => SFX.Name == name);
         sfxObj.clip = effect.Clip;
