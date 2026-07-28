@@ -10,12 +10,11 @@ namespace Cards
 {
     public class CardStore : MonoBehaviour
     {
-        [SerializeField]private GameObject CardSeller;
+        [SerializeField] private GameObject CardSeller;
         [SerializeField] private List<CardHolderHolderHolder> Cards;
         [SerializeField] private GameObject CardPrefab;
-        [SerializeField] private GameObject Hand;
-        [SerializeField] private GameObject Button;
-        [SerializeField]private GameObject BG;
+        public GameObject Hand;
+        
         [SerializeField] private Button button;
         [SerializeField] private PlayerDeck Deck;
         [SerializeField] private float bonusCardLuck;
@@ -27,9 +26,9 @@ namespace Cards
 
         private float NormalDeltaTime;
 
-        public void Awake()
+        public void Start()
         {
-            WaveManager.OnWaveEnd += PrepareStore;
+            
         }
 
         [Button]
@@ -38,9 +37,9 @@ namespace Cards
             Time.timeScale = 0;
             NormalDeltaTime = Time.fixedDeltaTime;
             Time.fixedDeltaTime = 0;
-            
             SelectedCard = -1;
             button.interactable = false;
+
             bool BonusCard = Random.value < bonusCardLuck / 100;
             for (int i = 0; i < ( BonusCard ? 3 : 4); i++)
             {
@@ -66,14 +65,12 @@ namespace Cards
             ShowStore(BonusCard);
         }
 
-        private void ShowStore(bool BonusCard)
+        private void ShowStore(bool CanChooseBonusCard)
         {
-            Cards[3].CardHolderHolder.SetActive(BonusCard);
+            Cards[3].CardHolderHolder.SetActive(CanChooseBonusCard);
             Hand.SetActive(false);
-            Button.SetActive(true);
-            BG.SetActive(true);
-            CardSeller.SetActive(true);
-            for (int i = 0; i < Cards.Count - (BonusCard ? 0 : 1); i++)
+            
+            for (int i = 0; i < Cards.Count - (CanChooseBonusCard ? 0 : 1); i++)
             {
                 Cards[i].CardHolder.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 Cards[i].CardHolder.Rotate(false, .1f, i * 0.2f + 0.2f);
@@ -83,21 +80,26 @@ namespace Cards
         public void ClickCard(int Card)
         {
             SelectedCard = Card;
+
+            for (int i = 0; i < Cards.Count; i++)
+            {
+                Cards[i].CardHolderHolder.transform.localScale = new Vector3(1, 1, 1);
+                if (Card == i) Cards[i].CardHolderHolder.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+            }
             button.interactable = true;
         }
 
-        [SerializeField]private PlayerHand _hand;
+        public PlayerHand _hand;
         public void CloseStore()
         {
             Time.timeScale = 1;
             Time.fixedDeltaTime = NormalDeltaTime;
             InputManager.Instance.ToggleActionMap(InputManager.Actions.Player);
             Hand.SetActive(true);
-            Button.SetActive(false);
-            BG.SetActive(false);
             Deck.AddCard(Cards[SelectedCard].CardHolder.Card);
             _hand.DrawPile.Add(Cards[SelectedCard].CardHolder.Card);
-            CardSeller.SetActive(false);
+
+            Destroy(gameObject);
         }
     }
 

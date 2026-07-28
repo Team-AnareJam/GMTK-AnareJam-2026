@@ -53,12 +53,9 @@ public class PlayerUIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Debug.Log("Starts");
         bgCheck = new RaycastHit[1];
         CanPlay = true;
-    }
-
-    private void Awake()
-    {
         cam = Camera.main;
     }
 

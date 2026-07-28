@@ -64,7 +64,6 @@ public class MusicManager : MonoBehaviour
 
         GoalTime += CurrentClip.SongSampleCount / CurrentClip.Clip.frequency;
         NextClip = CurrentClip.NextClip;
-        Debug.Log(NextClip);
 
         MusicPlayerIndex = 1 - MusicPlayerIndex;
     }

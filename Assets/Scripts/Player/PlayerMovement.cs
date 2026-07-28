@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 case nameof(InputManager.Actions.Player):
                     MoveAction = InputManager.Actions.Player.Move;
+                    CanMove = true;
                     break;
             }
         }
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     void UnsubscribeAllListeners()
     {
         MoveAction = null;
+        CanMove = false;
     }
     #endregion
 
@@ -63,14 +65,9 @@ public class PlayerMovement : MonoBehaviour
     {
         ContextManager.Instance.CardCtx.PlayerPosition = transform.position;
         var move = new Vector2(); 
-        if (!CanMove)
-        {
-            return;
-        }
-        move = MoveAction.ReadValue<Vector2>();
+        if (CanMove) { move = MoveAction.ReadValue<Vector2>(); }
         if (move.magnitude > 0.1f)
         {
-            Debug.Log(move.x);
             sr.flipX = move.x < 0;
             anim.Play("Walking");
         }

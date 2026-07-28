@@ -164,6 +164,7 @@ public class WaveManager : MonoBehaviour
         if(CurrentWaveIndex >= Waves.Count)
         {
             gameData.CurrentLevel++;
+            CurrentWaveIndex = 0;
             if(gameData.CurrentLevel >= gameData.Levels.Count)
             {
                 SceneTransitionManager.Instance.StartTransition("Win");

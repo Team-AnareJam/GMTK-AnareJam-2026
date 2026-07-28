@@ -35,4 +35,4 @@ MonoBehaviour:
     Scale: 1
     Speed: 4
     Lifetime: 2
-    ProjectileSprite: {fileID: 21300000, guid: 35623f58872788d4aa96a0d5d049496d, type: 3}
+    ProjectileSprite: {fileID: 21300000, guid: 9e02eea4b20860445948dfec7a05f6d3, type: 3}

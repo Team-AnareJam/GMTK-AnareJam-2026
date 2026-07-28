@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: deck
       value: 
       objectReference: {fileID: 11400000, guid: 0345898f5c880d94aa8ec0b8f962f872, type: 2}
+    - target: {fileID: 5911373120654889651, guid: 906200ed24326ed42855fa72a974c139, type: 3}
+      propertyPath: PlayerHand
+      value: 
+      objectReference: {fileID: 148395810}
     - target: {fileID: 6582448123213170220, guid: 906200ed24326ed42855fa72a974c139, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -285,6 +289,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906200ed24326ed42855fa72a974c139, type: 3}
+--- !u!114 &148395810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4899415952308715231, guid: 906200ed24326ed42855fa72a974c139, type: 3}
+  m_PrefabInstance: {fileID: 148395809}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b6af975b1beb640a3c83a13cfc6d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &149467061
 GameObject:
   m_ObjectHideFlags: 0

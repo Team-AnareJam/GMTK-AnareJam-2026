@@ -10,6 +10,8 @@ public class SceneTransitionManager : MonoBehaviour
     [SerializeField] private Material backgroundMat;
     private WaveManager waveManager;
 
+    public bool ReloadScene = false;
+
     private void Awake()
     {
         if (Instance == null)
